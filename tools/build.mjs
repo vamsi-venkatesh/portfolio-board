@@ -1,6 +1,6 @@
 // Static site builder. Since v2 (5 Nov 2026) the source of truth is content.json (refreshed from the vault and the
 // live public sites; sources table in NOTES.md). data/status.json (HTTP check) and data/heatmap.json (git log) as before.
-// Output: index.html, work/<slug>/index.html, impressum/index.html.
+// Output: index.html, work/<slug>/index.html (no Impressum: removed on the founder's order, 2026-11-05).
 import fs from 'node:fs';
 const ROOT = '../13-board';
 const C = JSON.parse(fs.readFileSync(`${ROOT}/content.json`, 'utf8'));
@@ -63,7 +63,7 @@ const header = (base, keysHint, active = '') => `<a class="skip" href="#main">Sk
 </div></header>`;
 
 const footer = base => `<footer class="foot"><div class="wrap">
-  <span>© 2026 Vamsi Venkatesh · Magdeburg, Germany · <a href="${base}impressum/">Impressum</a></span>
+  <span>© 2026 Vamsi Venkatesh · Magdeburg, Germany</span>
   <span><a href="mailto:${P.email}">${P.email}</a> · <a href="${P.linkedin}" rel="noopener">LinkedIn</a> · <a href="${P.github}" rel="noopener">GitHub</a></span>
 </div></footer>
 <div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Command bar">
@@ -84,7 +84,6 @@ const footer = base => `<footer class="foot"><div class="wrap">
     { g: 'Contact', t: 'GitHub', s: 'github.com/vamsi-venkatesh', h: P.github, ext: 1 },
     { g: 'Board', t: 'Switch dark / light', s: 'Theme', act: 'theme' },
     { g: 'Board', t: 'Reset the board', s: 'Put every note back', act: 'reset' },
-    { g: 'Site', t: 'Impressum', s: 'Legal notice', h: `${base}impressum/` },
   ],
 }).replace(/</g, '\\u003c')}</script>
 <script src="${base}assets/site.js" defer></script>
@@ -133,52 +132,43 @@ const fmtDate = iso => { const [y, m, d] = iso.split('-').map(Number); return `$
 // end-to-end board: the lede as a system. ONE verified fact per card, read from content.json / data/status.json.
 // No fact → no number (the Agents count in content.json was carried over from site.mjs and not re-checked).
 const ubp = products.find(p => p.slug === 'unboundpdf');
-const relCheck = (ubp.checks.find(c => /\d+ of \d+ public pages/.test(c)) || '').match(/(\d+) of (\d+) public pages answering 200 after the (.+) release/);
-const okUrls = status.results.filter(r => r.code === 200).length;
-// the human gate is stated in these products' checks: Conxto Copilot "you send every application", FarmQuick "A person confirms
-// before anything moves", Forecasting "Nothing is issued without a person's approval". Conxto Autopilot is excluded on purpose.
-const FLOW = [
-  { id: 'product', k: 'Product', n: liveCount, of: products.length, label: 'products live on the public web', foot: `+ ${clients.length} run for clients`, href: '#work', go: 'See them ↓' },
-  { id: 'agents', k: 'Agents', word: 'Human sign\u2011off', label: 'Agents draft and check; a person approves what goes out.', foot: 'Conxto Copilot · FarmQuick · Forecasting', href: '#how', go: 'How I build ↓' },
-  { id: 'servers', k: 'Servers', n: okUrls, of: status.results.length, label: 'public URLs answered HTTP 200', foot: `one check · ${status.checked_utc.replace(/^2026-11-05/, '5 Nov 2026,')}`, href: '#proof', go: 'See the check ↓' },
-  { id: 'tests', k: 'Tests', n: relCheck ? +relCheck[1] : null, of: relCheck ? +relCheck[2] : null, label: relCheck ? `UnboundPDF pages answered 200 after the ${relCheck[3]} release` : 'Release gates run before every deploy', foot: 'every public page, re-requested', href: 'work/unboundpdf/', go: 'UnboundPDF case →' },
-];
-const flowCard = (c, i) => `
-        <article class="fcard drag" data-drag="flow-${c.id}" data-flow="${i}" aria-label="${pad2(i + 1)} ${c.k}">
-          <button class="grip" type="button" aria-label="Move the ${c.k} card (arrow keys)">${icon.grip}</button>
-          <div class="fc-k"><b>${pad2(i + 1)}</b>${c.k}</div>
-          ${c.n != null ? `<strong class="fc-n"><span data-count="${c.n}">${c.n}</span><small>/${c.of}</small></strong>` : `<strong class="fc-n fc-w">${esc(c.word)}</strong>`}
-          <p class="fc-l">${esc(c.label)}</p>
-          <div class="fc-f"><span>${esc(c.foot)}</span><a href="${c.href}">${esc(c.go)}</a></div>
-        </article>`;
-const flowHTML = `
-    <div class="flow develop" data-guide aria-label="End to end: the product, the agents, the servers and the tests">
-      <div class="flow-head mono"><span><b>frame / end to end</b></span><span class="hide-s">the sentence on the left, as a system</span></div>
-      <div class="flow-grid">${FLOW.map(flowCard).join('')}
-      </div>
-      <p class="flow-cap mono">Drag a card: the wiring follows. Each number is from a dated check; no check, no number.</p>
-    </div>`;
-
-// pinned showcase: one item per product (desktop: stacked in a sticky stage; phones: a plain list)
-const showcase = products.map((p, i) => {
-  const st = (p.stage || p.numbers || []).slice(0, 3);
-  return `
-      <article class="sc-item" data-i="${i}" style="--tint:${tint(p)}" aria-label="${esc(p.name)}">
-        <div class="sc-text">
+// =====================================================================================
+// The board (v4, 5 Nov 2026): the hero and the products are one board under one camera (desktop). Each frame keeps
+// its real loop; a product's copy appears only when the camera is close; frame 08 is the visitor's (the playground
+// at the end of the page). Phones and reduced motion get a plain list. Layout in world pixels [x, y, width];
+// the route 01 → 07 runs as an S.
+// =====================================================================================
+const BOARD = [[0, 50, 1080], [1180, 0, 760], [1300, 700, 1000], [120, 860, 900], [0, 1560, 740], [840, 1560, 760], [1700, 1460, 780]];
+const YOURS = [2040, 40, 440];
+if (products.length !== BOARD.length) throw new Error(`board layout has ${BOARD.length} slots for ${products.length} products`);
+const boardFrames = products.map((p, i) => { const [x, y, w] = BOARD[i]; return `
+      <figure class="bw pre" data-i="${i}" data-x="${x}" data-y="${y}" data-w="${w}" style="--x:${x};--y:${y};--w:${w};--tint:${tint(p)}">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>${pad2(i + 1)}</b>${esc(p.name)}<i class="dot${isLive(p) ? ' live' : ''}"></i></div>
+          <a class="frame" href="work/${p.slug}/" data-vt="${p.slug}" data-pill="Fly in →" aria-label="${esc(p.name)}"><div class="screen">${chrome(p)}<div class="media">${video(p, '')}</div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>`; }).join('');
+const yoursFrame = (() => { const [x, y, w] = YOURS; return `
+      <figure class="bw bw-yours pre" data-i="${products.length}" data-x="${x}" data-y="${y}" data-w="${w}" style="--x:${x};--y:${y};--w:${w}">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>${pad2(products.length + 1)}</b>Yours</div>
+          <a class="yours" href="#build" data-pill="Sketch it →"><span class="plus" aria-hidden="true">+</span><strong>Your product</strong><span class="yl">Sketch it at the end of the page ↓</span></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">empty frame</span></div>
+        </div>
+      </figure>`; })();
+const boardPanels = products.map((p, i) => { const st = (p.stage || p.numbers || []).slice(0, 3); return `
+      <div class="bp" id="p-${p.slug}" data-i="${i}"><div class="sc-text">
           <div class="eyebrow"><b>${pad2(i + 1)} / ${pad2(products.length)}</b>${esc(p.kind)} ${statusTag(p)}</div>
           <h3 class="sc-name">${esc(p.name)}</h3>
           <p class="sc-one">${esc(p.line)}</p>
           <div class="sc-nums">${st.map(([n, l]) => { const v = num(n); return `<div><strong${v !== null ? ` data-count="${v}"` : ''}>${esc(n)}</strong><span>${esc(l)}</span></div>`; }).join('')}</div>
           <div class="sc-links"><a class="pill sm" href="work/${p.slug}/" data-vt="${p.slug}">Case study →</a>${p.url ? `<a class="pill sm ghost" href="${esc(p.url)}" rel="noopener">${esc(p.host)} ↗</a>` : ''}</div>
-        </div>
-        <a class="sc-media frame-link" href="work/${p.slug}/" data-vt="${p.slug}" data-pill="Open case study →" aria-label="${esc(p.name)} case study">
-          <div class="frame"><div class="screen">${chrome(p)}<div class="media">${video(p, '')}</div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · ${pad2(i + 1)} ${esc(p.slug)}</b></span>
-        </a>
-      </article>`;
-}).join('');
-
-const rail = products.map((p, i) => `<button type="button" data-go="${i}"><span>${pad2(i + 1)}</span><em>${esc(p.name)}</em></button>`).join('');
+      </div></div>`; }).join('');
+// phones (and reduced motion): the same board, small and still: tap a frame to jump to that product
+const miniBoard = `
+      <nav class="bd-mini" aria-label="The board: ${word(products.length)} products and one empty frame">${products.map((p, i) => { const [x, y, w] = BOARD[i]; return `<a class="mf" href="#p-${p.slug}" style="--x:${x};--y:${y};--w:${w}"><img src="media/${p.slug}.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">${pad2(i + 1)}</b><span class="sr">${esc(p.name)}</span></a>`; }).join('')}<a class="mf mf-yours" href="#build" style="--x:${YOURS[0]};--y:${YOURS[1]};--w:${YOURS[2]}"><i aria-hidden="true">+</i><b aria-hidden="true">${pad2(products.length + 1)}</b><span class="sr">Frame ${pad2(products.length + 1)} is yours: sketch your product</span></a></nav>`;
+const boardRail = products.map(p => `<button type="button" aria-label="Fly to ${esc(p.name)}"></button>`).join('');
 
 // client work: two wide cards with the same frame + loop language
 const clientCards = clients.map((p, j) => { const i = products.length + j; const st = (p.stage || p.numbers || []).slice(0, 3);
@@ -238,16 +228,17 @@ const home = `${head('Vamsi Venkatesh — AI product engineer', P.lede, '')}
 <body data-page="home">
 ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${ALL.length}</kbd><span>to open a case study</span>`)}
 <main id="main">
-<section class="hero" aria-label="Introduction">
-  <div class="guides" aria-hidden="true"></div>
-  <div class="wrap"><div class="board" id="board" data-board>
-    <div class="board-bar" aria-label="Board controls">
-      <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes and the cards · resize my name</span><span class="show-s"> · drag ${icon.grip}</span></span>
-      <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
-    </div>
-    <div class="board-ov" aria-hidden="true"></div>
-    <svg class="wires" aria-hidden="true" focusable="false"><defs><marker id="wire-end" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wire-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" style="color:var(--faint)"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g class="w-base"></g><g class="w-flow"></g><g class="w-dots"></g><g class="w-tags"></g></svg>
-    <div class="hero-grid">
+<section class="bd" id="work" aria-labelledby="work-h">
+  <h2 class="sr" id="work-h">${Word(products.length)} products I designed, built and run end to end</h2>
+  <div class="bd-stage">
+    <div class="bd-intro hero" role="region" aria-label="Introduction">
+      <div class="guides" aria-hidden="true"></div>
+      <div class="wrap"><div class="bd-copy board" id="board" data-board>
+        <div class="board-bar" aria-label="Board controls">
+          <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes · resize my name</span><span class="show-s"> · tap a frame</span></span>
+          <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
+        </div>
+        <div class="board-ov" aria-hidden="true"></div>
     <div class="develop">
       <div class="select namebox" data-guide>
         <span class="h" data-rs="nw"></span><span class="h" data-rs="ne"></span><span class="h" data-rs="sw"></span><span class="h" data-rs="se"></span>
@@ -257,30 +248,27 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${ALL.length}</
       </div>
       <p class="lede" data-guide>${esc(P.lede).replace('end to end', '<mark>end to end</mark>')}</p>
       <p class="open"><i class="dot accent" aria-hidden="true"></i>Open to work · ${esc(P.city)} · updated ${fmtDate(C.content_updated)}</p>
-      <div class="stats" data-guide>${STATS.map(statNote).join('')}</div>
+      <div class="stats" data-guide>${STATS.map(statNote).join('')}</div>${miniBoard}
       <div class="ctas"><a class="pill" href="#work">See the products ↓</a><a class="pill ghost" href="#build">What should we build?</a></div>
     </div>
-${flowHTML}
+      </div></div>
     </div>
-  </div></div>
-</section>
-
-<section class="sec showcase-sec" id="work" aria-labelledby="work-h">
-  <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>02</b>Selected products</div><h2 id="work-h" data-reveal>${split(`${Word(products.length)} products I designed, built and run end to end.`)}</h2></div><p data-reveal>Scroll: each product moves into focus with its outcome and numbers. The loops are real: two are a task and a run recorded on the public sites, the rest are recordings of them.</p></div>
-  </div>
-  <div class="showcase" style="--n:${products.length}">
-    <div class="sc-sticky"><div class="wrap">
-      <div class="sc-stage">${showcase}
-      </div>
-      <nav class="sc-rail" aria-label="Products in this showcase">${rail}<i class="sc-bar" aria-hidden="true"></i></nav>
+    <div class="bd-world">${boardFrames}${yoursFrame}
+    </div>
+    <div class="bd-edges" aria-hidden="true"></div>
+    <div class="bd-scrim" aria-hidden="true"></div>
+    <div class="bd-panels"><div class="wrap">${boardPanels}
+    </div></div>
+    <div class="bd-foot"><div class="wrap">
+      <div class="bd-rail"><span class="ct mono" aria-hidden="true">— / ${pad2(products.length)}</span>${boardRail}</div>
+      <span class="bd-hint mono" aria-hidden="true">scroll to fly in · click a frame</span>
     </div></div>
   </div>
 </section>
 
 <section class="sec" id="clients" aria-labelledby="clients-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>Client work</div><h2 id="clients-h" data-reveal>${split(`Built and run for ${word(clients.length)} clients.`)}</h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>02</b>Client work</div><h2 id="clients-h" data-reveal>${split(`Built and run for ${word(clients.length)} clients.`)}</h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
     <div class="clients">${clientCards}
     </div>
     <a class="allwork" href="work/"><span class="mono">Index</span><b>All ${word(ALL.length)} in one list</b><em>${Word(products.length)} products and ${word(clients.length)} client works: kind, status and a line each</em><i aria-hidden="true">→</i></a>
@@ -289,7 +277,7 @@ ${flowHTML}
 
 <section class="sec" id="how" aria-labelledby="how-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>How I build</div><h2 id="how-h" data-reveal>${split('From a one-line problem to a product that keeps its receipts.')}</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>How I build</div><h2 id="how-h" data-reveal>${split('From a one-line problem to a product that keeps its receipts.')}</h2></div></div>
     <div class="cols">
       <article class="col" data-reveal data-inspect><div class="step"><span><b>01</b> · Idea</span><span>problem → plan</span></div><h3>Rules first, a model second.</h3><p>Each product starts as one problem and one plan. What can be written as a rule stays a rule; a model is used only where rules cannot answer.</p><ul><li>PitchRadar: no model in the score</li><li>FarmQuick: leads scored by written rules</li><li>Conxfolio: nine deterministic résumé specialists</li></ul><span class="arrow" aria-hidden="true"></span></article>
       <article class="col" data-reveal data-inspect style="--d:80ms"><div class="step"><span><b>02</b> · Ship</span><span>gate → deploy</span></div><h3>Nothing ships past a failing gate.</h3><p>Large automated suites and release gates run before a deploy. On UnboundPDF the live page is checked again after it.</p><ul><li>1,429 tests on VVDex Engine</li><li>620 on PitchRadar · 550 on VVDex Platform</li><li>UnboundPDF: audit in 3 browser engines + checksum sweep</li></ul><span class="arrow" aria-hidden="true"></span></article>
@@ -300,7 +288,7 @@ ${flowHTML}
 
 <section class="sec" id="proof" aria-labelledby="proof-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>Proof of shipping</div><h2 id="proof-h" data-reveal>${split('Shipped, running, and checked.')}</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>Proof of shipping</div><h2 id="proof-h" data-reveal>${split('Shipped, running, and checked.')}</h2></div></div>
     <div class="proof">
       <article class="panel" data-reveal data-inspect>
         <div class="panel-head"><h3>Commit activity, last 26 weeks</h3><span class="mono" style="color:var(--mute)">${H.from} – ${H.to}</span></div>
@@ -329,12 +317,13 @@ ${flowHTML}
 
 <section class="sec" id="build" aria-labelledby="build-h">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>06</b>Playground</div><h2 id="build-h" data-reveal>${split('What should we build?')}</h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>Playground</div><h2 id="build-h" data-reveal>${split('What should we build?')}</h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
     <div class="buildgrid">
       <div class="palette" data-reveal>${palette}
           <div class="pal-group"><h4>Anything else</h4><label class="sr" for="freenote">A free-text note</label><textarea id="freenote" rows="3" maxlength="400" placeholder="One line is enough: the problem, a link, your team…"></textarea><button type="button" class="pnote free" data-g="free">Pin this note →</button></div>
       </div>
       <div class="bboard-wrap" data-reveal style="--d:80ms">
+        <div class="yours-tag"><b>${pad2(products.length + 1)}</b>Yours <span>· the empty frame from the top of the page</span></div>
         <div class="bboard" id="bboard" data-board aria-label="Project board" tabindex="-1">
           <div class="board-ov" aria-hidden="true"></div>
           <p class="bb-empty">Drop notes here.<br><span>Idea · when · budget · anything else</span></p>
@@ -357,12 +346,12 @@ ${flowHTML}
 <section class="sec" id="contact" aria-labelledby="contact-h" style="padding-top:40px">
   <div class="wrap"><div class="contact">
     <div data-reveal>
-      <div class="eyebrow"><b>07</b>Contact</div>
+      <div class="eyebrow"><b>06</b>Contact</div>
       <h2 id="contact-h">Hiring for an AI role? <em>Let’s talk.</em></h2>
       <p>${esc(P.wants)}</p>
       <div class="ctas"><a class="pill" href="mailto:${P.email}">${P.email}</a><a class="pill ghost" href="${P.linkedin}" rel="noopener">LinkedIn ↗</a><a class="pill ghost" href="${P.github}" rel="noopener">GitHub ↗</a></div>
     </div>
-    <div class="code" data-reveal data-inspect><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#8a847a">JSON</span></div><pre data-type aria-label="Contact details as JSON">${jsonHTML}</pre></div>
+    <div class="code" data-reveal data-inspect><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#958f85">JSON</span></div><pre data-type aria-label="Contact details as JSON">${jsonHTML}</pre></div>
   </div></div>
 </section>
 </main>
@@ -371,30 +360,6 @@ ${flowHTML}
 ${footer('')}`;
 fs.writeFileSync(`${ROOT}/index.html`, home);
 
-// ---------- impressum (stub: the address is a marked placeholder, never invented) ----------
-const imp = `${head('Impressum · Vamsi Venkatesh', 'Legal notice (Impressum) for vamsivenkatesh.com.', '../')}
-<body data-page="legal">
-${header('../', '')}
-<main id="main"><div class="wrap legal">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">← Home</a><span>Legal notice</span></nav>
-  <div class="select" style="margin-top:44px"><span class="h"></span><span class="h"></span><span class="h"></span><span class="h"></span><span class="tag">§ 5 DDG</span><h1 class="title">Impressum</h1></div>
-  <div class="legal-body">
-    <h2>Angaben gemäß § 5 DDG</h2>
-    <p>${esc(P.name)}<br><span class="ph" role="note">[ADDRESS PLACEHOLDER — street and house number, postcode Magdeburg. To be filled in by Vamsi before this page goes live.]</span><br>Germany</p>
-    <h2>Kontakt</h2>
-    <p>E-Mail: <a href="mailto:${P.email}">${P.email}</a><br><span class="ph" role="note">[Optional second contact channel — to be decided by Vamsi.]</span></p>
-    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-    <p>${esc(P.name)}, address as above.</p>
-    <h2>Haftung für Links</h2>
-    <p>This site links to products I build and to external websites. I have no influence on the content of external sites and accept no liability for it; the respective provider is responsible.</p>
-    <h2>Datenschutz</h2>
-    <p>This site sets no cookies and runs no analytics. Fonts load from Google Fonts. The colour theme you pick is kept in your own browser only. The “What should we build?” board stores and sends nothing; it opens your own email app.</p>
-    <p class="note">Draft stub, 5 Nov 2026 — not legal advice; to be reviewed before publishing.</p>
-  </div>
-</div></main>
-${footer('../')}`;
-fs.mkdirSync(`${ROOT}/impressum`, { recursive: true });
-fs.writeFileSync(`${ROOT}/impressum/index.html`, imp);
 
 
 // ---------- work index (v3): every product and client work in one list ----------
@@ -494,4 +459,4 @@ ${footer(base)}`;
   fs.mkdirSync(`${ROOT}/work/${p.slug}`, { recursive: true });
   fs.writeFileSync(`${ROOT}/work/${p.slug}/index.html`, html);
 });
-console.log('built home, work index, impressum +', ALL.length, 'case pages; heat', H.total, 'commits', H.active, 'days');
+console.log('built home, work index +', ALL.length, 'case pages; heat', H.total, 'commits', H.active, 'days');

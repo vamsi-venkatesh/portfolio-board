@@ -29,16 +29,17 @@
   </nav>
 </div></header>
 <main id="main">
-<section class="hero" aria-label="Introduction">
-  <div class="guides" aria-hidden="true"></div>
-  <div class="wrap"><div class="board" id="board" data-board>
-    <div class="board-bar" aria-label="Board controls">
-      <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes and the cards · resize my name</span><span class="show-s"> · drag <svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></span></span>
-      <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
-    </div>
-    <div class="board-ov" aria-hidden="true"></div>
-    <svg class="wires" aria-hidden="true" focusable="false"><defs><marker id="wire-end" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wire-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" style="color:var(--faint)"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g class="w-base"></g><g class="w-flow"></g><g class="w-dots"></g><g class="w-tags"></g></svg>
-    <div class="hero-grid">
+<section class="bd" id="work" aria-labelledby="work-h">
+  <h2 class="sr" id="work-h">Seven products I designed, built and run end to end</h2>
+  <div class="bd-stage">
+    <div class="bd-intro hero" role="region" aria-label="Introduction">
+      <div class="guides" aria-hidden="true"></div>
+      <div class="wrap"><div class="bd-copy board" id="board" data-board>
+        <div class="board-bar" aria-label="Board controls">
+          <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes · resize my name</span><span class="show-s"> · tap a frame</span></span>
+          <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
+        </div>
+        <div class="board-ov" aria-hidden="true"></div>
     <div class="develop">
       <div class="select namebox" data-guide>
         <span class="h" data-rs="nw"></span><span class="h" data-rs="ne"></span><span class="h" data-rs="sw"></span><span class="h" data-rs="se"></span>
@@ -49,154 +50,132 @@
       <p class="lede" data-guide>I design, build and run AI products <mark>end to end</mark>: the product, the agents, the servers and the tests that prove it works.</p>
       <p class="open"><i class="dot accent" aria-hidden="true"></i>Open to work · Magdeburg, Germany · updated 5 Nov 2026</p>
       <div class="stats" data-guide><div class="stat drag" data-drag="stat-products" data-frame="stat / products"><button class="grip" type="button" aria-label="Move the products note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="7">7</strong><span>products, built and run · 6 live · + 2 for clients</span></div><div class="stat drag" data-drag="stat-unboundpdf" data-frame="stat / unboundpdf"><button class="grip" type="button" aria-label="Move the unboundpdf note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="54">54</strong><span>tools in UnboundPDF, all in the browser</span></div><div class="stat drag" data-drag="stat-vvdex-platform" data-frame="stat / vvdex-platform"><button class="grip" type="button" aria-label="Move the vvdex-platform note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="417">417</strong><span>graded AI attempts, published</span></div></div>
+      <nav class="bd-mini" aria-label="The board: seven products and one empty frame"><a class="mf" href="#p-vvdex-platform" style="--x:0;--y:50;--w:1080"><img src="media/vvdex-platform.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">01</b><span class="sr">VVDex Platform</span></a><a class="mf" href="#p-conxto" style="--x:1180;--y:0;--w:760"><img src="media/conxto.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">02</b><span class="sr">Conxto</span></a><a class="mf" href="#p-vvdex-engine" style="--x:1300;--y:700;--w:1000"><img src="media/vvdex-engine.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">03</b><span class="sr">VVDex Engine</span></a><a class="mf" href="#p-unboundpdf" style="--x:120;--y:860;--w:900"><img src="media/unboundpdf.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">04</b><span class="sr">UnboundPDF</span></a><a class="mf" href="#p-conxfolio" style="--x:0;--y:1560;--w:740"><img src="media/conxfolio.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">05</b><span class="sr">Conxfolio</span></a><a class="mf" href="#p-forecasting" style="--x:840;--y:1560;--w:760"><img src="media/forecasting.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">06</b><span class="sr">Forecasting</span></a><a class="mf" href="#p-vvdex-trading" style="--x:1700;--y:1460;--w:780"><img src="media/vvdex-trading.jpg" alt="" width="1440" height="900" decoding="async"><b aria-hidden="true">07</b><span class="sr">VVDex Trading</span></a><a class="mf mf-yours" href="#build" style="--x:2040;--y:40;--w:440"><i aria-hidden="true">+</i><b aria-hidden="true">08</b><span class="sr">Frame 08 is yours: sketch your product</span></a></nav>
       <div class="ctas"><a class="pill" href="#work">See the products ↓</a><a class="pill ghost" href="#build">What should we build?</a></div>
     </div>
-
-    <div class="flow develop" data-guide aria-label="End to end: the product, the agents, the servers and the tests">
-      <div class="flow-head mono"><span><b>frame / end to end</b></span><span class="hide-s">the sentence on the left, as a system</span></div>
-      <div class="flow-grid">
-        <article class="fcard drag" data-drag="flow-product" data-flow="0" aria-label="01 Product">
-          <button class="grip" type="button" aria-label="Move the Product card (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button>
-          <div class="fc-k"><b>01</b>Product</div>
-          <strong class="fc-n"><span data-count="6">6</span><small>/7</small></strong>
-          <p class="fc-l">products live on the public web</p>
-          <div class="fc-f"><span>+ 2 run for clients</span><a href="#work">See them ↓</a></div>
-        </article>
-        <article class="fcard drag" data-drag="flow-agents" data-flow="1" aria-label="02 Agents">
-          <button class="grip" type="button" aria-label="Move the Agents card (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button>
-          <div class="fc-k"><b>02</b>Agents</div>
-          <strong class="fc-n fc-w">Human sign‑off</strong>
-          <p class="fc-l">Agents draft and check; a person approves what goes out.</p>
-          <div class="fc-f"><span>Conxto Copilot · FarmQuick · Forecasting</span><a href="#how">How I build ↓</a></div>
-        </article>
-        <article class="fcard drag" data-drag="flow-servers" data-flow="2" aria-label="03 Servers">
-          <button class="grip" type="button" aria-label="Move the Servers card (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button>
-          <div class="fc-k"><b>03</b>Servers</div>
-          <strong class="fc-n"><span data-count="8">8</span><small>/8</small></strong>
-          <p class="fc-l">public URLs answered HTTP 200</p>
-          <div class="fc-f"><span>one check · 5 Nov 2026, 11:25 UTC</span><a href="#proof">See the check ↓</a></div>
-        </article>
-        <article class="fcard drag" data-drag="flow-tests" data-flow="3" aria-label="04 Tests">
-          <button class="grip" type="button" aria-label="Move the Tests card (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button>
-          <div class="fc-k"><b>04</b>Tests</div>
-          <strong class="fc-n"><span data-count="218">218</span><small>/218</small></strong>
-          <p class="fc-l">UnboundPDF pages answered 200 after the 31 Oct release</p>
-          <div class="fc-f"><span>every public page, re-requested</span><a href="work/unboundpdf/">UnboundPDF case →</a></div>
-        </article>
-      </div>
-      <p class="flow-cap mono">Drag a card: the wiring follows. Each number is from a dated check; no check, no number.</p>
+      </div></div>
     </div>
+    <div class="bd-world">
+      <figure class="bw pre" data-i="0" data-x="0" data-y="50" data-w="1080" style="--x:0;--y:50;--w:1080;--tint:color-mix(in srgb, #F2703A 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>01</b>VVDex Platform<i class="dot live"></i></div>
+          <a class="frame" href="work/vvdex-platform/" data-vt="vvdex-platform" data-pill="Fly in →" aria-label="VVDex Platform"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: real task recorded on the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="1" data-x="1180" data-y="0" data-w="760" style="--x:1180;--y:0;--w:760;--tint:color-mix(in srgb, #D8CDBE 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>02</b>Conxto<i class="dot live"></i></div>
+          <a class="frame" href="work/conxto/" data-vt="conxto" data-pill="Fly in →" aria-label="Conxto"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxto.jpg" data-src="media/conxto.mp4" aria-label="Conxto: screen recording of the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="2" data-x="1300" data-y="700" data-w="1000" style="--x:1300;--y:700;--w:1000;--tint:color-mix(in srgb, #45C987 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>03</b>VVDex Engine<i class="dot live"></i></div>
+          <a class="frame" href="work/vvdex-engine/" data-vt="vvdex-engine" data-pill="Fly in →" aria-label="VVDex Engine"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-engine.jpg" data-src="media/vvdex-engine.mp4" aria-label="VVDex Engine: screen recording of the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="3" data-x="120" data-y="860" data-w="900" style="--x:120;--y:860;--w:900;--tint:color-mix(in srgb, #EFEAE0 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>04</b>UnboundPDF<i class="dot live"></i></div>
+          <a class="frame" href="work/unboundpdf/" data-vt="unboundpdf" data-pill="Fly in →" aria-label="UnboundPDF"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: real task recorded on the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="4" data-x="0" data-y="1560" data-w="740" style="--x:0;--y:1560;--w:740;--tint:color-mix(in srgb, #EDE4D6 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>05</b>Conxfolio<i class="dot live"></i></div>
+          <a class="frame" href="work/conxfolio/" data-vt="conxfolio" data-pill="Fly in →" aria-label="Conxfolio"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxfolio.jpg" data-src="media/conxfolio.mp4" aria-label="Conxfolio: screen recording of the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="5" data-x="840" data-y="1560" data-w="760" style="--x:840;--y:1560;--w:760;--tint:color-mix(in srgb, #8FB3E6 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>06</b>Forecasting<i class="dot live"></i></div>
+          <a class="frame" href="work/forecasting/" data-vt="forecasting" data-pill="Fly in →" aria-label="Forecasting"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com/forecast</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/forecasting.jpg" data-src="media/forecasting.mp4" aria-label="Forecasting: screen recording of the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw pre" data-i="6" data-x="1700" data-y="1460" data-w="780" style="--x:1700;--y:1460;--w:780;--tint:color-mix(in srgb, #63D2A3 30%, var(--paper))">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>07</b>VVDex Trading<i class="dot"></i></div>
+          <a class="frame" href="work/vvdex-trading/" data-vt="vvdex-trading" data-pill="Fly in →" aria-label="VVDex Trading"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-trading.jpg" data-src="media/vvdex-trading.mp4" aria-label="VVDex Trading: screen recording of the public site"></video></div></div></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">1440 × 900</span></div>
+        </div>
+      </figure>
+      <figure class="bw bw-yours pre" data-i="7" data-x="2040" data-y="40" data-w="440" style="--x:2040;--y:40;--w:440">
+        <div class="bw-in">
+          <div class="bw-tag" aria-hidden="true"><b>08</b>Yours</div>
+          <a class="yours" href="#build" data-pill="Sketch it →"><span class="plus" aria-hidden="true">+</span><strong>Your product</strong><span class="yl">Sketch it at the end of the page ↓</span></a>
+          <div class="bw-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="bw-dim">empty frame</span></div>
+        </div>
+      </figure>
     </div>
-  </div></div>
-</section>
-
-<section class="sec showcase-sec" id="work" aria-labelledby="work-h">
-  <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>02</b>Selected products</div><h2 id="work-h" data-reveal><span class="sr">Seven products I designed, built and run end to end.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Seven</span></span> <span class="w"><span style="--i:1">products</span></span> <span class="w"><span style="--i:2">I</span></span> <span class="w"><span style="--i:3">designed,</span></span> <span class="w"><span style="--i:4">built</span></span> <span class="w"><span style="--i:5">and</span></span> <span class="w"><span style="--i:6">run</span></span> <span class="w"><span style="--i:7">end</span></span> <span class="w"><span style="--i:8">to</span></span> <span class="w"><span style="--i:9">end.</span></span></span></h2></div><p data-reveal>Scroll: each product moves into focus with its outcome and numbers. The loops are real: two are a task and a run recorded on the public sites, the rest are recordings of them.</p></div>
-  </div>
-  <div class="showcase" style="--n:7">
-    <div class="sc-sticky"><div class="wrap">
-      <div class="sc-stage">
-      <article class="sc-item" data-i="0" style="--tint:color-mix(in srgb, #F2703A 30%, var(--paper))" aria-label="VVDex Platform">
-        <div class="sc-text">
+    <div class="bd-edges" aria-hidden="true"></div>
+    <div class="bd-scrim" aria-hidden="true"></div>
+    <div class="bd-panels"><div class="wrap">
+      <div class="bp" id="p-vvdex-platform" data-i="0"><div class="sc-text">
           <div class="eyebrow"><b>01 / 07</b>AI evaluation platform <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">VVDex Platform</h3>
           <p class="sc-one">Test AI models and agents on real work: a real task in a sealed sandbox, hidden tests decide, and a signed receipt anyone can check.</p>
           <div class="sc-nums"><div><strong data-count="17">17</strong><span>certified exams offered: 5 open, 12 on request</span></div><div><strong data-count="417">417</strong><span>graded attempts in 15 published campaigns</span></div><div><strong data-count="21">21</strong><span>models and agents tested</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/vvdex-platform/" data-vt="vvdex-platform">Case study →</a><a class="pill sm ghost" href="https://vvdexops.com/" rel="noopener">vvdexops.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/vvdex-platform/" data-vt="vvdex-platform" data-pill="Open case study →" aria-label="VVDex Platform case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: real task recorded on the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 01 vvdex-platform</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="1" style="--tint:color-mix(in srgb, #D8CDBE 30%, var(--paper))" aria-label="Conxto">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-conxto" data-i="1"><div class="sc-text">
           <div class="eyebrow"><b>02 / 07</b>AI job search <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">Conxto</h3>
           <p class="sc-one">Reads live job postings against your résumé, checks every requirement and prepares the whole application. With Copilot you send; Autopilot applies inside rules you set.</p>
           <div class="sc-nums"><div><strong>5 + 2</strong><span>agents and reviewers, one memory</span></div><div><strong data-count="394928">394,928</strong><span>job postings in its own pool · 2 Nov 2026</span></div><div><strong>10.6 → 2.7 s</strong><span>app cold start, after a speed pass</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/conxto/" data-vt="conxto">Case study →</a><a class="pill sm ghost" href="https://conxto.com/" rel="noopener">conxto.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/conxto/" data-vt="conxto" data-pill="Open case study →" aria-label="Conxto case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxto.jpg" data-src="media/conxto.mp4" aria-label="Conxto: screen recording of the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 02 conxto</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="2" style="--tint:color-mix(in srgb, #45C987 30%, var(--paper))" aria-label="VVDex Engine">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-vvdex-engine" data-i="2"><div class="sc-text">
           <div class="eyebrow"><b>03 / 07</b>AI service engine <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">VVDex Engine</h3>
           <p class="sc-one">Describe the work in one paragraph and the Engine compiles it into a running service: what runs by itself, what waits for you, and what never happens.</p>
           <div class="sc-nums"><div><strong data-count="50">50</strong><span>compiled service examples</span></div><div><strong data-count="1429">1,429</strong><span>automated tests</span></div><div><strong>76 / 76</strong><span>briefs compiled into a valid process</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/vvdex-engine/" data-vt="vvdex-engine">Case study →</a><a class="pill sm ghost" href="https://lab.vvdexops.com/" rel="noopener">lab.vvdexops.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/vvdex-engine/" data-vt="vvdex-engine" data-pill="Open case study →" aria-label="VVDex Engine case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-engine.jpg" data-src="media/vvdex-engine.mp4" aria-label="VVDex Engine: screen recording of the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 03 vvdex-engine</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="3" style="--tint:color-mix(in srgb, #EFEAE0 30%, var(--paper))" aria-label="UnboundPDF">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-unboundpdf" data-i="3"><div class="sc-text">
           <div class="eyebrow"><b>04 / 07</b>Browser PDF suite <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">UnboundPDF</h3>
           <p class="sc-one">Every PDF tool in the browser. The file never leaves the tab.</p>
           <div class="sc-nums"><div><strong data-count="54">54</strong><span>tools, all in the browser</span></div><div><strong data-count="0">0</strong><span>uploads</span></div><div><strong data-count="218">218</strong><span>public pages, English and German</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/unboundpdf/" data-vt="unboundpdf">Case study →</a><a class="pill sm ghost" href="https://unboundpdf.com/" rel="noopener">unboundpdf.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/unboundpdf/" data-vt="unboundpdf" data-pill="Open case study →" aria-label="UnboundPDF case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: real task recorded on the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 04 unboundpdf</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="4" style="--tint:color-mix(in srgb, #EDE4D6 30%, var(--paper))" aria-label="Conxfolio">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-conxfolio" data-i="4"><div class="sc-text">
           <div class="eyebrow"><b>05 / 07</b>Career suite <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">Conxfolio</h3>
           <p class="sc-one">Your next move, all here: build your résumé, check how it reads, write your letter and show your work.</p>
           <div class="sc-nums"><div><strong data-count="37">37</strong><span>résumé designs, 24 ATS-clean</span></div><div><strong data-count="12">12</strong><span>cover-letter designs</span></div><div><strong data-count="22">22</strong><span>portfolio websites, free to publish</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/conxfolio/" data-vt="conxfolio">Case study →</a><a class="pill sm ghost" href="https://conxfolio.com/" rel="noopener">conxfolio.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/conxfolio/" data-vt="conxfolio" data-pill="Open case study →" aria-label="Conxfolio case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxfolio.jpg" data-src="media/conxfolio.mp4" aria-label="Conxfolio: screen recording of the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 05 conxfolio</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="5" style="--tint:color-mix(in srgb, #8FB3E6 30%, var(--paper))" aria-label="Forecasting">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-forecasting" data-i="5"><div class="sc-text">
           <div class="eyebrow"><b>06 / 07</b>Forecasting engine <span class="status live"><i class="dot live"></i>Live</span></div>
           <h3 class="sc-name">Forecasting</h3>
           <p class="sc-one">Models race on the past, a written rule picks the winner, ranges must pass a test or are withheld, outside signals must beat chance, and a person approves before anything is issued.</p>
           <div class="sc-nums"><div><strong data-count="7">7</strong><span>models raced on every run</span></div><div><strong data-count="75884">75,884</strong><span>outside signals in the catalogue</span></div><div><strong>8.9%</strong><span>better than the baseline on the saved run</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/forecasting/" data-vt="forecasting">Case study →</a><a class="pill sm ghost" href="https://lab.vvdexops.com/forecast/" rel="noopener">lab.vvdexops.com/forecast ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/forecasting/" data-vt="forecasting" data-pill="Open case study →" aria-label="Forecasting case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com/forecast</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/forecasting.jpg" data-src="media/forecasting.mp4" aria-label="Forecasting: screen recording of the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 06 forecasting</b></span>
-        </a>
-      </article>
-      <article class="sc-item" data-i="6" style="--tint:color-mix(in srgb, #63D2A3 30%, var(--paper))" aria-label="VVDex Trading">
-        <div class="sc-text">
+      </div></div>
+      <div class="bp" id="p-vvdex-trading" data-i="6"><div class="sc-text">
           <div class="eyebrow"><b>07 / 07</b>Market research <span class="status other"><i class="dot"></i>Research</span></div>
           <h3 class="sc-name">VVDex Trading</h3>
           <p class="sc-one">Live market microstructure beside a hash-chained record of every dated call. Paper only.</p>
           <div class="sc-nums"><div><strong data-count="8658">8,658</strong><span>predictions recorded since 2 Jul 2026</span></div><div><strong>0.703</strong><span>accuracy on 5,325 committed calls</span></div><div><strong>0.7178</strong><span>gate declared in advance: not cleared</span></div></div>
           <div class="sc-links"><a class="pill sm" href="work/vvdex-trading/" data-vt="vvdex-trading">Case study →</a><a class="pill sm ghost" href="https://trading.vvdexops.com/" rel="noopener">trading.vvdexops.com ↗</a></div>
-        </div>
-        <a class="sc-media frame-link" href="work/vvdex-trading/" data-vt="vvdex-trading" data-pill="Open case study →" aria-label="VVDex Trading case study">
-          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-trading.jpg" data-src="media/vvdex-trading.mp4" aria-label="VVDex Trading: screen recording of the public site"></video></div></div></div>
-          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 07 vvdex-trading</b></span>
-        </a>
-      </article>
-      </div>
-      <nav class="sc-rail" aria-label="Products in this showcase"><button type="button" data-go="0"><span>01</span><em>VVDex Platform</em></button><button type="button" data-go="1"><span>02</span><em>Conxto</em></button><button type="button" data-go="2"><span>03</span><em>VVDex Engine</em></button><button type="button" data-go="3"><span>04</span><em>UnboundPDF</em></button><button type="button" data-go="4"><span>05</span><em>Conxfolio</em></button><button type="button" data-go="5"><span>06</span><em>Forecasting</em></button><button type="button" data-go="6"><span>07</span><em>VVDex Trading</em></button><i class="sc-bar" aria-hidden="true"></i></nav>
+      </div></div>
+    </div></div>
+    <div class="bd-foot"><div class="wrap">
+      <div class="bd-rail"><span class="ct mono" aria-hidden="true">— / 07</span><button type="button" aria-label="Fly to VVDex Platform"></button><button type="button" aria-label="Fly to Conxto"></button><button type="button" aria-label="Fly to VVDex Engine"></button><button type="button" aria-label="Fly to UnboundPDF"></button><button type="button" aria-label="Fly to Conxfolio"></button><button type="button" aria-label="Fly to Forecasting"></button><button type="button" aria-label="Fly to VVDex Trading"></button></div>
+      <span class="bd-hint mono" aria-hidden="true">scroll to fly in · click a frame</span>
     </div></div>
   </div>
 </section>
 
 <section class="sec" id="clients" aria-labelledby="clients-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>Client work</div><h2 id="clients-h" data-reveal><span class="sr">Built and run for two clients.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Built</span></span> <span class="w"><span style="--i:1">and</span></span> <span class="w"><span style="--i:2">run</span></span> <span class="w"><span style="--i:3">for</span></span> <span class="w"><span style="--i:4">two</span></span> <span class="w"><span style="--i:5">clients.</span></span></span></h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>02</b>Client work</div><h2 id="clients-h" data-reveal><span class="sr">Built and run for two clients.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Built</span></span> <span class="w"><span style="--i:1">and</span></span> <span class="w"><span style="--i:2">run</span></span> <span class="w"><span style="--i:3">for</span></span> <span class="w"><span style="--i:4">two</span></span> <span class="w"><span style="--i:5">clients.</span></span></span></h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
     <div class="clients">
       <article class="client" data-reveal style="--tint:color-mix(in srgb, #F49A4B 30%, var(--paper));--d:0ms">
         <a class="frame-link" href="work/pitchradar/" data-vt="pitchradar" data-pill="Case study →" aria-label="PitchRadar case study">
@@ -225,7 +204,7 @@
 
 <section class="sec" id="how" aria-labelledby="how-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>How I build</div><h2 id="how-h" data-reveal><span class="sr">From a one-line problem to a product that keeps its receipts.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">From</span></span> <span class="w"><span style="--i:1">a</span></span> <span class="w"><span style="--i:2">one-line</span></span> <span class="w"><span style="--i:3">problem</span></span> <span class="w"><span style="--i:4">to</span></span> <span class="w"><span style="--i:5">a</span></span> <span class="w"><span style="--i:6">product</span></span> <span class="w"><span style="--i:7">that</span></span> <span class="w"><span style="--i:8">keeps</span></span> <span class="w"><span style="--i:9">its</span></span> <span class="w"><span style="--i:10">receipts.</span></span></span></h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>How I build</div><h2 id="how-h" data-reveal><span class="sr">From a one-line problem to a product that keeps its receipts.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">From</span></span> <span class="w"><span style="--i:1">a</span></span> <span class="w"><span style="--i:2">one-line</span></span> <span class="w"><span style="--i:3">problem</span></span> <span class="w"><span style="--i:4">to</span></span> <span class="w"><span style="--i:5">a</span></span> <span class="w"><span style="--i:6">product</span></span> <span class="w"><span style="--i:7">that</span></span> <span class="w"><span style="--i:8">keeps</span></span> <span class="w"><span style="--i:9">its</span></span> <span class="w"><span style="--i:10">receipts.</span></span></span></h2></div></div>
     <div class="cols">
       <article class="col" data-reveal data-inspect><div class="step"><span><b>01</b> · Idea</span><span>problem → plan</span></div><h3>Rules first, a model second.</h3><p>Each product starts as one problem and one plan. What can be written as a rule stays a rule; a model is used only where rules cannot answer.</p><ul><li>PitchRadar: no model in the score</li><li>FarmQuick: leads scored by written rules</li><li>Conxfolio: nine deterministic résumé specialists</li></ul><span class="arrow" aria-hidden="true"></span></article>
       <article class="col" data-reveal data-inspect style="--d:80ms"><div class="step"><span><b>02</b> · Ship</span><span>gate → deploy</span></div><h3>Nothing ships past a failing gate.</h3><p>Large automated suites and release gates run before a deploy. On UnboundPDF the live page is checked again after it.</p><ul><li>1,429 tests on VVDex Engine</li><li>620 on PitchRadar · 550 on VVDex Platform</li><li>UnboundPDF: audit in 3 browser engines + checksum sweep</li></ul><span class="arrow" aria-hidden="true"></span></article>
@@ -236,7 +215,7 @@
 
 <section class="sec" id="proof" aria-labelledby="proof-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>Proof of shipping</div><h2 id="proof-h" data-reveal><span class="sr">Shipped, running, and checked.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Shipped,</span></span> <span class="w"><span style="--i:1">running,</span></span> <span class="w"><span style="--i:2">and</span></span> <span class="w"><span style="--i:3">checked.</span></span></span></h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>Proof of shipping</div><h2 id="proof-h" data-reveal><span class="sr">Shipped, running, and checked.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Shipped,</span></span> <span class="w"><span style="--i:1">running,</span></span> <span class="w"><span style="--i:2">and</span></span> <span class="w"><span style="--i:3">checked.</span></span></span></h2></div></div>
     <div class="proof">
       <article class="panel" data-reveal data-inspect>
         <div class="panel-head"><h3>Commit activity, last 26 weeks</h3><span class="mono" style="color:var(--mute)">11 May 2026 – 5 Nov 2026</span></div>
@@ -273,7 +252,7 @@
 
 <section class="sec" id="build" aria-labelledby="build-h">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>06</b>Playground</div><h2 id="build-h" data-reveal><span class="sr">What should we build?</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">What</span></span> <span class="w"><span style="--i:1">should</span></span> <span class="w"><span style="--i:2">we</span></span> <span class="w"><span style="--i:3">build?</span></span></span></h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>Playground</div><h2 id="build-h" data-reveal><span class="sr">What should we build?</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">What</span></span> <span class="w"><span style="--i:1">should</span></span> <span class="w"><span style="--i:2">we</span></span> <span class="w"><span style="--i:3">build?</span></span></span></h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
     <div class="buildgrid">
       <div class="palette" data-reveal>
           <div class="pal-group"><h4>What is it?</h4><div class="pal-notes"><button type="button" class="pnote" data-g="idea" data-t="An AI agent for my business">An AI agent for my business</button><button type="button" class="pnote" data-g="idea" data-t="An evaluation of our models or agents">An evaluation of our models or agents</button><button type="button" class="pnote" data-g="idea" data-t="A web product, end to end">A web product, end to end</button><button type="button" class="pnote" data-g="idea" data-t="Automating a manual workflow">Automating a manual workflow</button><button type="button" class="pnote" data-g="idea" data-t="Hiring: an AI engineering role">Hiring: an AI engineering role</button></div></div>
@@ -282,6 +261,7 @@
           <div class="pal-group"><h4>Anything else</h4><label class="sr" for="freenote">A free-text note</label><textarea id="freenote" rows="3" maxlength="400" placeholder="One line is enough: the problem, a link, your team…"></textarea><button type="button" class="pnote free" data-g="free">Pin this note →</button></div>
       </div>
       <div class="bboard-wrap" data-reveal style="--d:80ms">
+        <div class="yours-tag"><b>08</b>Yours <span>· the empty frame from the top of the page</span></div>
         <div class="bboard" id="bboard" data-board aria-label="Project board" tabindex="-1">
           <div class="board-ov" aria-hidden="true"></div>
           <p class="bb-empty">Drop notes here.<br><span>Idea · when · budget · anything else</span></p>
@@ -304,12 +284,12 @@
 <section class="sec" id="contact" aria-labelledby="contact-h" style="padding-top:40px">
   <div class="wrap"><div class="contact">
     <div data-reveal>
-      <div class="eyebrow"><b>07</b>Contact</div>
+      <div class="eyebrow"><b>06</b>Contact</div>
       <h2 id="contact-h">Hiring for an AI role? <em>Let’s talk.</em></h2>
       <p>I am looking for an AI role: AI engineer, AI product engineer or AI evaluation engineer, remote or on-site in Germany, on a team that ships real products. I also build AI products for clients. No visa sponsorship needed.</p>
       <div class="ctas"><a class="pill" href="mailto:vamsi@vamsivenkatesh.com">vamsi@vamsivenkatesh.com</a><a class="pill ghost" href="https://www.linkedin.com/in/vamsivenkatesh" rel="noopener">LinkedIn ↗</a><a class="pill ghost" href="https://github.com/vamsi-venkatesh" rel="noopener">GitHub ↗</a></div>
     </div>
-    <div class="code" data-reveal data-inspect><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#8a847a">JSON</span></div><pre data-type aria-label="Contact details as JSON"><span class="ln"><span class="p" data-t>{</span></span><span class="ln"><span class="k" data-t>  "name"</span><span class="p" data-t>: </span><span class="s" data-t>"Vamsi Venkatesh"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "role"</span><span class="p" data-t>: </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "based"</span><span class="p" data-t>: </span><span class="s" data-t>"Magdeburg, Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "open_to"</span><span class="p" data-t>: </span><span class="p" data-t>[</span><span class="s" data-t>"AI engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI evaluation engineer"</span><span class="p" data-t>]</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "work"</span><span class="p" data-t>: </span><span class="s" data-t>"Remote, or on-site in Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "visa"</span><span class="p" data-t>: </span><span class="s" data-t>"German residence permit, no sponsorship needed"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "email"</span><span class="p" data-t>: </span><a href="mailto:vamsi@vamsivenkatesh.com" data-t>"vamsi@vamsivenkatesh.com"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "linkedin"</span><span class="p" data-t>: </span><a href="https://www.linkedin.com/in/vamsivenkatesh" data-t rel="noopener">"linkedin.com/in/vamsivenkatesh"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "github"</span><span class="p" data-t>: </span><a href="https://github.com/vamsi-venkatesh" data-t rel="noopener">"github.com/vamsi-venkatesh"</a><span class="p" data-t></span></span><span class="ln"><span class="p" data-t>}</span></span></pre></div>
+    <div class="code" data-reveal data-inspect><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#958f85">JSON</span></div><pre data-type aria-label="Contact details as JSON"><span class="ln"><span class="p" data-t>{</span></span><span class="ln"><span class="k" data-t>  "name"</span><span class="p" data-t>: </span><span class="s" data-t>"Vamsi Venkatesh"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "role"</span><span class="p" data-t>: </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "based"</span><span class="p" data-t>: </span><span class="s" data-t>"Magdeburg, Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "open_to"</span><span class="p" data-t>: </span><span class="p" data-t>[</span><span class="s" data-t>"AI engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI evaluation engineer"</span><span class="p" data-t>]</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "work"</span><span class="p" data-t>: </span><span class="s" data-t>"Remote, or on-site in Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "visa"</span><span class="p" data-t>: </span><span class="s" data-t>"German residence permit, no sponsorship needed"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "email"</span><span class="p" data-t>: </span><a href="mailto:vamsi@vamsivenkatesh.com" data-t>"vamsi@vamsivenkatesh.com"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "linkedin"</span><span class="p" data-t>: </span><a href="https://www.linkedin.com/in/vamsivenkatesh" data-t rel="noopener">"linkedin.com/in/vamsivenkatesh"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "github"</span><span class="p" data-t>: </span><a href="https://github.com/vamsi-venkatesh" data-t rel="noopener">"github.com/vamsi-venkatesh"</a><span class="p" data-t></span></span><span class="ln"><span class="p" data-t>}</span></span></pre></div>
   </div></div>
 </section>
 </main>
@@ -326,6 +306,6 @@
     <div class="cmdk-foot mono"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span></div>
   </div>
 </div>
-<script type="application/json" id="cmdk-data">{"base":"","items":[{"g":"Products","t":"VVDex Platform","s":"AI evaluation platform · Live","h":"work/vvdex-platform/","k":"1"},{"g":"Products","t":"Conxto","s":"AI job search · Live","h":"work/conxto/","k":"2"},{"g":"Products","t":"VVDex Engine","s":"AI service engine · Live","h":"work/vvdex-engine/","k":"3"},{"g":"Products","t":"UnboundPDF","s":"Browser PDF suite · Live","h":"work/unboundpdf/","k":"4"},{"g":"Products","t":"Conxfolio","s":"Career suite · Live","h":"work/conxfolio/","k":"5"},{"g":"Products","t":"Forecasting","s":"Forecasting engine · Live","h":"work/forecasting/","k":"6"},{"g":"Products","t":"VVDex Trading","s":"Market research · Research","h":"work/vvdex-trading/","k":"7"},{"g":"Client work","t":"PitchRadar","s":"Event intelligence · client · Private","h":"work/pitchradar/","k":"8"},{"g":"Client work","t":"FarmQuick · Buyer Radar","s":"B2B ordering site + lead agent · client · Live","h":"work/farmquick/","k":"9"},{"g":"Sections","t":"Work index","s":"All 9: 7 products + 2 client works","h":"work/"},{"g":"Sections","t":"Products, one by one","s":"Home","h":"#work"},{"g":"Sections","t":"Client work","s":"Home","h":"#clients"},{"g":"Sections","t":"End to end board","s":"Home","h":"#main"},{"g":"Sections","t":"How I build","s":"Home","h":"#how"},{"g":"Sections","t":"Proof of shipping","s":"Home","h":"#proof"},{"g":"Sections","t":"Recently shipped","s":"Home","h":"#shipped"},{"g":"Sections","t":"What should we build?","s":"Home","h":"#build"},{"g":"Sections","t":"Contact","s":"Home","h":"#contact"},{"g":"Contact","t":"Email Vamsi","s":"vamsi@vamsivenkatesh.com","h":"mailto:vamsi@vamsivenkatesh.com"},{"g":"Contact","t":"LinkedIn","s":"linkedin.com/in/vamsivenkatesh","h":"https://www.linkedin.com/in/vamsivenkatesh","ext":1},{"g":"Contact","t":"GitHub","s":"github.com/vamsi-venkatesh","h":"https://github.com/vamsi-venkatesh","ext":1},{"g":"Board","t":"Switch dark / light","s":"Theme","act":"theme"},{"g":"Board","t":"Reset the board","s":"Put every note back","act":"reset"},{"g":"Site","t":"Impressum","s":"Legal notice","h":"impressum/"}]}</script>
+<script type="application/json" id="cmdk-data">{"base":"","items":[{"g":"Products","t":"VVDex Platform","s":"AI evaluation platform · Live","h":"work/vvdex-platform/","k":"1"},{"g":"Products","t":"Conxto","s":"AI job search · Live","h":"work/conxto/","k":"2"},{"g":"Products","t":"VVDex Engine","s":"AI service engine · Live","h":"work/vvdex-engine/","k":"3"},{"g":"Products","t":"UnboundPDF","s":"Browser PDF suite · Live","h":"work/unboundpdf/","k":"4"},{"g":"Products","t":"Conxfolio","s":"Career suite · Live","h":"work/conxfolio/","k":"5"},{"g":"Products","t":"Forecasting","s":"Forecasting engine · Live","h":"work/forecasting/","k":"6"},{"g":"Products","t":"VVDex Trading","s":"Market research · Research","h":"work/vvdex-trading/","k":"7"},{"g":"Client work","t":"PitchRadar","s":"Event intelligence · client · Private","h":"work/pitchradar/","k":"8"},{"g":"Client work","t":"FarmQuick · Buyer Radar","s":"B2B ordering site + lead agent · client · Live","h":"work/farmquick/","k":"9"},{"g":"Sections","t":"Work index","s":"All 9: 7 products + 2 client works","h":"work/"},{"g":"Sections","t":"Products, one by one","s":"Home","h":"#work"},{"g":"Sections","t":"Client work","s":"Home","h":"#clients"},{"g":"Sections","t":"End to end board","s":"Home","h":"#main"},{"g":"Sections","t":"How I build","s":"Home","h":"#how"},{"g":"Sections","t":"Proof of shipping","s":"Home","h":"#proof"},{"g":"Sections","t":"Recently shipped","s":"Home","h":"#shipped"},{"g":"Sections","t":"What should we build?","s":"Home","h":"#build"},{"g":"Sections","t":"Contact","s":"Home","h":"#contact"},{"g":"Contact","t":"Email Vamsi","s":"vamsi@vamsivenkatesh.com","h":"mailto:vamsi@vamsivenkatesh.com"},{"g":"Contact","t":"LinkedIn","s":"linkedin.com/in/vamsivenkatesh","h":"https://www.linkedin.com/in/vamsivenkatesh","ext":1},{"g":"Contact","t":"GitHub","s":"github.com/vamsi-venkatesh","h":"https://github.com/vamsi-venkatesh","ext":1},{"g":"Board","t":"Switch dark / light","s":"Theme","act":"theme"},{"g":"Board","t":"Reset the board","s":"Put every note back","act":"reset"}]}</script>
 <script src="assets/site.js" defer></script>
 </body></html>

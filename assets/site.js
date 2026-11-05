@@ -64,19 +64,8 @@
 
   // ---------- count up (ends on the exact original text, e.g. "394,928") ----------
   const fmt = n => n.toLocaleString('en-US');
-  function countUp(el) {
-    if (el.dataset.counted) return; el.dataset.counted = '1';
-    const to = +el.dataset.count; if (!isFinite(to)) return;
-    const final = el.textContent;
-    if (RM || to === 0) { el.textContent = final; return; }
-    const start = performance.now(), dur = 900 + Math.min(600, to);
-    const step = now => {
-      const p = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = p < 1 ? fmt(Math.round(to * e)) : final;
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
+  // Numbers are shown as they are. No count-up: it is a stock template effect (the founder's design research lists it as AI slop).
+  function countUp(el) { if (el) el.dataset.counted = '1'; }
 
   // ---------- reveal / wipe / counters on view (run once) ----------
   const io = new IntersectionObserver(es => es.forEach(e => {
@@ -88,7 +77,7 @@
   }), { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
   // [data-wipe] opens when its revealed ancestor gets .in (a fully clipped box never reports as intersecting)
   $$('[data-reveal],[data-type]').forEach(el => io.observe(el));
-  $$('[data-count]').forEach(el => { if (!el.closest('.hero') && !el.closest('.sc-item')) io.observe(el); });
+  $$('[data-count]').forEach(el => { if (!el.closest('.hero') && !el.closest('.sc-item') && !el.closest('.bp')) io.observe(el); });
 
   // ---------- videos: play only while in view ----------
   const loadPlay = v => { if (!v) return; if (!v.src && v.dataset.src) v.src = v.dataset.src; if (!v.dataset.paused && (!RM || v.dataset.force)) v.play().catch(() => {}); };
@@ -235,6 +224,7 @@
   // ---------- end-to-end board: SVG connectors between the four cards, redrawn live while dragging ----------
   function wires(board) {
     const svg = $('.wires', board), cards = $$('.fcard', board);
+    if (!svg || !cards.length) return { draw() {}, follow() {} };
     const empty = { draw() {}, follow() {} };
     if (!svg || cards.length < 2) return empty;
     const NS = 'http://www.w3.org/2000/svg', gBase = $('.w-base', svg), gFlow = $('.w-flow', svg), gDots = $('.w-dots', svg);
@@ -539,6 +529,160 @@
     addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); dlg.hidden ? open() : close(); } });
   }
 
+
+  // =====================================================================================
+  // The board (v4): the hero and the seven products are one board under one camera. The camera follows the scroll
+  // through a damper and flies into each frame in turn; a product's copy appears only up close. Frame 08 is the
+  // visitor's (the playground). Phones and reduced motion get a plain list, no camera.
+  // =====================================================================================
+  function boardCamera() {
+    const sec = $('.bd'); if (!sec) return null;
+    const stage = $('.bd-stage', sec), world = $('.bd-world', sec), introEl = $('.bd-intro', sec), copy = $('.bd-copy', sec);
+    const scrim = $('.bd-scrim', sec), edges = $('.bd-edges', sec), hint = $('.bd-hint', sec), ct = $('.bd-rail .ct', sec);
+    const all = $$('.bw', sec), yours = $('.bw-yours', sec), wins = all.filter(w => w !== yours);
+    const panels = $$('.bp', sec), rail = $$('.bd-rail button', sec), links = wins.map(w => $('.frame', w)), N = wins.length;
+    const R = all.map(w => ({ x: +w.dataset.x, y: +w.dataset.y, w: +w.dataset.w, h: 0 }));
+    const U_OV = 0.4, U_FLY = 1, U_HOLD = 0.9, SEG = U_FLY + U_HOLD, TOTAL = U_OV + N * SEG, VH_PER_UNIT = 0.6;
+    const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2, lerp = (a, b, t) => a + (b - a) * t;
+    const t0 = performance.now();
+    let H = 0, OV = null, F = [], scrollLen = 1, secTop = 0, flat = null, lastCur = -2, lastPan = -2, lastPill = -2;
+    let su = null, lastNow = 0, lastBg = '', lastCover = '', lastTf = '', running = false, grid = null;
+
+    // grid colours come from the theme (light or dark)
+    const rgba = s => { const m = String(s).match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(',').map(x => +x.trim()); return { rgb: v.slice(0, 3).join(','), a: v.length > 3 ? v[3] : 1 }; };
+    const readGrid = () => { const cs = getComputedStyle(document.documentElement);
+      grid = { maj: rgba(cs.getPropertyValue('--grid-major')) || { rgb: '22,21,19', a: .075 }, min: rgba(cs.getPropertyValue('--grid')) || { rgb: '22,21,19', a: .045 } };
+      lastBg = ''; kick(); };
+
+    const setFlat = on => {
+      if (on === flat) return; flat = on; sec.classList.toggle('flat', on);
+      if (on) { wins.forEach((w, i) => { w.style.opacity = ''; w.classList.remove('pre', 'focus'); panels[i].appendChild(w); });
+        panels.forEach(p => p.classList.remove('on', 'past')); introEl.style.opacity = ''; introEl.style.translate = ''; introEl.style.visibility = ''; }
+      else { wins.forEach(w => world.insertBefore(w, yours)); lastCur = -2; lastPan = -2; lastPill = -2; }
+    };
+
+    const measure = () => {
+      const HDR = top ? top.offsetHeight : 0; H = innerHeight - HDR;
+      document.documentElement.style.setProperty('--hdr', HDR + 'px');
+      setFlat(innerWidth < 900 || RM);
+      if (flat) { sec.style.height = ''; return; }
+      sec.style.height = Math.round(H + TOTAL * VH_PER_UNIT * innerHeight) + 'px';
+      secTop = sec.getBoundingClientRect().top + scrollY - HDR;
+      scrollLen = Math.max(1, sec.offsetHeight - H);
+      all.forEach((w, i) => { R[i].h = w.offsetHeight; });
+      const keep = introEl.style.translate; introEl.style.translate = ''; const ir = copy.getBoundingClientRect(); introEl.style.translate = keep;
+      // overview: the whole board fits right of the copy
+      const x0 = ir.right + 56, x1 = innerWidth - 28, y0 = 40, y1 = H - 64;
+      const bx0 = Math.min(...R.map(r => r.x)), by0 = Math.min(...R.map(r => r.y)) - 40;
+      const bx1 = Math.max(...R.map(r => r.x + r.w)), by1 = Math.max(...R.map(r => r.y + r.h));
+      OV = { px: (bx0 + bx1) / 2, py: (by0 + by1) / 2, ax: (x0 + x1) / 2, ay: (y0 + y1) / 2, s: Math.min((x1 - x0) / (bx1 - bx0), (y1 - y0) / (by1 - by0)) };
+      // close-up: each product frame fills the space right of the copy column
+      const pr = panels[0].getBoundingClientRect().right;
+      stage.style.setProperty('--scrim-w', Math.round(pr + 50) + 'px');
+      F = R.slice(0, N).map(r => { const ww = Math.min(innerWidth * 0.54, innerWidth - pr - 56 - 36), s = Math.min(ww / r.w, (H * 0.8) / r.h);
+        return { px: r.x + r.w / 2, py: r.y + r.h / 2, ax: pr + 56 + (r.w * s) / 2, ay: H * 0.52, s }; });
+      lastBg = ''; lastTf = ''; kick();
+    };
+
+    const state = u => {
+      if (u <= U_OV) return { ...OV, cur: -1, pan: -1, phase: 'ov' };
+      u -= U_OV;
+      const i = Math.min(N - 1, Math.floor(u / SEG)), r = u - i * SEG;
+      if (r >= U_FLY || u >= N * SEG) return { ...F[i], cur: i, pan: i, phase: 'hold', i };
+      const t = r / U_FLY, e = ease(t), A = i === 0 ? OV : F[i - 1], B = F[i], bump = i === 0 ? 0 : 0.4;
+      const s = Math.exp(lerp(Math.log(A.s), Math.log(B.s), e)) * (1 - bump * Math.sin(Math.PI * e));
+      // the copy leaves early and arrives late, so the middle of every flight is the board alone
+      return { px: lerp(A.px, B.px, e), py: lerp(A.py, B.py, e), ax: lerp(A.ax, B.ax, e), ay: lerp(A.ay, B.ay, e), s,
+        cur: t < 0.55 ? i - 1 : i, pan: t < 0.15 ? i - 1 : (t > 0.78 ? i : -1), phase: 'fly', i, t, e };
+    };
+
+    const render = now => {
+      if (flat || !OV) { running = false; return; }
+      const target = clamp((scrollY - secTop) / scrollLen, 0, 1) * TOTAL;
+      const dt = Math.min(0.1, Math.max(0, (now - lastNow) / 1000)); lastNow = now;
+      if (su === null) su = target; else su += (target - su) * (1 - Math.exp(-dt / 0.2));
+      if (Math.abs(target - su) < 1e-4) su = target;
+      const st = state(su), settling = now - t0 < 1800;
+      let s = st.s;
+      if (st.phase === 'ov' && settling) s *= 1 + 0.07 * (1 - ease(clamp((now - t0) / 1700, 0, 1))); // the camera settles on load
+      const tx = st.ax - st.px * s, ty = st.ay - st.py * s;
+      const tf = `translate3d(${tx.toFixed(2)}px,${ty.toFixed(2)}px,0) scale(${s.toFixed(5)})`;
+      if (tf !== lastTf) { lastTf = tf; world.style.transform = tf; world.style.setProperty('--inv', (1 / s).toFixed(4)); }
+
+      // the graph paper belongs to the board: it zooms and pans with the camera
+      const maj = 120 * s, mi = 24 * s;
+      const aMaj = (grid.maj.a * clamp((maj - 20) / 40, 0.45, 1)).toFixed(4), aMin = (grid.min.a * clamp((mi - 6) / 12, 0, 1)).toFixed(4);
+      const g = (c, a) => `linear-gradient(rgba(${c},${a}) 1px,transparent 1px),linear-gradient(90deg,rgba(${c},${a}) 1px,transparent 1px)`;
+      const m = (v, d) => (((v % d) + d) % d).toFixed(2);
+      const bgI = `${g(grid.maj.rgb, aMaj)},${g(grid.min.rgb, aMin)}`, bgS = `${maj}px ${maj}px,${maj}px ${maj}px,${mi}px ${mi}px,${mi}px ${mi}px`;
+      const bgP = `${m(tx, maj)}px ${m(ty, maj)}px,${m(tx, maj)}px ${m(ty, maj)}px,${m(tx, mi)}px ${m(ty, mi)}px,${m(tx, mi)}px ${m(ty, mi)}px`;
+      if (bgI + bgS + bgP !== lastBg) { lastBg = bgI + bgS + bgP; for (const el of [stage, scrim, edges]) { el.style.backgroundImage = bgI; el.style.backgroundSize = bgS; el.style.backgroundPosition = bgP; } }
+      // paper behind the copy and at the edges in close-ups; nearly gone mid-flight so the leaving frame stays crisp
+      const cover = (st.phase === 'ov' ? 0 : st.phase === 'hold' ? 1 : st.i === 0 ? st.e : 1 - 0.9 * Math.sin(Math.PI * st.e)).toFixed(3);
+      if (cover !== lastCover) { lastCover = cover; scrim.style.opacity = cover; edges.style.opacity = cover; }
+
+      // the hero copy steps aside as the camera leaves the overview
+      const k = st.phase === 'ov' ? 0 : (st.phase === 'fly' && st.i === 0 ? st.t : 1), io = 1 - clamp(k / 0.4, 0, 1);
+      introEl.style.opacity = io.toFixed(3); introEl.style.translate = `${(-80 * (1 - io)).toFixed(1)}px 0`;
+      introEl.style.visibility = io < 0.01 ? 'hidden' : '';
+      hint.style.opacity = st.phase === 'ov' ? 1 : 0;
+
+      // the frame in view stays bright; the rest of the board recedes (and lifts during a flight)
+      all.forEach((w, j) => {
+        let o = 1;
+        if (st.phase === 'hold') o = j === st.cur ? 1 : 0.16;
+        else if (st.phase === 'fly') {
+          if (st.i === 0) o = j === 0 ? 1 : lerp(1, 0.16, st.e);
+          else o = (j === st.i || j === st.i - 1) ? 1 : lerp(0.16, 0.8, Math.sin(Math.PI * st.e));
+        }
+        w.style.opacity = o.toFixed(3);
+        const near = st.phase === 'hold' ? j === st.cur : st.phase === 'fly' && ((st.t > 0.82 && j === st.i) || (st.t < 0.18 && j === st.i - 1));
+        w.classList.toggle('focus', !!near);
+      });
+
+      if (st.pan !== lastPan) {
+        if (lastPan >= 0) { const old = panels[lastPan]; old.classList.remove('on'); old.classList.add('past'); setTimeout(() => old.classList.remove('past'), 450); }
+        if (st.pan >= 0) { const pn = panels[st.pan]; pn.classList.remove('past'); pn.classList.add('on'); $$('[data-count]', pn).forEach(countUp); }
+        lastPan = st.pan;
+      }
+      if (st.cur !== lastCur) {
+        rail.forEach((b, j) => { b.classList.toggle('on', j === st.cur); b.setAttribute('aria-current', j === st.cur ? 'true' : 'false'); });
+        ct.textContent = st.cur >= 0 ? `${pad(st.cur + 1)} / ${pad(N)}` : `— / ${pad(N)}`;
+        lastCur = st.cur;
+      }
+      const held = st.phase === 'hold' ? st.cur : -1;
+      if (held !== lastPill) { links.forEach((a, j) => { a.dataset.pill = j === held ? 'Open case study →' : 'Fly in →'; }); lastPill = held; }
+
+      if (su !== target || settling) requestAnimationFrame(render); else running = false;
+    };
+    const pad = n => String(n).padStart(2, '0');
+    function kick() { if (running || flat || !OV) return; running = true; requestAnimationFrame(t => { lastNow = t; render(t); }); }
+
+    const stopY = i => secTop + ((U_OV + i * SEG + U_FLY + U_HOLD * 0.35) / TOTAL) * scrollLen;
+    const holdEndY = i => secTop + ((U_OV + i * SEG + U_FLY + U_HOLD * 0.97) / TOTAL) * scrollLen;
+    const go = i => scrollTo({ top: stopY(i), behavior: RM ? 'auto' : 'smooth' });
+    links.forEach((a, i) => {
+      // far away: fly to it; already close: open the case study
+      a.addEventListener('click', e => { if (flat) return; const st = state(su === null ? 0 : su); if (st.phase === 'hold' && st.cur === i) return; e.preventDefault(); go(i); });
+      a.addEventListener('focus', () => { if (!flat && a.matches(':focus-visible')) go(i); });
+    });
+    all.forEach(w => { w.addEventListener('pointerenter', () => w.classList.add('hover')); w.addEventListener('pointerleave', () => w.classList.remove('hover')); });
+    rail.forEach((b, i) => b.addEventListener('click', () => go(i)));
+    $$('a[href="#work"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); if (flat) panels[0].scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); else go(0); }));
+
+    readGrid(); measure();
+    addEventListener('resize', measure); addEventListener('scroll', kick, { passive: true });
+    new MutationObserver(readGrid).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readGrid);
+    // the frames drop onto the board one by one; each flashes its selection as it lands
+    all.forEach((w, i) => setTimeout(() => {
+      w.classList.remove('pre');
+      if (!RM && !flat) { w.classList.add('flash'); setTimeout(() => w.classList.remove('flash'), 520); }
+    }, RM || flat ? 0 : 160 + i * 95));
+    window.__board = { stopY, holdEndY, N, get flat() { return flat; } };
+    return { measure };
+  }
+
   // ---------- keyboard shortcuts ----------
   const routes = JSON.parse(($('#routes') || {}).textContent || '{}');
   addEventListener('keydown', e => {
@@ -559,8 +703,10 @@
   if (page === 'home') document.addEventListener('click', e => {
     const a = e.target.closest('a[data-vt]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || RM) return;
     clearVT();
-    const host = a.closest('.sc-item, .client');
-    const media = host && ($('.frame', host) || $('.media', host)); const title = host && $('.sc-name, h3', host);
+    const host = a.closest('.sc-item, .client, .bp, .bw');
+    let media = null, title = null;
+    if (host && host.matches('.bp, .bw')) { media = $(`.bw[data-i="${host.dataset.i}"] .frame`); title = $(`.bp[data-i="${host.dataset.i}"] .sc-name`); }
+    else if (host) { media = $('.frame', host) || $('.media', host); title = $('.sc-name, h3', host); }
     if (media) { media.style.viewTransitionName = 'vt-media'; media.classList.add('vt-on'); }
     if (title) { title.style.viewTransitionName = 'vt-title'; title.classList.add('vt-on'); }
   });
@@ -576,7 +722,7 @@
     intro();
     setTimeout(() => $$('[data-scramble]').forEach(scramble), RM ? 0 : 300);
     setTimeout(() => $$('.hero [data-count]').forEach(countUp), RM ? 0 : 450);
-    pill(); heroApi = heroBoard(); sc = showcase(); inspector(); buildBoard(); commandBar();
+    pill(); heroApi = heroBoard(); sc = showcase(); boardCamera(); inspector(); buildBoard(); commandBar();
     $$('.select .dim').forEach(d => { const r = d.parentElement.getBoundingClientRect(); if (!d.textContent) d.textContent = Math.round(r.width) + ' × ' + Math.round(r.height); });
     frame();
   };
