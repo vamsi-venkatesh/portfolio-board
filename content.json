@@ -1,0 +1,1333 @@
+{
+ "person": {
+  "name": "Vamsi Venkatesh",
+  "first": "Vamsi",
+  "last": "Venkatesh",
+  "role": "AI product engineer",
+  "city": "Magdeburg, Germany",
+  "email": "vamsi@vamsivenkatesh.com",
+  "phone": "+49 152 0531 6755",
+  "phoneHref": "+4915205316755",
+  "linkedin": "https://www.linkedin.com/in/vamsivenkatesh",
+  "github": "https://github.com/vamsi-venkatesh",
+  "site": "https://vamsivenkatesh.com",
+  "lede": "I design, build and run AI products end to end: the product, the agents, the servers and the tests that prove it works.",
+  "roles": [
+   "AI engineer",
+   "AI product engineer",
+   "AI evaluation engineer"
+  ],
+  "wants": "I am looking for an AI role: AI engineer, AI product engineer or AI evaluation engineer, remote or on-site in Germany, on a team that ships real products. I also build AI products for clients. No visa sponsorship needed.",
+  "availability": "Open to AI roles · remote or on-site in Germany"
+ },
+ "about": {
+  "facts": [
+   [
+    "Based in",
+    "Magdeburg, Germany"
+   ],
+   [
+    "Work",
+    "Remote, or on-site in Germany. German residence permit, no sponsorship needed."
+   ],
+   [
+    "Education",
+    "M.Sc. Data Science, in progress — University of Europe for Applied Sciences"
+   ],
+   [
+    "",
+    "B.E. Electronics & Communication — PESIT, Bengaluru"
+   ],
+   [
+    "Languages",
+    "English, fluent · German A1, learning A2"
+   ]
+  ]
+ },
+ "principles": [
+  {
+   "k": "I own the whole stack.",
+   "v": "Built, deployed and debugged in production. The live products run on servers I administer, behind deploy gates I wrote: full test suites, checksum sweeps, rendered-frame checks, rollback roots."
+  },
+  {
+   "k": "I hold the standard.",
+   "v": "I built the evaluation instrument my agents are measured with, and every claim on my sites is gated on a threshold declared in advance and checked on the served artefact, never on the source file."
+  },
+  {
+   "k": "I ship with a team of agents, and I sign every release.",
+   "v": "Multi-agent pipelines are how I ship faster than one pair of hands. I plan the work, review every output, and sign off before anything reaches a user. The send stays human."
+  }
+ ],
+ "withdrawn": [
+  {
+   "title": "The 70% claim",
+   "what": "A directional-accuracy claim was only allowed to stand if it cleared a threshold written down before the measurement. It measured 0.683 against a declared gate of 0.7178, so I withdrew it. The dated record that measured it stays public.",
+   "numbers": [
+    [
+     "0.683",
+     "measured"
+    ],
+    [
+     "0.7178",
+     "gate set in advance"
+    ]
+   ],
+   "link": [
+    "The record",
+    "https://trading.vvdexops.com/"
+   ]
+  },
+  {
+   "title": "An exam lane I could not certify",
+   "what": "A pass on the platform survives only on verified containment. I found that one lane's agent could read the gold answers, the hidden tests and its own transcripts, so I withdrew all six of its historical passes and marked the lane not certifiable.",
+   "numbers": [
+    [
+     "6",
+     "passes withdrawn"
+    ],
+    [
+     "0",
+     "kept"
+    ]
+   ],
+   "link": [
+    "How grading works",
+    "https://vvdexops.com/evals"
+   ]
+  }
+ ],
+ "products": [
+  {
+   "slug": "vvdex-platform",
+   "name": "VVDex Platform",
+   "img": "forge",
+   "flagship": true,
+   "stage": [
+    [
+     "17",
+     "certified exams"
+    ],
+    [
+     "417",
+     "graded attempts, published"
+    ],
+    [
+     "550",
+     "automated tests"
+    ]
+   ],
+   "kind": "AI evaluation platform",
+   "status": "Live",
+   "url": "https://vvdexops.com/",
+   "host": "vvdexops.com",
+   "color": "#F2703A",
+   "one": "Tests AI models and agents on real work. Hidden tests decide.",
+   "line": "Test AI models and agents on real work: a real task in a sealed sandbox, hidden tests decide, and a signed receipt anyone can check.",
+   "problem": "AI models get compared on claims and quizzes, not on real work graded where they cannot cheat.",
+   "plan": "Give any model or agent real work, keep the grading out of its reach, and hand back a score anyone can check.",
+   "built": [
+    "Connect a model by API key, your own server, a model on your machine, or an agent over HTTP; a key is encrypted on arrival",
+    "A sealed sandbox per attempt (no network, one CPU, a step budget) and hidden tests in a separate grading box",
+    "Pass rates with 95% ranges and an Ed25519-signed receipt per run; five exams free, no sign-in"
+   ],
+   "checks": [
+    "Exams attacked before use: 9–10 cheating probes, all must fail",
+    "Hidden tests grade in a separate box",
+    "Every pass rate with its 95% range",
+    "Every run signed: anyone can check a receipt"
+   ],
+   "numbers": [
+    [
+     "17",
+     "certified exams"
+    ],
+    [
+     "417",
+     "graded attempts, published"
+    ]
+   ],
+   "links": [
+    [
+     "vvdexops.com",
+     "https://vvdexops.com/"
+    ],
+    [
+     "Proof repository",
+     "https://github.com/vamsi-venkatesh/vvdex-forge-proof"
+    ]
+   ],
+   "shots": [
+    [
+     "forge-a",
+     "Test AI models and agents on real work."
+    ],
+    [
+     "forge-b",
+     "From your model to a result anyone can check."
+    ],
+    [
+     "forge-c",
+     "What we tested: every graded attempt, published."
+    ]
+   ]
+  },
+  {
+   "slug": "conxto",
+   "name": "Conxto",
+   "img": "conxto",
+   "flagship": true,
+   "stage": [
+    [
+     "5 + 2",
+     "agents and reviewers, one memory"
+    ],
+    [
+     "1,061,623",
+     "job postings collected"
+    ],
+    [
+     "10.6 → 2.7 s",
+     "app cold start, after a speed pass"
+    ]
+   ],
+   "kind": "AI job search",
+   "status": "Live",
+   "url": "https://conxto.com/",
+   "host": "conxto.com",
+   "color": "#D8CDBE",
+   "one": "Reads live job postings against your résumé and prepares the whole application.",
+   "line": "Reads live job postings against your résumé, checks every requirement and prepares the whole application. With Copilot you send; Autopilot applies inside rules you set.",
+   "problem": "Job seekers apply blind: they can't see which requirements they actually meet, and tailoring every application by hand doesn't scale.",
+   "plan": "Make a job search honest and fast: find roles worth applying to, prepare each application from what the résumé proves, and keep the person in charge of how it is sent.",
+   "built": [
+    "Its own job search engine: boards, feeds and career pages merged per job, from 22 sources",
+    "A truthfulness pipeline: every rewritten line is checked against the original résumé, and anything that claims more is reverted",
+    "Five specialist agents and two reviewers over one persistent memory per account"
+   ],
+   "checks": [
+    "Every rewritten line checked against the résumé",
+    "Anything that claims more is reverted",
+    "Copilot: you send every application",
+    "Autopilot: applies inside rules you set"
+   ],
+   "numbers": [
+    [
+     "5 + 2",
+     "agents and reviewers, one memory"
+    ],
+    [
+     "10.6 s → 2.7 s",
+     "app cold start, 15 Oct 2026"
+    ]
+   ],
+   "links": [
+    [
+     "conxto.com",
+     "https://conxto.com/"
+    ],
+    [
+     "Source on GitHub",
+     "https://github.com/vamsi-venkatesh/conxto"
+    ]
+   ],
+   "shots": [
+    [
+     "conxto-a",
+     "Copilot: live postings, checked against your résumé."
+    ],
+    [
+     "conxto-b",
+     "Each requirement next to the line that proves it."
+    ],
+    [
+     "conxto-c",
+     "The package: résumé, letter and answers."
+    ]
+   ]
+  },
+  {
+   "slug": "vvdex-engine",
+   "name": "VVDex Engine",
+   "img": "lab",
+   "flagship": true,
+   "stage": [
+    [
+     "50",
+     "compiled service examples"
+    ],
+    [
+     "1,429",
+     "automated tests"
+    ],
+    [
+     "76 / 76",
+     "briefs compiled into a valid process"
+    ]
+   ],
+   "kind": "AI service engine",
+   "status": "Live",
+   "url": "https://lab.vvdexops.com/",
+   "host": "lab.vvdexops.com",
+   "color": "#45C987",
+   "one": "Describe the work in one paragraph. It compiles a service that runs by your rules.",
+   "line": "Describe the work in one paragraph and the Engine compiles it into a running service: what runs by itself, what waits for you, and what never happens.",
+   "problem": "Businesses want AI automation they can trust, but most tools make them build the workflow and cannot show what ran, or why.",
+   "plan": "Let a business describe the outcome, then design and run the service with a person holding the authority and proof of every run.",
+   "built": [
+    "A compiler from a plain paragraph to a service contract: inputs, facts, rules and outcomes",
+    "An authority model from your own words, and a crew of specialist agents with an independent reviewer on every result",
+    "Sealed evidence for every run; connects your real systems only when you say so"
+   ],
+   "checks": [
+    "Every action: runs itself, waits for your person, or never",
+    "Incoming content is never an instruction",
+    "An independent reviewer on every result",
+    "Every run sealed under one SHA-256 digest"
+   ],
+   "numbers": [
+    [
+     "50",
+     "compiled service examples"
+    ],
+    [
+     "11",
+     "categories of business work"
+    ]
+   ],
+   "links": [
+    [
+     "lab.vvdexops.com",
+     "https://lab.vvdexops.com/"
+    ]
+   ],
+   "shots": [
+    [
+     "lab-a",
+     "Describe the work. VVDex runs it, by your rules."
+    ],
+    [
+     "lab-b",
+     "Your rules draw the line."
+    ],
+    [
+     "lab-c",
+     "Every run leaves proof."
+    ]
+   ]
+  },
+  {
+   "slug": "unboundpdf",
+   "name": "UnboundPDF",
+   "img": "unboundpdf",
+   "flagship": true,
+   "stage": [
+    [
+     "54",
+     "tools, all in the browser"
+    ],
+    [
+     "0",
+     "uploads"
+    ],
+    [
+     "124",
+     "benchmark runs, 3 browser engines"
+    ]
+   ],
+   "kind": "Browser PDF suite",
+   "status": "Live",
+   "url": "https://unboundpdf.com/",
+   "host": "unboundpdf.com",
+   "color": "#EFEAE0",
+   "one": "Every PDF tool in the browser. Your file never leaves the tab.",
+   "line": "Every PDF tool in the browser. The file never leaves the tab.",
+   "problem": "Most online PDF tools upload your file to someone else's server before they do anything with it.",
+   "plan": "Every PDF tool, running in the browser, so the file never has to be uploaded anywhere.",
+   "built": [
+    "54 tools, all deriving their counts from one registry",
+    "A workspace that keeps your files encrypted in your own browser",
+    "A release gate on every deploy: a tool audit in three browser engines and a checksum sweep of every served file"
+   ],
+   "checks": [
+    "511 Workspace checks, none failing",
+    "A checksum sweep of every served file",
+    "Deployed from a clean worktree",
+    "The live page re-checked after deploy"
+   ],
+   "numbers": [
+    [
+     "54",
+     "tools"
+    ],
+    [
+     "0",
+     "uploads"
+    ]
+   ],
+   "links": [
+    [
+     "unboundpdf.com",
+     "https://unboundpdf.com/"
+    ]
+   ],
+   "shots": [
+    [
+     "unboundpdf-a",
+     "The home page. Nothing is uploaded."
+    ],
+    [
+     "unboundpdf-b",
+     "Every tool, from one registry."
+    ],
+    [
+     "unboundpdf-c",
+     "The Workspace: chain the tools on one file."
+    ]
+   ]
+  },
+  {
+   "slug": "farmquick",
+   "name": "FarmQuick",
+   "img": "farmquick",
+   "kind": "B2B commerce + lead agent",
+   "status": "Live",
+   "url": "https://farmquick.in/",
+   "host": "farmquick.in",
+   "color": "#86C977",
+   "one": "The ordering site a produce business runs on, and the agent that finds its next buyer.",
+   "line": "End to end for a B2B produce business: the ordering site buyers use, and Lead Desk, the agent that finds the next buyer every morning.",
+   "problem": "A B2B produce business needed a proper ordering channel for its buyers, and a steady way to find the next ones.",
+   "plan": "Turn a family produce business into recurring, trackable B2B orders: build the site buyers order from, then the automation that finds the next buyer.",
+   "built": [
+    "The ordering site on Cloudflare: catalogue, bulk enquiry and orders, mobile first; a person confirms before anything moves",
+    "The loop closes: an order reaches the owner, becomes a won lead in the register and a line in the weekly report",
+    "Lead Desk reads open sources across five cities, scores leads by written rules and uses a model only when rules cannot answer"
+   ],
+   "checks": [
+    "408 tests on the public engine",
+    "A person confirms before anything moves",
+    "Owner-gated WhatsApp and email",
+    "Leads scored by written rules"
+   ],
+   "numbers": [
+    [
+     "5",
+     "cities read every morning"
+    ],
+    [
+     "408",
+     "tests on the public engine"
+    ]
+   ],
+   "links": [
+    [
+     "farmquick.in",
+     "https://farmquick.in/"
+    ],
+    [
+     "Engine on GitHub",
+     "https://github.com/vamsi-venkatesh/buyer-radar"
+    ]
+   ],
+   "shots": [
+    [
+     "farmquick-a",
+     "The ordering site, for wholesale and restaurant buyers."
+    ],
+    [
+     "farmquick-b",
+     "Build a supply order."
+    ],
+    [
+     "farmquick-c",
+     "The range, product by product."
+    ]
+   ]
+  },
+  {
+   "slug": "conxfolio",
+   "name": "Conxfolio",
+   "img": "conxfolio",
+   "kind": "Career suite",
+   "status": "Live",
+   "url": "https://conxfolio.com/",
+   "host": "conxfolio.com",
+   "color": "#EDE4D6",
+   "one": "Résumé, ATS review, cover letter and portfolio website, sharing one résumé.",
+   "line": "Your next move, all here: build your résumé, check how it reads, write your letter and show your work.",
+   "problem": "Good résumé tools hide the useful parts behind accounts, paywalls and watermarks.",
+   "plan": "Four tools that share one résumé, free to start and free to publish.",
+   "built": [
+    "37 résumé designs (PDF and Word), 12 cover-letter designs and 20 portfolio websites",
+    "One résumé parser with nine deterministic specialists, gated on a corpus before every ship",
+    "Publish a portfolio at conxfolio.com/yourname, free"
+   ],
+   "checks": [
+    "A parsing corpus gate before every ship",
+    "Four tools share one résumé",
+    "No account needed to start",
+    "Publishing a portfolio is free"
+   ],
+   "numbers": [
+    [
+     "37",
+     "résumé designs"
+    ],
+    [
+     "20",
+     "portfolio websites"
+    ]
+   ],
+   "links": [
+    [
+     "conxfolio.com",
+     "https://conxfolio.com/"
+    ]
+   ],
+   "shots": [
+    [
+     "conxfolio-a",
+     "Your next move. All here."
+    ],
+    [
+     "conxfolio-b",
+     "Every detail of the résumé, editable."
+    ],
+    [
+     "conxfolio-c",
+     "20 websites. One of them is yours."
+    ]
+   ]
+  },
+  {
+   "slug": "pitchradar",
+   "name": "PitchRadar",
+   "img": "pitchradar",
+   "kind": "Event intelligence · client",
+   "status": "Private",
+   "url": "",
+   "host": "private · client",
+   "color": "#F49A4B",
+   "one": "Finds and ranks the events a mobile food vendor should trade at. Built for a client.",
+   "line": "Finds the events a mobile food vendor should trade at, ranks them on rules you can read, and hands the owner one brief with the evidence behind every line. Running for a client.",
+   "problem": "A mobile food vendor has to find the right events to trade at, among scattered listings, deadlines and organisers.",
+   "plan": "Make a vendor's week decidable: collect the public event sources, keep what each one actually said, rank by written rules, hand over one brief.",
+   "built": [
+    "Seven agents, each with its own receipts: discovery, extraction, qualification, contacts, deadlines, weather, reporting",
+    "A deterministic core; a language model only where the rules cannot answer, and never in the score",
+    "Contacts resolved from what German sites are legally obliged to publish, never guessed"
+   ],
+   "checks": [
+    "620 tests in CI on every push",
+    "No model in the score",
+    "No guessed contacts",
+    "Evidence behind every line"
+   ],
+   "numbers": [
+    [
+     "7",
+     "agents"
+    ],
+    [
+     "620",
+     "tests · 16 Sep 2026"
+    ]
+   ],
+   "links": [
+    [
+     "Engine on GitHub",
+     "https://github.com/vamsi-venkatesh/pitchradar"
+    ]
+   ],
+   "shots": [
+    [
+     "pitchradar-a",
+     "The command centre: the week's openings."
+    ],
+    [
+     "pitchradar-b",
+     "Every event ranked, with its evidence."
+    ],
+    [
+     "pitchradar-c",
+     "A 12-week booking plan."
+    ]
+   ]
+  },
+  {
+   "slug": "vvdex-trading",
+   "name": "VVDex Trading",
+   "img": "trading",
+   "kind": "Market research",
+   "status": "Research",
+   "url": "https://trading.vvdexops.com/",
+   "host": "trading.vvdexops.com",
+   "color": "#63D2A3",
+   "one": "Live market microstructure beside a hash-chained record of every dated call. Paper only.",
+   "line": "Live market microstructure beside a hash-chained record of every dated call. Paper only.",
+   "problem": "Market calls are easy to claim after the fact, and hard to check.",
+   "plan": "Publish every dated call into a chained record, so anyone can check the whole history rather than the highlights.",
+   "built": [
+    "Every call hash-chained to the last",
+    "Paper only: no capital, no manual trades, automation or nothing",
+    "Every claim gated on the threshold it declared in advance"
+   ],
+   "checks": [
+    "Every call hash-chained to the last",
+    "Claims gated on thresholds set in advance",
+    "Paper only: no capital",
+    "Automation or nothing: no manual trades"
+   ],
+   "numbers": [
+    [
+     "2,028",
+     "dated calls"
+    ],
+    [
+     "0",
+     "capital"
+    ]
+   ],
+   "links": [
+    [
+     "trading.vvdexops.com",
+     "https://trading.vvdexops.com/"
+    ]
+   ],
+   "shots": [
+    [
+     "trading-a",
+     "The market, order by order."
+    ],
+    [
+     "trading-b",
+     "Order flow across venues."
+    ],
+    [
+     "trading-c",
+     "Every call the engine made."
+    ]
+   ]
+  }
+ ],
+ "unboundpdf_tools": [
+  {
+   "id": "p17",
+   "slug": "pdf-to-word",
+   "name": "PDF to Word",
+   "category": "Convert",
+   "desc": "Convert PDF to Word (.docx) free in your browser. Tables, columns and images come across — no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/pdf-to-word/",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "id": "p18",
+   "slug": "word-to-pdf",
+   "name": "Word to PDF",
+   "category": "Convert",
+   "desc": "Convert Word (.docx) to PDF free in your browser — real page size, pictures, tables, headers and bookmarks. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/word-to-pdf/",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "id": "p19",
+   "slug": "pdf-to-excel",
+   "name": "PDF to Excel",
+   "category": "Convert",
+   "desc": "Extract PDF tables to a standard .xlsx (Office Open XML) workbook free in your browser — numbers, dates and currency stored as values. CSV is also available. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/pdf-to-excel/",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "id": "p20",
+   "slug": "excel-to-pdf",
+   "name": "Excel to PDF",
+   "category": "Convert",
+   "desc": "Convert an .xlsx workbook to PDF in your browser. Every sheet paginated, header rows repeated, text selectable. Nothing is uploaded.",
+   "url": "https://unboundpdf.com/tools/excel-to-pdf/",
+   "col": 0,
+   "row": 3
+  },
+  {
+   "id": "p21",
+   "slug": "pdf-to-jpg",
+   "name": "PDF to JPG",
+   "category": "Convert",
+   "desc": "Convert PDF pages to JPG images free in your browser. No upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/pdf-to-jpg/",
+   "col": 0,
+   "row": 4
+  },
+  {
+   "id": "p22",
+   "slug": "jpg-to-pdf",
+   "name": "JPG to PDF",
+   "category": "Convert",
+   "desc": "Convert JPG and PNG images to PDF free in your browser. No upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/jpg-to-pdf/",
+   "col": 0,
+   "row": 5
+  },
+  {
+   "id": "p23",
+   "slug": "pptx-to-pdf",
+   "name": "PPTX to PDF",
+   "category": "Convert",
+   "desc": "Convert PowerPoint to PDF free in your browser. One page per slide — titles, bullets and photos; the .pptx never leaves your device. No upload.",
+   "url": "https://unboundpdf.com/tools/pptx-to-pdf/",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "id": "p24",
+   "slug": "html-to-pdf",
+   "name": "HTML to PDF",
+   "category": "Convert",
+   "desc": "Convert HTML to PDF free in your browser. Real page layout, selectable text, no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/html-to-pdf/",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "id": "p25",
+   "slug": "markdown-to-pdf",
+   "name": "Markdown",
+   "category": "Convert",
+   "desc": "Convert Markdown — or plain text — to PDF in your browser. Headings, tables, code blocks and links, with selectable text. No upload, no account.",
+   "url": "https://unboundpdf.com/tools/markdown-to-pdf/",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "id": "p26",
+   "slug": "email-to-pdf",
+   "name": "Email to PDF",
+   "category": "Convert",
+   "desc": "Turn an .eml email into a paginated PDF free in your browser. Headers, HTML body, embedded pictures, attachment list. Remote content is not loaded. No upload.",
+   "url": "https://unboundpdf.com/tools/email-to-pdf/",
+   "col": 1,
+   "row": 3
+  },
+  {
+   "id": "p27",
+   "slug": "heic-convert",
+   "name": "HEIC",
+   "category": "Convert",
+   "desc": "Convert iPhone HEIC photos to JPG or PNG free in your browser, one or many at a time, or lay them out as a PDF. Decoded on your device. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/heic-convert/",
+   "col": 1,
+   "row": 4
+  },
+  {
+   "id": "p40",
+   "slug": "pdf-a",
+   "name": "PDF/A",
+   "category": "Convert",
+   "desc": "Convert to PDF/A-2b free in your browser. Fonts embedded, sRGB output intent, checked against our published rule list.",
+   "url": "https://unboundpdf.com/tools/pdf-a/",
+   "col": 1,
+   "row": 5
+  },
+  {
+   "id": "p00",
+   "slug": "merge-pdf",
+   "name": "Merge",
+   "category": "Organize",
+   "desc": "Merge PDF files free in your browser. Combine multiple PDFs into one — no upload, no sign-up, no watermark, no hourly cap.",
+   "url": "https://unboundpdf.com/tools/merge-pdf/",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "id": "p01",
+   "slug": "split-pdf",
+   "name": "Split",
+   "category": "Organize",
+   "desc": "Split PDF pages free in your browser. Extract a range or every page — no upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/split-pdf/",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "id": "p52",
+   "slug": "split-by-bookmarks",
+   "name": "Split by bookmark",
+   "category": "Organize",
+   "desc": "Split a PDF at any bookmark level, in your browser — the whole outline tree, not just the top. No bookmarks? Enter page ranges instead.",
+   "url": "https://unboundpdf.com/tools/split-by-bookmarks/",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "id": "p53",
+   "slug": "split-by-size",
+   "name": "Split by size",
+   "category": "Organize",
+   "desc": "Split PDF by file size free in your browser. Break large PDFs into smaller parts — no upload.",
+   "url": "https://unboundpdf.com/tools/split-by-size/",
+   "col": 2,
+   "row": 3
+  },
+  {
+   "id": "p51",
+   "slug": "split-book-scan",
+   "name": "Split scans",
+   "category": "Organize",
+   "desc": "Cut a book scan with two pages per sheet into single pages, in reading order. You place the gutter line and see it before anything is cut. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/split-book-scan/",
+   "col": 2,
+   "row": 4
+  },
+  {
+   "id": "p15",
+   "slug": "organize-pdf",
+   "name": "Organize",
+   "category": "Organize",
+   "desc": "Reorder and delete PDF pages free in your browser. No upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/organize-pdf/",
+   "col": 2,
+   "row": 5
+  },
+  {
+   "id": "p07",
+   "slug": "rotate-pdf",
+   "name": "Rotate",
+   "category": "Organize",
+   "desc": "Rotate PDF pages 90°, 180°, or 270° free in your browser. No upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/rotate-pdf/",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "id": "p08",
+   "slug": "crop-pdf",
+   "name": "Crop",
+   "category": "Organize",
+   "desc": "Crop PDF online free — drag a box on a live preview and the same trim applies to every page, in your browser. No upload.",
+   "url": "https://unboundpdf.com/tools/crop-pdf/",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "id": "p49",
+   "slug": "resize-pdf",
+   "name": "Resize",
+   "category": "Organize",
+   "desc": "Resize PDF page dimensions free in your browser. A4, Letter, or custom — no upload.",
+   "url": "https://unboundpdf.com/tools/resize-pdf/",
+   "col": 3,
+   "row": 2
+  },
+  {
+   "id": "p30",
+   "slug": "booklet-imposition",
+   "name": "Booklet",
+   "category": "Organize",
+   "desc": "Reorder and impose a PDF two pages to a landscape sheet, so a double-sided print folds into a booklet. Blank padding is counted and stated. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/booklet-imposition/",
+   "col": 3,
+   "row": 3
+  },
+  {
+   "id": "p38",
+   "slug": "overlay-pdf",
+   "name": "Overlay",
+   "category": "Organize",
+   "desc": "Put a letterhead PDF behind your pages, or a stamp PDF over them, on every page or a range. Text in both layers stays selectable. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/overlay-pdf/",
+   "col": 3,
+   "row": 4
+  },
+  {
+   "id": "p28",
+   "slug": "add-page-numbers",
+   "name": "Page numbers",
+   "category": "Organize",
+   "desc": "Add page numbers to PDF free in your browser. No upload, no sign-up, no watermark.",
+   "url": "https://unboundpdf.com/tools/add-page-numbers/",
+   "col": 3,
+   "row": 5
+  },
+  {
+   "id": "p36",
+   "slug": "headers-footers",
+   "name": "Headers",
+   "category": "Organize",
+   "desc": "Add running headers and footers to a PDF free in your browser. Page number, total, date and file name tokens, margins, and a distinct first page.",
+   "url": "https://unboundpdf.com/tools/headers-footers/",
+   "col": 4,
+   "row": 0
+  },
+  {
+   "id": "p46",
+   "slug": "remove-blank-pages",
+   "name": "Remove blanks",
+   "category": "Organize",
+   "desc": "Measure the ink on every page of a scan, see the light ones with their percentages, and remove only the ones you confirm. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/remove-blank-pages/",
+   "col": 4,
+   "row": 1
+  },
+  {
+   "id": "p06",
+   "slug": "protect-pdf",
+   "name": "Protect",
+   "category": "Secure and clean",
+   "desc": "Password-protect PDF free in your browser. Encrypt with a user password — no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/protect-pdf/",
+   "col": 4,
+   "row": 2
+  },
+  {
+   "id": "p09",
+   "slug": "unlock-pdf",
+   "name": "Unlock",
+   "category": "Secure and clean",
+   "desc": "Unlock password-protected PDF free in your browser. Enter your password — no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/unlock-pdf/",
+   "col": 4,
+   "row": 3
+  },
+  {
+   "id": "p04",
+   "slug": "redact-pdf",
+   "name": "Redact",
+   "category": "Secure and clean",
+   "desc": "Redact PDF free in your browser. Search or draw boxes; the matched text is deleted from the page, not just covered. No upload.",
+   "url": "https://unboundpdf.com/tools/redact-pdf/",
+   "col": 4,
+   "row": 4
+  },
+  {
+   "id": "p42",
+   "slug": "redaction-log",
+   "name": "Redaction log",
+   "category": "Secure and clean",
+   "desc": "Build a redaction log for an already-redacted PDF, with the check run on the delivered bytes and a SHA-256 of each document. Free, in your browser.",
+   "url": "https://unboundpdf.com/tools/redaction-log/",
+   "col": 4,
+   "row": 5
+  },
+  {
+   "id": "p43",
+   "slug": "redaction-verifier",
+   "name": "Verify redaction",
+   "category": "Secure and clean",
+   "desc": "Check whether a redacted PDF still contains the text underneath. Detects text under a filled box, invisible text, hidden layers and annotation covers. Free, in your browser.",
+   "url": "https://unboundpdf.com/tools/redaction-verifier/",
+   "col": 5,
+   "row": 0
+  },
+  {
+   "id": "p50",
+   "slug": "sanitize-pdf",
+   "name": "Sanitize",
+   "category": "Secure and clean",
+   "desc": "Check a PDF before you send it. See its metadata, comments, attachments, scripts, form values and hidden text, strip what you choose, and read the check made on the output. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/sanitize-pdf/",
+   "col": 5,
+   "row": 1
+  },
+  {
+   "id": "p44",
+   "slug": "remove-annotations",
+   "name": "Remove annotations",
+   "category": "Secure and clean",
+   "desc": "Remove annotations from a PDF free in your browser — comments, highlights, notes and markup stripped in one pass. No upload, no account.",
+   "url": "https://unboundpdf.com/tools/remove-annotations/",
+   "col": 5,
+   "row": 2
+  },
+  {
+   "id": "p47",
+   "slug": "remove-watermark-pdf",
+   "name": "Remove watermark",
+   "category": "Secure and clean",
+   "desc": "Remove watermark objects from a PDF in your browser: watermark and stamp annotations, repeated form XObjects and transparent content-stream marks. Verified on the output. No upload.",
+   "url": "https://unboundpdf.com/tools/remove-watermark-pdf/",
+   "col": 5,
+   "row": 3
+  },
+  {
+   "id": "p13",
+   "slug": "flatten-pdf",
+   "name": "Flatten",
+   "category": "Secure and clean",
+   "desc": "Flatten PDF forms and annotations free in your browser. Bake them into static content — no upload.",
+   "url": "https://unboundpdf.com/tools/flatten-pdf/",
+   "col": 5,
+   "row": 4
+  },
+  {
+   "id": "p32",
+   "slug": "edit-metadata",
+   "name": "Metadata",
+   "category": "Secure and clean",
+   "desc": "Edit PDF title, author, and keywords free in your browser. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/edit-metadata/",
+   "col": 5,
+   "row": 5
+  },
+  {
+   "id": "p10",
+   "slug": "watermark-pdf",
+   "name": "Watermark",
+   "category": "Secure and clean",
+   "desc": "Add a text watermark to PDF free in your browser. No upload, no sign-up, no watermark on output.",
+   "url": "https://unboundpdf.com/tools/watermark-pdf/",
+   "col": 6,
+   "row": 0
+  },
+  {
+   "id": "p14",
+   "slug": "fill-sign",
+   "name": "Fill & sign",
+   "category": "Forms and signing",
+   "desc": "Sign PDF free in your browser. Draw, type, or upload a signature — no upload to servers.",
+   "url": "https://unboundpdf.com/tools/fill-sign/",
+   "col": 6,
+   "row": 1
+  },
+  {
+   "id": "p03",
+   "slug": "sign-pdf",
+   "name": "Sign",
+   "category": "Forms and signing",
+   "desc": "Sign PDF free in your browser. Embed a drawn signature — not PKCS digital signature.",
+   "url": "https://unboundpdf.com/tools/sign-pdf/",
+   "col": 6,
+   "row": 2
+  },
+  {
+   "id": "p37",
+   "slug": "make-fillable",
+   "name": "Make fillable",
+   "category": "Forms and signing",
+   "desc": "Turn a flat PDF form into a fillable one, free in your browser. Draw text fields, check boxes and dropdowns where they belong, then read back the fields the saved file carries. No upload, no account.",
+   "url": "https://unboundpdf.com/tools/make-fillable/",
+   "col": 6,
+   "row": 3
+  },
+  {
+   "id": "p41",
+   "slug": "pdf-form-doctor",
+   "name": "Form doctor",
+   "category": "Forms and signing",
+   "desc": "Find out why a PDF form says “Please wait”, will not save, or cannot be typed into outside Adobe Reader. See what the form is made of and what can be done. In your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/pdf-form-doctor/",
+   "col": 6,
+   "row": 4
+  },
+  {
+   "id": "p33",
+   "slug": "exhibit-stamper",
+   "name": "Exhibit stamps",
+   "category": "Forms and signing",
+   "desc": "Stamp Exhibit A, B, C onto PDF files free in your browser. Auto-incrementing labels, optional cover sheet, exhibit index. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/exhibit-stamper/",
+   "col": 6,
+   "row": 5
+  },
+  {
+   "id": "p29",
+   "slug": "bates-numbering",
+   "name": "Bates numbering",
+   "category": "Forms and signing",
+   "desc": "Add Bates numbers to PDF files free in your browser. Prefix, padding, and one continuous run across an ordered set. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/bates-numbering/",
+   "col": 7,
+   "row": 0
+  },
+  {
+   "id": "p02",
+   "slug": "compress-pdf",
+   "name": "Compress",
+   "category": "Fix and extract",
+   "desc": "Compress PDF file size free in your browser. Set the reduction you want — the engine re-compresses each photo just enough to hit it. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/compress-pdf/",
+   "col": 7,
+   "row": 1
+  },
+  {
+   "id": "p12",
+   "slug": "repair-pdf",
+   "name": "Repair",
+   "category": "Fix and extract",
+   "desc": "Rebuild a broken cross-reference table and keep the text where it survives — free in your browser, no upload.",
+   "url": "https://unboundpdf.com/tools/repair-pdf/",
+   "col": 7,
+   "row": 2
+  },
+  {
+   "id": "p31",
+   "slug": "deskew-pdf",
+   "name": "Deskew",
+   "category": "Fix and extract",
+   "desc": "Deskew scanned PDF pages free in your browser. Auto-detects each page's skew angle up to about 5° — no upload.",
+   "url": "https://unboundpdf.com/tools/deskew-pdf/",
+   "col": 7,
+   "row": 3
+  },
+  {
+   "id": "p05",
+   "slug": "ocr-pdf",
+   "name": "OCR",
+   "category": "Fix and extract",
+   "desc": "OCR PDF free in your browser. 126 languages, columns read in order — no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/ocr-pdf/",
+   "col": 7,
+   "row": 4
+  },
+  {
+   "id": "p35",
+   "slug": "extract-text",
+   "name": "Extract text",
+   "category": "Fix and extract",
+   "desc": "Extract PDF text as .txt or Markdown free in your browser. Reading order, heading levels, optional page markers and tables. No upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/extract-text/",
+   "col": 7,
+   "row": 5
+  },
+  {
+   "id": "p34",
+   "slug": "extract-images",
+   "name": "Extract images",
+   "category": "Fix and extract",
+   "desc": "Extract images from a PDF without uploading it: every embedded photo and graphic is found in your browser and saved at original quality. Free, no account.",
+   "url": "https://unboundpdf.com/tools/extract-images/",
+   "col": 8,
+   "row": 0
+  },
+  {
+   "id": "p11",
+   "slug": "compare-pdf",
+   "name": "Compare",
+   "category": "Fix and extract",
+   "desc": "Compare two PDFs visually free in your browser. Side-by-side render — no upload, no sign-up.",
+   "url": "https://unboundpdf.com/tools/compare-pdf/",
+   "col": 8,
+   "row": 1
+  },
+  {
+   "id": "p16",
+   "slug": "pdf-editor",
+   "name": "Edit",
+   "category": "Fix and extract",
+   "desc": "Edit existing PDF text in your browser — click a paragraph, rewrite it in place, and the text reflows in the document's own font.",
+   "url": "https://unboundpdf.com/tools/pdf-editor/",
+   "col": 8,
+   "row": 2
+  },
+  {
+   "id": "p39",
+   "slug": "passport-photo",
+   "name": "Passport photo",
+   "category": "Images",
+   "desc": "Make a passport or ID photo free in your browser. ICAO 35x45, US 2x2, India, UK, Schengen, China and stamp sizes at 300 or 600 DPI, plus a print sheet. No upload.",
+   "url": "https://unboundpdf.com/tools/passport-photo/",
+   "col": 8,
+   "row": 3
+  },
+  {
+   "id": "p45",
+   "slug": "remove-background",
+   "name": "Remove background",
+   "category": "Images",
+   "desc": "Remove the background from a photo of a person, in your browser. The model runs on your device after a one-time download. No upload, no account.",
+   "url": "https://unboundpdf.com/tools/remove-background/",
+   "col": 8,
+   "row": 4
+  },
+  {
+   "id": "p48",
+   "slug": "resize-image",
+   "name": "Resize image",
+   "category": "Images",
+   "desc": "Resize or convert JPG, PNG and WebP in your browser. Set pixels, a percent, or aim for a file size. EXIF orientation honoured, metadata stripped by default. No upload.",
+   "url": "https://unboundpdf.com/tools/resize-image/",
+   "col": 8,
+   "row": 5
+  }
+ ],
+ "status": {
+  "checked_utc": "2026-11-05 10:19 UTC",
+  "from": "local Mac (one vantage point)",
+  "results": [
+   {
+    "url": "https://vvdexops.com/",
+    "code": 200,
+    "ms": 196
+   },
+   {
+    "url": "https://conxto.com/",
+    "code": 200,
+    "ms": 192
+   },
+   {
+    "url": "https://lab.vvdexops.com/",
+    "code": 200,
+    "ms": 228
+   },
+   {
+    "url": "https://unboundpdf.com/",
+    "code": 200,
+    "ms": 167
+   },
+   {
+    "url": "https://farmquick.in/",
+    "code": 200,
+    "ms": 213
+   },
+   {
+    "url": "https://conxfolio.com/",
+    "code": 200,
+    "ms": 203
+   },
+   {
+    "url": "https://trading.vvdexops.com/",
+    "code": 200,
+    "ms": 222
+   }
+  ]
+ },
+ "heatmap": {
+  "since": "2026-05-07",
+  "until": "2026-11-05",
+  "unique_commits": 3476,
+  "active_days": 103,
+  "repos_scanned": 82,
+  "repos_with_commits": 36,
+  "days": {
+   "2026-07-02": 12,
+   "2026-07-09": 4,
+   "2026-07-10": 43,
+   "2026-07-12": 6,
+   "2026-07-13": 55,
+   "2026-07-14": 83,
+   "2026-07-15": 20,
+   "2026-07-16": 33,
+   "2026-07-17": 49,
+   "2026-07-18": 1,
+   "2026-07-20": 9,
+   "2026-07-21": 6,
+   "2026-07-22": 11,
+   "2026-07-23": 29,
+   "2026-07-24": 44,
+   "2026-07-26": 1,
+   "2026-07-27": 66,
+   "2026-07-28": 55,
+   "2026-07-29": 22,
+   "2026-07-30": 8,
+   "2026-07-31": 4,
+   "2026-08-01": 18,
+   "2026-08-02": 5,
+   "2026-08-03": 56,
+   "2026-08-04": 93,
+   "2026-08-05": 107,
+   "2026-08-06": 212,
+   "2026-08-07": 70,
+   "2026-08-08": 5,
+   "2026-08-09": 6,
+   "2026-08-10": 29,
+   "2026-08-11": 23,
+   "2026-08-12": 8,
+   "2026-08-13": 27,
+   "2026-08-14": 6,
+   "2026-08-15": 2,
+   "2026-08-16": 1,
+   "2026-08-18": 75,
+   "2026-08-19": 22,
+   "2026-08-20": 16,
+   "2026-08-21": 19,
+   "2026-08-22": 29,
+   "2026-08-24": 2,
+   "2026-08-25": 3,
+   "2026-08-26": 1,
+   "2026-08-27": 28,
+   "2026-08-28": 24,
+   "2026-08-30": 1,
+   "2026-08-31": 1,
+   "2026-09-01": 19,
+   "2026-09-02": 56,
+   "2026-09-03": 29,
+   "2026-09-04": 27,
+   "2026-09-06": 43,
+   "2026-09-07": 25,
+   "2026-09-08": 8,
+   "2026-09-09": 21,
+   "2026-09-10": 26,
+   "2026-09-11": 128,
+   "2026-09-12": 16,
+   "2026-09-13": 14,
+   "2026-09-14": 61,
+   "2026-09-15": 45,
+   "2026-09-16": 12,
+   "2026-09-18": 1,
+   "2026-09-19": 15,
+   "2026-09-20": 83,
+   "2026-09-22": 80,
+   "2026-09-23": 70,
+   "2026-09-24": 78,
+   "2026-09-25": 79,
+   "2026-09-26": 90,
+   "2026-09-27": 48,
+   "2026-09-28": 100,
+   "2026-09-29": 9,
+   "2026-10-01": 7,
+   "2026-10-02": 11,
+   "2026-10-03": 23,
+   "2026-10-04": 6,
+   "2026-10-05": 33,
+   "2026-10-06": 69,
+   "2026-10-07": 18,
+   "2026-10-08": 54,
+   "2026-10-09": 46,
+   "2026-10-10": 35,
+   "2026-10-11": 78,
+   "2026-10-12": 29,
+   "2026-10-13": 2,
+   "2026-10-14": 37,
+   "2026-10-15": 35,
+   "2026-10-16": 126,
+   "2026-10-17": 92,
+   "2026-10-18": 8,
+   "2026-10-22": 38,
+   "2026-10-23": 2,
+   "2026-10-27": 2,
+   "2026-10-28": 6,
+   "2026-10-29": 1,
+   "2026-10-31": 5,
+   "2026-11-01": 5,
+   "2026-11-02": 6,
+   "2026-11-04": 63,
+   "2026-11-05": 6
+  }
+ },
+ "recorded": {
+  "vvdex-platform": [
+   "https://vvdexops.com/"
+  ],
+  "vvdex-engine": [
+   "https://lab.vvdexops.com/"
+  ],
+  "unboundpdf": [
+   "https://unboundpdf.com/",
+   "https://unboundpdf.com/tools/merge-pdf/"
+  ],
+  "conxfolio": [
+   "https://conxfolio.com/"
+  ],
+  "farmquick": [
+   "https://farmquick.in/"
+  ],
+  "conxto": [
+   "https://conxto.com/"
+  ],
+  "vvdex-trading": [
+   "https://trading.vvdexops.com/"
+  ]
+ }
+}
