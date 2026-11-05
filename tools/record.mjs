@@ -7,6 +7,7 @@ const FF='/opt/homebrew/bin/ffmpeg', FPS=25, D=0.6; // crossfade seconds
 const ROOT='../13-board';
 const TMP=process.env.TMPDIR_REC||'/private/tmp/claude-501/-Users-vamsiv-vvdex-vault/d2822e25-8cee-41f0-9e24-47d3bd5732db/scratchpad/rec';
 const JOBS={
+  'forecasting':[{url:'https://lab.vvdexops.com/forecast',dur:10.4,scroll:2600}],
   'vvdex-platform':[{url:'https://vvdexops.com/',dur:10.4,scroll:2600}],
   'vvdex-engine':[{url:'https://lab.vvdexops.com/',dur:10.4,scroll:2800}],
   'unboundpdf':[{url:'https://unboundpdf.com/',dur:5.6,scroll:1500},{url:'https://unboundpdf.com/tools/merge-pdf/',dur:5.6,scroll:1100}],

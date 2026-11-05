@@ -1,0 +1,26 @@
+{
+ "recorded_utc": "2026-11-05T10:59:42.414Z",
+ "requests_during_task": [
+  {
+   "m": "GET",
+   "u": "https://unboundpdf.com/tools/assets/pdf.min.js",
+   "body": 0
+  },
+  {
+   "m": "GET",
+   "u": "https://unboundpdf.com/tools/assets/pdf.worker.min.js",
+   "body": 0
+  },
+  {
+   "m": "GET",
+   "u": "https://unboundpdf.com/tools/assets/pdf.worker.min.js",
+   "body": 0
+  },
+  {
+   "m": "GET",
+   "u": "https://unboundpdf.com/tools/assets/pdf.worker.min.js",
+   "body": 0
+  }
+ ],
+ "non_local_or_with_body": []
+}

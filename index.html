@@ -5,164 +5,306 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vamsi Venkatesh — AI product engineer</title>
 <meta name="description" content="I design, build and run AI products end to end: the product, the agents, the servers and the tests that prove it works.">
-<meta name="theme-color" content="#f4f1ea">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('vv-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body data-page="home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
   <a class="brand" href="./" aria-label="Vamsi Venkatesh, home"><span class="mark" aria-hidden="true">VV</span><span>Vamsi Venkatesh</span><small>/ AI product engineer</small></a>
-  <div class="keys" aria-hidden="true"><span>Press</span><kbd>1</kbd><span>–</span><kbd>8</kbd><span>to open a product</span></div>
-  <nav aria-label="Contact">
+  <div class="keys" aria-hidden="true"><span>Press</span><kbd>1</kbd><span>–</span><kbd>7</kbd><span>to pop a product</span></div>
+  <nav aria-label="Site">
     <a class="txt hide-m" href="mailto:vamsi@vamsivenkatesh.com">Email</a>
     <a class="txt hide-m" href="https://www.linkedin.com/in/vamsivenkatesh" rel="noopener">LinkedIn</a>
-    <a class="txt" href="https://github.com/vamsi-venkatesh" rel="noopener">GitHub</a>
-    <a class="pill sm" href="#contact">Contact</a>
+    <a class="txt hide-s" href="https://github.com/vamsi-venkatesh" rel="noopener">GitHub</a>
+    <button class="ibtn cmdk-btn" type="button" data-cmdk aria-label="Open the command bar (Ctrl+K)"><span class="k-mac">⌘K</span><span class="k-oth">Ctrl K</span></button>
+    <button class="ibtn theme-btn" type="button" data-theme-toggle aria-label="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="i-moon" d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><g class="i-sun" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.2v1.6M8 13.2v1.6M1.2 8h1.6M13.2 8h1.6M3.2 3.2l1.1 1.1M11.7 11.7l1.1 1.1M3.2 12.8l1.1-1.1M11.7 4.3l1.1-1.1"/></g></svg></button>
+    <a class="pill sm" href="#build">Contact</a>
   </nav>
 </div></header>
 <main id="main">
 <section class="hero" aria-label="Introduction">
   <div class="guides" aria-hidden="true"></div>
-  <div class="wrap"><div class="hero-grid">
+  <div class="wrap"><div class="board" id="board" data-board>
+    <div class="board-bar" aria-label="Board controls">
+      <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes · resize my name · keys 1–7</span><span class="show-s"> · drag <svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></span></span>
+      <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
+    </div>
+    <div class="board-ov" aria-hidden="true"></div>
+    <div class="hero-grid">
     <div class="develop">
-      <div class="select" data-guide>
-        <span class="h"></span><span class="h"></span><span class="h"></span><span class="h"></span>
+      <div class="select namebox" data-guide>
+        <span class="h" data-rs="nw"></span><span class="h" data-rs="ne"></span><span class="h" data-rs="sw"></span><span class="h" data-rs="se"></span>
         <span class="tag" data-scramble="AI PRODUCT ENGINEER" aria-hidden="true">AI PRODUCT ENGINEER</span>
-        <h1 class="name"><span class="sr">Vamsi Venkatesh, AI product engineer. </span><span aria-hidden="true">Vamsi<br>Venkatesh</span></h1>
+        <h1 class="name"><span class="sr">Vamsi Venkatesh, AI product engineer. </span><span aria-hidden="true">Vamsi Venkatesh</span></h1>
         <span class="dim" aria-hidden="true"></span>
       </div>
       <p class="lede" data-guide>I design, build and run AI products <mark>end to end</mark>: the product, the agents, the servers and the tests that prove it works.</p>
-      <p class="open"><i class="dot accent" aria-hidden="true"></i>Open to work · Magdeburg, Germany</p>
-      <div class="stats" data-guide>
-        <div class="stat" data-frame="stat / products"><strong data-count="8">8</strong><span>products, designed, built and run · 6 live</span></div>
-        <div class="stat" data-frame="stat / unboundpdf"><strong data-count="54">54</strong><span>tools in UnboundPDF, all in the browser</span></div>
-        <div class="stat" data-frame="stat / vvdex-platform"><strong data-count="417">417</strong><span>graded AI attempts, published</span></div>
-      </div>
-      <div class="ctas"><a class="pill" href="#work">See the products ↓</a><a class="pill ghost" href="mailto:vamsi@vamsivenkatesh.com">Email me</a></div>
+      <p class="open"><i class="dot accent" aria-hidden="true"></i>Open to work · Magdeburg, Germany · updated 5 Nov 2026</p>
+      <div class="stats" data-guide><div class="stat drag" data-drag="stat-products" data-frame="stat / products"><button class="grip" type="button" aria-label="Move the products note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="7">7</strong><span>products, built and run · 6 live · + 2 for clients</span></div><div class="stat drag" data-drag="stat-unboundpdf" data-frame="stat / unboundpdf"><button class="grip" type="button" aria-label="Move the unboundpdf note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="54">54</strong><span>tools in UnboundPDF, all in the browser</span></div><div class="stat drag" data-drag="stat-vvdex-platform" data-frame="stat / vvdex-platform"><button class="grip" type="button" aria-label="Move the vvdex-platform note (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg></button><strong data-count="417">417</strong><span>graded AI attempts, published</span></div></div>
+      <div class="ctas"><a class="pill" href="#work">See the products ↓</a><a class="pill ghost" href="#build">What should we build?</a></div>
     </div>
-    <div class="deck develop" data-guide aria-roledescription="carousel" aria-label="Product recordings">
+    <div class="deck develop drag" data-drag="deck" data-guide aria-roledescription="carousel" aria-label="Product recordings">
+      <button class="grip deck-grip" type="button" aria-label="Move the product deck (arrow keys)"><svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg><span>frame / product deck</span></button>
       <div class="deck-stage">
-      <article class="slide" data-pos="0" data-url="https://vvdexops.com/" data-live="1" data-case="work/vvdex-platform/" aria-roledescription="slide" aria-label="1 of 8: VVDex Platform">
+      <article class="slide" data-pos="0" data-url="https://vvdexops.com/" data-live="1" data-case="work/vvdex-platform/" aria-roledescription="slide" aria-label="1 of 7: VVDex Platform">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div>
-        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>01</b>AI evaluation platform</div><h3>VVDex Platform</h3><p>Tests AI models and agents on real work. Hidden tests decide.</p></div><a class="txtlink" href="work/vvdex-platform/">Case study →</a></div>
+        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: real task recorded on the public site"></video></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>01</b>AI evaluation platform</div><h3>VVDex Platform</h3><p>Tests AI models and agents on real work. Hidden tests decide.</p></div><a class="txtlink" href="work/vvdex-platform/" data-vt="vvdex-platform">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="1" data-url="https://conxto.com/" data-live="1" data-case="work/conxto/" aria-roledescription="slide" aria-label="2 of 8: Conxto">
+      <article class="slide" data-pos="1" data-url="https://conxto.com/" data-live="1" data-case="work/conxto/" aria-roledescription="slide" aria-label="2 of 7: Conxto">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div>
         <div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxto.jpg" data-src="media/conxto.mp4" aria-label="Conxto: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>02</b>AI job search</div><h3>Conxto</h3><p>Reads live job postings against your résumé and prepares the whole application.</p></div><a class="txtlink" href="work/conxto/">Case study →</a></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>02</b>AI job search</div><h3>Conxto</h3><p>Reads live job postings against your résumé and prepares the whole application.</p></div><a class="txtlink" href="work/conxto/" data-vt="conxto">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="2" data-url="https://lab.vvdexops.com/" data-live="1" data-case="work/vvdex-engine/" aria-roledescription="slide" aria-label="3 of 8: VVDex Engine">
+      <article class="slide" data-pos="2" data-url="https://lab.vvdexops.com/" data-live="1" data-case="work/vvdex-engine/" aria-roledescription="slide" aria-label="3 of 7: VVDex Engine">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div>
         <div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-engine.jpg" data-src="media/vvdex-engine.mp4" aria-label="VVDex Engine: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>03</b>AI service engine</div><h3>VVDex Engine</h3><p>Describe the work in one paragraph. It compiles a service that runs by your rules.</p></div><a class="txtlink" href="work/vvdex-engine/">Case study →</a></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>03</b>AI service engine</div><h3>VVDex Engine</h3><p>Describe the work in one paragraph. It compiles a service that runs by your rules.</p></div><a class="txtlink" href="work/vvdex-engine/" data-vt="vvdex-engine">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="hide" data-url="https://unboundpdf.com/" data-live="1" data-case="work/unboundpdf/" aria-roledescription="slide" aria-label="4 of 8: UnboundPDF">
+      <article class="slide" data-pos="hide" data-url="https://unboundpdf.com/" data-live="1" data-case="work/unboundpdf/" aria-roledescription="slide" aria-label="4 of 7: UnboundPDF">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div>
-        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>04</b>Browser PDF suite</div><h3>UnboundPDF</h3><p>Every PDF tool in the browser. Your file never leaves the tab.</p></div><a class="txtlink" href="work/unboundpdf/">Case study →</a></div>
+        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: real task recorded on the public site"></video></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>04</b>Browser PDF suite</div><h3>UnboundPDF</h3><p>Every PDF tool in the browser. Your file never leaves the tab.</p></div><a class="txtlink" href="work/unboundpdf/" data-vt="unboundpdf">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="hide" data-url="https://farmquick.in/" data-live="1" data-case="work/farmquick/" aria-roledescription="slide" aria-label="5 of 8: FarmQuick">
-        <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 farmquick.in</span><span class="st status live"><i class="dot live"></i>Live</span></div>
-        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/farmquick.jpg" data-src="media/farmquick.mp4" aria-label="FarmQuick: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>05</b>B2B commerce + lead agent</div><h3>FarmQuick</h3><p>The ordering site a produce business runs on, and the agent that finds its next buyer.</p></div><a class="txtlink" href="work/farmquick/">Case study →</a></div>
-      </article>
-      <article class="slide" data-pos="hide" data-url="https://conxfolio.com/" data-live="1" data-case="work/conxfolio/" aria-roledescription="slide" aria-label="6 of 8: Conxfolio">
+      <article class="slide" data-pos="hide" data-url="https://conxfolio.com/" data-live="1" data-case="work/conxfolio/" aria-roledescription="slide" aria-label="5 of 7: Conxfolio">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div>
         <div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxfolio.jpg" data-src="media/conxfolio.mp4" aria-label="Conxfolio: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>06</b>Career suite</div><h3>Conxfolio</h3><p>Résumé, ATS review, cover letter and portfolio website, sharing one résumé.</p></div><a class="txtlink" href="work/conxfolio/">Case study →</a></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>05</b>Career suite</div><h3>Conxfolio</h3><p>Résumé, ATS review, cover letter and portfolio website, sharing one résumé.</p></div><a class="txtlink" href="work/conxfolio/" data-vt="conxfolio">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="hide" data-url="" data-live="0" data-case="work/pitchradar/" aria-roledescription="slide" aria-label="7 of 8: PitchRadar">
-        <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">private client system</span><span class="st status other">Private</span></div>
-        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/pitchradar.jpg" data-src="media/pitchradar.mp4" aria-label="PitchRadar: real product screens"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>07</b>Event intelligence · client</div><h3>PitchRadar</h3><p>Finds and ranks the events a mobile food vendor should trade at. Built for a client.</p></div><a class="txtlink" href="work/pitchradar/">Case study →</a></div>
+      <article class="slide" data-pos="hide" data-url="https://lab.vvdexops.com/forecast/" data-live="1" data-case="work/forecasting/" aria-roledescription="slide" aria-label="6 of 7: Forecasting">
+        <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com/forecast</span><span class="st status live"><i class="dot live"></i>Live</span></div>
+        <div class="media"><video class="" muted loop playsinline preload="none" poster="media/forecasting.jpg" data-src="media/forecasting.mp4" aria-label="Forecasting: screen recording of the public site"></video></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>06</b>Forecasting engine</div><h3>Forecasting</h3><p>Turns a history into a tested forecast and a reviewed decision. Every step leaves a receipt.</p></div><a class="txtlink" href="work/forecasting/" data-vt="forecasting">Case study →</a></div>
       </article>
-      <article class="slide" data-pos="hide" data-url="https://trading.vvdexops.com/" data-live="0" data-case="work/vvdex-trading/" aria-roledescription="slide" aria-label="8 of 8: VVDex Trading">
+      <article class="slide" data-pos="hide" data-url="https://trading.vvdexops.com/" data-live="0" data-case="work/vvdex-trading/" aria-roledescription="slide" aria-label="7 of 7: VVDex Trading">
         <div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div>
         <div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-trading.jpg" data-src="media/vvdex-trading.mp4" aria-label="VVDex Trading: screen recording of the public site"></video></div>
-        <div class="slide-body"><div><div class="eyebrow"><b>08</b>Market research</div><h3>VVDex Trading</h3><p>Live market microstructure beside a hash-chained record of every dated call. Paper only.</p></div><a class="txtlink" href="work/vvdex-trading/">Case study →</a></div>
+        <div class="slide-body"><div><div class="eyebrow"><b>07</b>Market research</div><h3>VVDex Trading</h3><p>Live market microstructure beside a hash-chained record of every dated call. Paper only.</p></div><a class="txtlink" href="work/vvdex-trading/" data-vt="vvdex-trading">Case study →</a></div>
       </article>
       </div>
       <div class="deck-ctl">
-        <div class="deck-nav"><button class="rbtn" data-prev aria-label="Previous product">‹</button><span class="count" aria-live="polite"><b>01</b> / 08</span><button class="rbtn" data-next aria-label="Next product">›</button></div>
+        <div class="deck-nav"><button class="rbtn" data-prev aria-label="Previous product">‹</button><span class="count" aria-live="polite"><b>01</b> / 07</span><button class="rbtn" data-next aria-label="Next product">›</button></div>
         <a class="livelink" href="https://vvdexops.com/" rel="noopener"><i class="dot live"></i><span class="lbl">Live</span> ↗</a>
       </div>
       <div class="progress" aria-hidden="true"><i></i></div>
     </div>
+    </div>
   </div></div>
 </section>
 
-<section class="sec" id="work" aria-labelledby="work-h" style="padding-top:72px">
+<section class="sec showcase-sec" id="work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="sec-head" data-reveal><div><div class="eyebrow"><b>02</b>Selected products</div><h2 id="work-h">Eight products I designed, built and run end to end.</h2></div><p>Every card plays a muted loop: seven are recordings of the public sites, one is built from real screens of a private client system. Keys <kbd>1</kbd>–<kbd>8</kbd> open the case studies.</p></div>
-    <div class="grid">
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #F2703A 30%, #f4f1ea)">
-      <a class="frame-link" href="work/vvdex-platform/" data-pill="Case study →" aria-label="VVDex Platform case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 01 vvdex-platform</b></span>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>02</b>Selected products</div><h2 id="work-h" data-reveal><span class="sr">Seven products I designed, built and run end to end.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Seven</span></span> <span class="w"><span style="--i:1">products</span></span> <span class="w"><span style="--i:2">I</span></span> <span class="w"><span style="--i:3">designed,</span></span> <span class="w"><span style="--i:4">built</span></span> <span class="w"><span style="--i:5">and</span></span> <span class="w"><span style="--i:6">run</span></span> <span class="w"><span style="--i:7">end</span></span> <span class="w"><span style="--i:8">to</span></span> <span class="w"><span style="--i:9">end.</span></span></span></h2></div><p data-reveal>Scroll: each product moves into focus with its outcome and numbers. The loops are real: two are a task and a run recorded on the public sites, the rest are recordings of them.</p></div>
+  </div>
+  <div class="showcase" style="--n:7">
+    <div class="sc-sticky"><div class="wrap">
+      <div class="sc-stage">
+      <article class="sc-item" data-i="0" style="--tint:color-mix(in srgb, #F2703A 30%, var(--paper))" aria-label="VVDex Platform">
+        <div class="sc-text">
+          <div class="eyebrow"><b>01 / 07</b>AI evaluation platform <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">VVDex Platform</h3>
+          <p class="sc-one">Test AI models and agents on real work: a real task in a sealed sandbox, hidden tests decide, and a signed receipt anyone can check.</p>
+          <div class="sc-nums"><div><strong data-count="17">17</strong><span>certified exams offered: 5 open, 12 on request</span></div><div><strong data-count="417">417</strong><span>graded attempts in 15 published campaigns</span></div><div><strong data-count="21">21</strong><span>models and agents tested</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/vvdex-platform/" data-vt="vvdex-platform">Case study →</a><a class="pill sm ghost" href="https://vvdexops.com/" rel="noopener">vvdexops.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/vvdex-platform/" data-vt="vvdex-platform" data-pill="Open case study →" aria-label="VVDex Platform case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-platform.jpg" data-src="media/vvdex-platform.mp4" aria-label="VVDex Platform: real task recorded on the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 01 vvdex-platform</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="1" style="--tint:color-mix(in srgb, #D8CDBE 30%, var(--paper))" aria-label="Conxto">
+        <div class="sc-text">
+          <div class="eyebrow"><b>02 / 07</b>AI job search <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">Conxto</h3>
+          <p class="sc-one">Reads live job postings against your résumé, checks every requirement and prepares the whole application. With Copilot you send; Autopilot applies inside rules you set.</p>
+          <div class="sc-nums"><div><strong>5 + 2</strong><span>agents and reviewers, one memory</span></div><div><strong data-count="394928">394,928</strong><span>job postings in its own pool · 2 Nov 2026</span></div><div><strong>10.6 → 2.7 s</strong><span>app cold start, after a speed pass</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/conxto/" data-vt="conxto">Case study →</a><a class="pill sm ghost" href="https://conxto.com/" rel="noopener">conxto.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/conxto/" data-vt="conxto" data-pill="Open case study →" aria-label="Conxto case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxto.jpg" data-src="media/conxto.mp4" aria-label="Conxto: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 02 conxto</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="2" style="--tint:color-mix(in srgb, #45C987 30%, var(--paper))" aria-label="VVDex Engine">
+        <div class="sc-text">
+          <div class="eyebrow"><b>03 / 07</b>AI service engine <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">VVDex Engine</h3>
+          <p class="sc-one">Describe the work in one paragraph and the Engine compiles it into a running service: what runs by itself, what waits for you, and what never happens.</p>
+          <div class="sc-nums"><div><strong data-count="50">50</strong><span>compiled service examples</span></div><div><strong data-count="1429">1,429</strong><span>automated tests</span></div><div><strong>76 / 76</strong><span>briefs compiled into a valid process</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/vvdex-engine/" data-vt="vvdex-engine">Case study →</a><a class="pill sm ghost" href="https://lab.vvdexops.com/" rel="noopener">lab.vvdexops.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/vvdex-engine/" data-vt="vvdex-engine" data-pill="Open case study →" aria-label="VVDex Engine case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-engine.jpg" data-src="media/vvdex-engine.mp4" aria-label="VVDex Engine: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 03 vvdex-engine</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="3" style="--tint:color-mix(in srgb, #EFEAE0 30%, var(--paper))" aria-label="UnboundPDF">
+        <div class="sc-text">
+          <div class="eyebrow"><b>04 / 07</b>Browser PDF suite <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">UnboundPDF</h3>
+          <p class="sc-one">Every PDF tool in the browser. The file never leaves the tab.</p>
+          <div class="sc-nums"><div><strong data-count="54">54</strong><span>tools, all in the browser</span></div><div><strong data-count="0">0</strong><span>uploads</span></div><div><strong data-count="218">218</strong><span>public pages, English and German</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/unboundpdf/" data-vt="unboundpdf">Case study →</a><a class="pill sm ghost" href="https://unboundpdf.com/" rel="noopener">unboundpdf.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/unboundpdf/" data-vt="unboundpdf" data-pill="Open case study →" aria-label="UnboundPDF case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: real task recorded on the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 04 unboundpdf</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="4" style="--tint:color-mix(in srgb, #EDE4D6 30%, var(--paper))" aria-label="Conxfolio">
+        <div class="sc-text">
+          <div class="eyebrow"><b>05 / 07</b>Career suite <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">Conxfolio</h3>
+          <p class="sc-one">Your next move, all here: build your résumé, check how it reads, write your letter and show your work.</p>
+          <div class="sc-nums"><div><strong data-count="37">37</strong><span>résumé designs, 24 ATS-clean</span></div><div><strong data-count="12">12</strong><span>cover-letter designs</span></div><div><strong data-count="22">22</strong><span>portfolio websites, free to publish</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/conxfolio/" data-vt="conxfolio">Case study →</a><a class="pill sm ghost" href="https://conxfolio.com/" rel="noopener">conxfolio.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/conxfolio/" data-vt="conxfolio" data-pill="Open case study →" aria-label="Conxfolio case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxfolio.jpg" data-src="media/conxfolio.mp4" aria-label="Conxfolio: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 05 conxfolio</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="5" style="--tint:color-mix(in srgb, #8FB3E6 30%, var(--paper))" aria-label="Forecasting">
+        <div class="sc-text">
+          <div class="eyebrow"><b>06 / 07</b>Forecasting engine <span class="status live"><i class="dot live"></i>Live</span></div>
+          <h3 class="sc-name">Forecasting</h3>
+          <p class="sc-one">Models race on the past, a written rule picks the winner, ranges must pass a test or are withheld, outside signals must beat chance, and a person approves before anything is issued.</p>
+          <div class="sc-nums"><div><strong data-count="7">7</strong><span>models raced on every run</span></div><div><strong data-count="75884">75,884</strong><span>outside signals in the catalogue</span></div><div><strong>8.9%</strong><span>better than the baseline on the saved run</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/forecasting/" data-vt="forecasting">Case study →</a><a class="pill sm ghost" href="https://lab.vvdexops.com/forecast/" rel="noopener">lab.vvdexops.com/forecast ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/forecasting/" data-vt="forecasting" data-pill="Open case study →" aria-label="Forecasting case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com/forecast</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/forecasting.jpg" data-src="media/forecasting.mp4" aria-label="Forecasting: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 06 forecasting</b></span>
+        </a>
+      </article>
+      <article class="sc-item" data-i="6" style="--tint:color-mix(in srgb, #63D2A3 30%, var(--paper))" aria-label="VVDex Trading">
+        <div class="sc-text">
+          <div class="eyebrow"><b>07 / 07</b>Market research <span class="status other"><i class="dot"></i>Research</span></div>
+          <h3 class="sc-name">VVDex Trading</h3>
+          <p class="sc-one">Live market microstructure beside a hash-chained record of every dated call. Paper only.</p>
+          <div class="sc-nums"><div><strong data-count="8658">8,658</strong><span>predictions recorded since 2 Jul 2026</span></div><div><strong>0.703</strong><span>accuracy on 5,325 committed calls</span></div><div><strong>0.7178</strong><span>gate declared in advance: not cleared</span></div></div>
+          <div class="sc-links"><a class="pill sm" href="work/vvdex-trading/" data-vt="vvdex-trading">Case study →</a><a class="pill sm ghost" href="https://trading.vvdexops.com/" rel="noopener">trading.vvdexops.com ↗</a></div>
+        </div>
+        <a class="sc-media frame-link" href="work/vvdex-trading/" data-vt="vvdex-trading" data-pill="Open case study →" aria-label="VVDex Trading case study">
+          <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-trading.jpg" data-src="media/vvdex-trading.mp4" aria-label="VVDex Trading: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 07 vvdex-trading</b></span>
+        </a>
+      </article>
+      </div>
+      <nav class="sc-rail" aria-label="Products in this showcase"><button type="button" data-go="0"><span>01</span><em>VVDex Platform</em></button><button type="button" data-go="1"><span>02</span><em>Conxto</em></button><button type="button" data-go="2"><span>03</span><em>VVDex Engine</em></button><button type="button" data-go="3"><span>04</span><em>UnboundPDF</em></button><button type="button" data-go="4"><span>05</span><em>Conxfolio</em></button><button type="button" data-go="5"><span>06</span><em>Forecasting</em></button><button type="button" data-go="6"><span>07</span><em>VVDex Trading</em></button><i class="sc-bar" aria-hidden="true"></i></nav>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec" id="clients" aria-labelledby="clients-h" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>Client work</div><h2 id="clients-h" data-reveal><span class="sr">Built and run for two clients.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Built</span></span> <span class="w"><span style="--i:1">and</span></span> <span class="w"><span style="--i:2">run</span></span> <span class="w"><span style="--i:3">for</span></span> <span class="w"><span style="--i:4">two</span></span> <span class="w"><span style="--i:5">clients.</span></span></span></h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
+    <div class="clients">
+      <article class="client" data-reveal style="--tint:color-mix(in srgb, #F49A4B 30%, var(--paper));--d:0ms">
+        <a class="frame-link" href="work/pitchradar/" data-vt="pitchradar" data-pill="Case study →" aria-label="PitchRadar case study">
+          <div class="frame"><div class="screen" data-wipe><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">private client system</span><span class="st status other">Private</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/pitchradar.jpg" data-src="media/pitchradar.mp4" aria-label="PitchRadar: real product screens"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Client · 08 pitchradar</b></span>
+        </a>
+        <div class="eyebrow" style="margin-top:20px"><b>Client work</b>Event intelligence <span class="status other"><i class="dot"></i>Private</span></div>
+        <h3><a href="work/pitchradar/" data-vt="pitchradar">PitchRadar</a></h3>
+        <p class="one">Finds the events a mobile food vendor should trade at, ranks them on rules you can read, and hands the owner one brief with the evidence behind every line. Running for a client.</p>
+        <div class="sc-nums"><div><strong data-count="7">7</strong><span>agents</span></div><div><strong data-count="620">620</strong><span>tests · 16 Sep 2026</span></div></div>
+      </article>
+      <article class="client" data-reveal style="--tint:color-mix(in srgb, #86C977 30%, var(--paper));--d:80ms">
+        <a class="frame-link" href="work/farmquick/" data-vt="farmquick" data-pill="Case study →" aria-label="FarmQuick · Buyer Radar case study">
+          <div class="frame"><div class="screen" data-wipe><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 farmquick.in</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/farmquick.jpg" data-src="media/farmquick.mp4" aria-label="FarmQuick · Buyer Radar: screen recording of the public site"></video></div></div></div>
+          <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Client · 09 farmquick</b></span>
+        </a>
+        <div class="eyebrow" style="margin-top:20px"><b>Client work</b>B2B ordering site + lead agent <span class="status live"><i class="dot live"></i>Live</span></div>
+        <h3><a href="work/farmquick/" data-vt="farmquick">FarmQuick · Buyer Radar</a></h3>
+        <p class="one">End to end for a B2B produce business: the ordering site buyers use, and Lead Desk, the agent that finds the next buyer every morning.</p>
+        <div class="sc-nums"><div><strong data-count="42">42</strong><span>products in the live catalogue</span></div><div><strong data-count="5">5</strong><span>cities read every morning</span></div><div><strong data-count="408">408</strong><span>tests on the public engine</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="index" aria-labelledby="index-h" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>Everything</div><h2 id="index-h" data-reveal><span class="sr">All nine, at a glance.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">All</span></span> <span class="w"><span style="--i:1">nine,</span></span> <span class="w"><span style="--i:2">at</span></span> <span class="w"><span style="--i:3">a</span></span> <span class="w"><span style="--i:4">glance.</span></span></span></h2></div><p data-reveal>Seven products and two client systems. Keys <kbd>1</kbd>–<kbd>7</kbd> pop a product on the board at the top; the cards open the case studies.</p></div>
+    <div class="grid4 grid3">
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #F2703A 30%, var(--paper));--d:0ms">
+      <a class="frame-link" href="work/vvdex-platform/" data-vt="vvdex-platform" data-pill="Case study →" aria-label="VVDex Platform case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/vvdex-platform.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>01 vvdex-platform</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/vvdex-platform/" style="text-decoration:none">VVDex Platform</a></h3><p class="one">Tests AI models and agents on real work. Hidden tests decide.</p></div><kbd title="Press 1 to open">1</kbd></div>
-      <div class="row"><span>AI evaluation platform</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://vvdexops.com/" rel="noopener">vvdexops.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/vvdex-platform/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/vvdex-platform/" data-vt="vvdex-platform">VVDex Platform</a></h3><p class="one">Tests AI models and agents on real work. Hidden tests decide.</p></div><kbd title="Press 1">1</kbd></div>
+      <div class="row"><span>AI evaluation platform</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #D8CDBE 30%, #f4f1ea)">
-      <a class="frame-link" href="work/conxto/" data-pill="Case study →" aria-label="Conxto case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxto.jpg" data-src="media/conxto.mp4" aria-label="Conxto: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 02 conxto</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #D8CDBE 30%, var(--paper));--d:60ms">
+      <a class="frame-link" href="work/conxto/" data-vt="conxto" data-pill="Case study →" aria-label="Conxto case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxto.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/conxto.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>02 conxto</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/conxto/" style="text-decoration:none">Conxto</a></h3><p class="one">Reads live job postings against your résumé and prepares the whole application.</p></div><kbd title="Press 2 to open">2</kbd></div>
-      <div class="row"><span>AI job search</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://conxto.com/" rel="noopener">conxto.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/conxto/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/conxto/" data-vt="conxto">Conxto</a></h3><p class="one">Reads live job postings against your résumé and prepares the whole application.</p></div><kbd title="Press 2">2</kbd></div>
+      <div class="row"><span>AI job search</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #45C987 30%, #f4f1ea)">
-      <a class="frame-link" href="work/vvdex-engine/" data-pill="Case study →" aria-label="VVDex Engine case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-engine.jpg" data-src="media/vvdex-engine.mp4" aria-label="VVDex Engine: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 03 vvdex-engine</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #45C987 30%, var(--paper));--d:120ms">
+      <a class="frame-link" href="work/vvdex-engine/" data-vt="vvdex-engine" data-pill="Case study →" aria-label="VVDex Engine case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/vvdex-engine.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>03 vvdex-engine</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/vvdex-engine/" style="text-decoration:none">VVDex Engine</a></h3><p class="one">Describe the work in one paragraph. It compiles a service that runs by your rules.</p></div><kbd title="Press 3 to open">3</kbd></div>
-      <div class="row"><span>AI service engine</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://lab.vvdexops.com/" rel="noopener">lab.vvdexops.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/vvdex-engine/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/vvdex-engine/" data-vt="vvdex-engine">VVDex Engine</a></h3><p class="one">Describe the work in one paragraph. It compiles a service that runs by your rules.</p></div><kbd title="Press 3">3</kbd></div>
+      <div class="row"><span>AI service engine</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #EFEAE0 30%, #f4f1ea)">
-      <a class="frame-link" href="work/unboundpdf/" data-pill="Case study →" aria-label="UnboundPDF case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/unboundpdf.jpg" data-src="media/unboundpdf.mp4" aria-label="UnboundPDF: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 04 unboundpdf</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #EFEAE0 30%, var(--paper));--d:180ms">
+      <a class="frame-link" href="work/unboundpdf/" data-vt="unboundpdf" data-pill="Case study →" aria-label="UnboundPDF case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 unboundpdf.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/unboundpdf.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>04 unboundpdf</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/unboundpdf/" style="text-decoration:none">UnboundPDF</a></h3><p class="one">Every PDF tool in the browser. Your file never leaves the tab.</p></div><kbd title="Press 4 to open">4</kbd></div>
-      <div class="row"><span>Browser PDF suite</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://unboundpdf.com/" rel="noopener">unboundpdf.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/unboundpdf/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/unboundpdf/" data-vt="unboundpdf">UnboundPDF</a></h3><p class="one">Every PDF tool in the browser. Your file never leaves the tab.</p></div><kbd title="Press 4">4</kbd></div>
+      <div class="row"><span>Browser PDF suite</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #86C977 30%, #f4f1ea)">
-      <a class="frame-link" href="work/farmquick/" data-pill="Case study →" aria-label="FarmQuick case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 farmquick.in</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/farmquick.jpg" data-src="media/farmquick.mp4" aria-label="FarmQuick: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 05 farmquick</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #EDE4D6 30%, var(--paper));--d:0ms">
+      <a class="frame-link" href="work/conxfolio/" data-vt="conxfolio" data-pill="Case study →" aria-label="Conxfolio case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/conxfolio.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>05 conxfolio</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/farmquick/" style="text-decoration:none">FarmQuick</a></h3><p class="one">The ordering site a produce business runs on, and the agent that finds its next buyer.</p></div><kbd title="Press 5 to open">5</kbd></div>
-      <div class="row"><span>B2B commerce + lead agent</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://farmquick.in/" rel="noopener">farmquick.in ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/farmquick/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/conxfolio/" data-vt="conxfolio">Conxfolio</a></h3><p class="one">Résumé, ATS review, cover letter and portfolio website, sharing one résumé.</p></div><kbd title="Press 5">5</kbd></div>
+      <div class="row"><span>Career suite</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #EDE4D6 30%, #f4f1ea)">
-      <a class="frame-link" href="work/conxfolio/" data-pill="Case study →" aria-label="Conxfolio case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 conxfolio.com</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/conxfolio.jpg" data-src="media/conxfolio.mp4" aria-label="Conxfolio: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 06 conxfolio</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #8FB3E6 30%, var(--paper));--d:60ms">
+      <a class="frame-link" href="work/forecasting/" data-vt="forecasting" data-pill="Case study →" aria-label="Forecasting case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 lab.vvdexops.com/forecast</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/forecasting.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>06 forecasting</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/conxfolio/" style="text-decoration:none">Conxfolio</a></h3><p class="one">Résumé, ATS review, cover letter and portfolio website, sharing one résumé.</p></div><kbd title="Press 6 to open">6</kbd></div>
-      <div class="row"><span>Career suite</span><span class="status live"><i class="dot live"></i>Live</span><a class="cardlink" href="https://conxfolio.com/" rel="noopener">conxfolio.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/conxfolio/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/forecasting/" data-vt="forecasting">Forecasting</a></h3><p class="one">Turns a history into a tested forecast and a reviewed decision. Every step leaves a receipt.</p></div><kbd title="Press 6">6</kbd></div>
+      <div class="row"><span>Forecasting engine</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #F49A4B 30%, #f4f1ea)">
-      <a class="frame-link" href="work/pitchradar/" data-pill="Case study →" aria-label="PitchRadar case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">private client system</span><span class="st status other">Private</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/pitchradar.jpg" data-src="media/pitchradar.mp4" aria-label="PitchRadar: real product screens"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 07 pitchradar</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #63D2A3 30%, var(--paper));--d:120ms">
+      <a class="frame-link" href="work/vvdex-trading/" data-vt="vvdex-trading" data-pill="Case study →" aria-label="VVDex Trading case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div><div class="media"><img src="media/vvdex-trading.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>07 vvdex-trading</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/pitchradar/" style="text-decoration:none">PitchRadar</a></h3><p class="one">Finds and ranks the events a mobile food vendor should trade at. Built for a client.</p></div><kbd title="Press 7 to open">7</kbd></div>
-      <div class="row"><span>Event intelligence · client</span><span class="status other"><i class="dot"></i>Private</span><span>private · client</span><a class="go cardlink" style="border:0;color:var(--ink)" href="work/pitchradar/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/vvdex-trading/" data-vt="vvdex-trading">VVDex Trading</a></h3><p class="one">Live market microstructure beside a hash-chained record of every dated call. Paper only.</p></div><kbd title="Press 7">7</kbd></div>
+      <div class="row"><span>Market research</span><span class="status other"><i class="dot"></i>Research</span></div>
     </article>
-    <article class="card" data-reveal style="--tint:color-mix(in srgb, #63D2A3 30%, #f4f1ea)">
-      <a class="frame-link" href="work/vvdex-trading/" data-pill="Case study →" aria-label="VVDex Trading case study">
-        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 trading.vvdexops.com</span><span class="st status other">Research</span></div><div class="media"><video class="" muted loop playsinline preload="none" poster="media/vvdex-trading.jpg" data-src="media/vvdex-trading.mp4" aria-label="VVDex Trading: screen recording of the public site"></video></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>Frame · 08 vvdex-trading</b></span>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #F49A4B 30%, var(--paper));--d:180ms">
+      <a class="frame-link" href="work/pitchradar/" data-vt="pitchradar" data-pill="Case study →" aria-label="PitchRadar case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">private client system</span><span class="st status other">Private</span></div><div class="media"><img src="media/pitchradar.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>08 pitchradar</b></span>
       </a>
-      <div class="card-meta"><div><h3><a href="work/vvdex-trading/" style="text-decoration:none">VVDex Trading</a></h3><p class="one">Live market microstructure beside a hash-chained record of every dated call. Paper only.</p></div><kbd title="Press 8 to open">8</kbd></div>
-      <div class="row"><span>Market research</span><span class="status other"><i class="dot"></i>Research</span><a class="cardlink" href="https://trading.vvdexops.com/" rel="noopener">trading.vvdexops.com ↗</a><a class="go cardlink" style="border:0;color:var(--ink)" href="work/vvdex-trading/">Case study <span>→</span></a></div>
+      <div class="card-meta"><div><h3><a href="work/pitchradar/" data-vt="pitchradar">PitchRadar</a></h3><p class="one">Finds and ranks the events a mobile food vendor should trade at. Built for a client.</p></div><kbd title="Press 8">8</kbd></div>
+      <div class="row"><span class="cw">Client work</span><span>Event intelligence</span><span class="status other"><i class="dot"></i>Private</span></div>
+    </article>
+    <article class="card" data-reveal style="--tint:color-mix(in srgb, #86C977 30%, var(--paper));--d:0ms">
+      <a class="frame-link" href="work/farmquick/" data-vt="farmquick" data-pill="Case study →" aria-label="FarmQuick · Buyer Radar case study">
+        <div class="frame"><div class="screen"><div class="chrome" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="host">🔒 farmquick.in</span><span class="st status live"><i class="dot live"></i>Live</span></div><div class="media"><img src="media/farmquick.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
+        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>09 farmquick</b></span>
+      </a>
+      <div class="card-meta"><div><h3><a href="work/farmquick/" data-vt="farmquick">FarmQuick · Buyer Radar</a></h3><p class="one">The ordering site a produce business runs on, and the agent that finds its next buyer.</p></div><kbd title="Press 9">9</kbd></div>
+      <div class="row"><span class="cw">Client work</span><span>B2B ordering site + lead agent</span><span class="status live"><i class="dot live"></i>Live</span></div>
     </article>
     </div>
   </div>
@@ -170,55 +312,107 @@
 
 <section class="sec" id="how" aria-labelledby="how-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-reveal><div><div class="eyebrow"><b>03</b>How I build</div><h2 id="how-h">From a one-line problem to a product that keeps its receipts.</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>How I build</div><h2 id="how-h" data-reveal><span class="sr">From a one-line problem to a product that keeps its receipts.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">From</span></span> <span class="w"><span style="--i:1">a</span></span> <span class="w"><span style="--i:2">one-line</span></span> <span class="w"><span style="--i:3">problem</span></span> <span class="w"><span style="--i:4">to</span></span> <span class="w"><span style="--i:5">a</span></span> <span class="w"><span style="--i:6">product</span></span> <span class="w"><span style="--i:7">that</span></span> <span class="w"><span style="--i:8">keeps</span></span> <span class="w"><span style="--i:9">its</span></span> <span class="w"><span style="--i:10">receipts.</span></span></span></h2></div></div>
     <div class="cols">
-      <article class="col" data-reveal><div class="step"><span><b>01</b> · Idea</span><span>problem → plan</span></div><h3>Rules first, a model second.</h3><p>Each product starts as one problem and one plan. What can be written as a rule stays a rule; a model is used only where rules cannot answer.</p><ul><li>PitchRadar: no model in the score</li><li>FarmQuick: leads scored by written rules</li><li>Conxfolio: nine deterministic résumé specialists</li></ul><span class="arrow" aria-hidden="true"></span></article>
-      <article class="col" data-reveal><div class="step"><span><b>02</b> · Ship</span><span>gate → deploy</span></div><h3>Nothing ships past a failing gate.</h3><p>Large automated suites and release gates run before a deploy. On UnboundPDF the live page is checked again after it.</p><ul><li>1,429 tests on VVDex Engine</li><li>620 on PitchRadar · 550 on VVDex Platform</li><li>UnboundPDF: audit in 3 browser engines + checksum sweep</li></ul><span class="arrow" aria-hidden="true"></span></article>
-      <article class="col" data-reveal><div class="step"><span><b>03</b> · Operate</span><span>run → prove</span></div><h3>Run it, and keep the receipts.</h3><p>The live products run on servers I administer. People keep the final say, and every run leaves a record anyone can check.</p><ul><li>Engine runs sealed under one SHA-256 digest</li><li>Platform runs carry an Ed25519-signed receipt</li><li>Copilot: you send every application</li></ul></article>
+      <article class="col" data-reveal data-inspect><div class="step"><span><b>01</b> · Idea</span><span>problem → plan</span></div><h3>Rules first, a model second.</h3><p>Each product starts as one problem and one plan. What can be written as a rule stays a rule; a model is used only where rules cannot answer.</p><ul><li>PitchRadar: no model in the score</li><li>FarmQuick: leads scored by written rules</li><li>Conxfolio: nine deterministic résumé specialists</li></ul><span class="arrow" aria-hidden="true"></span></article>
+      <article class="col" data-reveal data-inspect style="--d:80ms"><div class="step"><span><b>02</b> · Ship</span><span>gate → deploy</span></div><h3>Nothing ships past a failing gate.</h3><p>Large automated suites and release gates run before a deploy. On UnboundPDF the live page is checked again after it.</p><ul><li>1,429 tests on VVDex Engine</li><li>620 on PitchRadar · 550 on VVDex Platform</li><li>UnboundPDF: audit in 3 browser engines + checksum sweep</li></ul><span class="arrow" aria-hidden="true"></span></article>
+      <article class="col" data-reveal data-inspect style="--d:160ms"><div class="step"><span><b>03</b> · Operate</span><span>run → prove</span></div><h3>Run it, and keep the receipts.</h3><p>The live products run on servers I administer. People keep the final say, and every run leaves a record anyone can check.</p><ul><li>Engine runs sealed under one SHA-256 digest</li><li>Platform runs carry an Ed25519-signed receipt</li><li>Copilot: you send every application</li></ul></article>
     </div>
   </div>
 </section>
 
 <section class="sec" id="proof" aria-labelledby="proof-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-reveal><div><div class="eyebrow"><b>04</b>Proof of shipping</div><h2 id="proof-h">Shipped, running, and checked.</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>06</b>Proof of shipping</div><h2 id="proof-h" data-reveal><span class="sr">Shipped, running, and checked.</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">Shipped,</span></span> <span class="w"><span style="--i:1">running,</span></span> <span class="w"><span style="--i:2">and</span></span> <span class="w"><span style="--i:3">checked.</span></span></span></h2></div></div>
     <div class="proof">
-      <article class="panel" data-reveal>
+      <article class="panel" data-reveal data-inspect>
         <div class="panel-head"><h3>Commit activity, last 26 weeks</h3><span class="mono" style="color:var(--mute)">11 May 2026 – 5 Nov 2026</span></div>
         <div class="kv"><div><strong class="big" data-count="3476">3,476</strong><span>commits</span></div><div><strong class="big" data-count="103">103</strong><span>active days</span></div><div><strong class="big" data-count="36">36</strong><span>repositories</span></div></div>
         <div class="heat-wrap" aria-hidden="true">
           <div class="heat-days"><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span>Sun</span></div>
           <div><div class="months"><span></span><span></span><span></span><span>Jun</span><span></span><span></span><span></span><span></span><span>Jul</span><span></span><span></span><span></span><span>Aug</span><span></span><span></span><span></span><span></span><span>Sep</span><span></span><span></span><span></span><span>Oct</span><span></span><span></span><span></span><span>Nov</span></div><div class="heat"><i data-l="0" title="11 May: 0 commits"></i><i data-l="0" title="12 May: 0 commits"></i><i data-l="0" title="13 May: 0 commits"></i><i data-l="0" title="14 May: 0 commits"></i><i data-l="0" title="15 May: 0 commits"></i><i data-l="0" title="16 May: 0 commits"></i><i data-l="0" title="17 May: 0 commits"></i><i data-l="0" title="18 May: 0 commits"></i><i data-l="0" title="19 May: 0 commits"></i><i data-l="0" title="20 May: 0 commits"></i><i data-l="0" title="21 May: 0 commits"></i><i data-l="0" title="22 May: 0 commits"></i><i data-l="0" title="23 May: 0 commits"></i><i data-l="0" title="24 May: 0 commits"></i><i data-l="0" title="25 May: 0 commits"></i><i data-l="0" title="26 May: 0 commits"></i><i data-l="0" title="27 May: 0 commits"></i><i data-l="0" title="28 May: 0 commits"></i><i data-l="0" title="29 May: 0 commits"></i><i data-l="0" title="30 May: 0 commits"></i><i data-l="0" title="31 May: 0 commits"></i><i data-l="0" title="1 Jun: 0 commits"></i><i data-l="0" title="2 Jun: 0 commits"></i><i data-l="0" title="3 Jun: 0 commits"></i><i data-l="0" title="4 Jun: 0 commits"></i><i data-l="0" title="5 Jun: 0 commits"></i><i data-l="0" title="6 Jun: 0 commits"></i><i data-l="0" title="7 Jun: 0 commits"></i><i data-l="0" title="8 Jun: 0 commits"></i><i data-l="0" title="9 Jun: 0 commits"></i><i data-l="0" title="10 Jun: 0 commits"></i><i data-l="0" title="11 Jun: 0 commits"></i><i data-l="0" title="12 Jun: 0 commits"></i><i data-l="0" title="13 Jun: 0 commits"></i><i data-l="0" title="14 Jun: 0 commits"></i><i data-l="0" title="15 Jun: 0 commits"></i><i data-l="0" title="16 Jun: 0 commits"></i><i data-l="0" title="17 Jun: 0 commits"></i><i data-l="0" title="18 Jun: 0 commits"></i><i data-l="0" title="19 Jun: 0 commits"></i><i data-l="0" title="20 Jun: 0 commits"></i><i data-l="0" title="21 Jun: 0 commits"></i><i data-l="0" title="22 Jun: 0 commits"></i><i data-l="0" title="23 Jun: 0 commits"></i><i data-l="0" title="24 Jun: 0 commits"></i><i data-l="0" title="25 Jun: 0 commits"></i><i data-l="0" title="26 Jun: 0 commits"></i><i data-l="0" title="27 Jun: 0 commits"></i><i data-l="0" title="28 Jun: 0 commits"></i><i data-l="0" title="29 Jun: 0 commits"></i><i data-l="0" title="30 Jun: 0 commits"></i><i data-l="0" title="1 Jul: 0 commits"></i><i data-l="2" title="2 Jul: 12 commits"></i><i data-l="0" title="3 Jul: 0 commits"></i><i data-l="0" title="4 Jul: 0 commits"></i><i data-l="0" title="5 Jul: 0 commits"></i><i data-l="0" title="6 Jul: 0 commits"></i><i data-l="0" title="7 Jul: 0 commits"></i><i data-l="0" title="8 Jul: 0 commits"></i><i data-l="1" title="9 Jul: 4 commits"></i><i data-l="3" title="10 Jul: 43 commits"></i><i data-l="0" title="11 Jul: 0 commits"></i><i data-l="1" title="12 Jul: 6 commits"></i><i data-l="4" title="13 Jul: 55 commits"></i><i data-l="4" title="14 Jul: 83 commits"></i><i data-l="2" title="15 Jul: 20 commits"></i><i data-l="3" title="16 Jul: 33 commits"></i><i data-l="3" title="17 Jul: 49 commits"></i><i data-l="1" title="18 Jul: 1 commit"></i><i data-l="0" title="19 Jul: 0 commits"></i><i data-l="2" title="20 Jul: 9 commits"></i><i data-l="1" title="21 Jul: 6 commits"></i><i data-l="2" title="22 Jul: 11 commits"></i><i data-l="3" title="23 Jul: 29 commits"></i><i data-l="3" title="24 Jul: 44 commits"></i><i data-l="0" title="25 Jul: 0 commits"></i><i data-l="1" title="26 Jul: 1 commit"></i><i data-l="4" title="27 Jul: 66 commits"></i><i data-l="4" title="28 Jul: 55 commits"></i><i data-l="2" title="29 Jul: 22 commits"></i><i data-l="2" title="30 Jul: 8 commits"></i><i data-l="1" title="31 Jul: 4 commits"></i><i data-l="2" title="1 Aug: 18 commits"></i><i data-l="1" title="2 Aug: 5 commits"></i><i data-l="4" title="3 Aug: 56 commits"></i><i data-l="4" title="4 Aug: 93 commits"></i><i data-l="4" title="5 Aug: 107 commits"></i><i data-l="4" title="6 Aug: 212 commits"></i><i data-l="4" title="7 Aug: 70 commits"></i><i data-l="1" title="8 Aug: 5 commits"></i><i data-l="1" title="9 Aug: 6 commits"></i><i data-l="3" title="10 Aug: 29 commits"></i><i data-l="2" title="11 Aug: 23 commits"></i><i data-l="2" title="12 Aug: 8 commits"></i><i data-l="3" title="13 Aug: 27 commits"></i><i data-l="1" title="14 Aug: 6 commits"></i><i data-l="1" title="15 Aug: 2 commits"></i><i data-l="1" title="16 Aug: 1 commit"></i><i data-l="0" title="17 Aug: 0 commits"></i><i data-l="4" title="18 Aug: 75 commits"></i><i data-l="2" title="19 Aug: 22 commits"></i><i data-l="2" title="20 Aug: 16 commits"></i><i data-l="2" title="21 Aug: 19 commits"></i><i data-l="3" title="22 Aug: 29 commits"></i><i data-l="0" title="23 Aug: 0 commits"></i><i data-l="1" title="24 Aug: 2 commits"></i><i data-l="1" title="25 Aug: 3 commits"></i><i data-l="1" title="26 Aug: 1 commit"></i><i data-l="3" title="27 Aug: 28 commits"></i><i data-l="3" title="28 Aug: 24 commits"></i><i data-l="0" title="29 Aug: 0 commits"></i><i data-l="1" title="30 Aug: 1 commit"></i><i data-l="1" title="31 Aug: 1 commit"></i><i data-l="2" title="1 Sep: 19 commits"></i><i data-l="4" title="2 Sep: 56 commits"></i><i data-l="3" title="3 Sep: 29 commits"></i><i data-l="3" title="4 Sep: 27 commits"></i><i data-l="0" title="5 Sep: 0 commits"></i><i data-l="3" title="6 Sep: 43 commits"></i><i data-l="3" title="7 Sep: 25 commits"></i><i data-l="2" title="8 Sep: 8 commits"></i><i data-l="2" title="9 Sep: 21 commits"></i><i data-l="3" title="10 Sep: 26 commits"></i><i data-l="4" title="11 Sep: 128 commits"></i><i data-l="2" title="12 Sep: 16 commits"></i><i data-l="2" title="13 Sep: 14 commits"></i><i data-l="4" title="14 Sep: 61 commits"></i><i data-l="3" title="15 Sep: 45 commits"></i><i data-l="2" title="16 Sep: 12 commits"></i><i data-l="0" title="17 Sep: 0 commits"></i><i data-l="1" title="18 Sep: 1 commit"></i><i data-l="2" title="19 Sep: 15 commits"></i><i data-l="4" title="20 Sep: 83 commits"></i><i data-l="0" title="21 Sep: 0 commits"></i><i data-l="4" title="22 Sep: 80 commits"></i><i data-l="4" title="23 Sep: 70 commits"></i><i data-l="4" title="24 Sep: 78 commits"></i><i data-l="4" title="25 Sep: 79 commits"></i><i data-l="4" title="26 Sep: 90 commits"></i><i data-l="3" title="27 Sep: 48 commits"></i><i data-l="4" title="28 Sep: 100 commits"></i><i data-l="2" title="29 Sep: 9 commits"></i><i data-l="0" title="30 Sep: 0 commits"></i><i data-l="2" title="1 Oct: 7 commits"></i><i data-l="2" title="2 Oct: 11 commits"></i><i data-l="2" title="3 Oct: 23 commits"></i><i data-l="1" title="4 Oct: 6 commits"></i><i data-l="3" title="5 Oct: 33 commits"></i><i data-l="4" title="6 Oct: 69 commits"></i><i data-l="2" title="7 Oct: 18 commits"></i><i data-l="4" title="8 Oct: 54 commits"></i><i data-l="3" title="9 Oct: 46 commits"></i><i data-l="3" title="10 Oct: 35 commits"></i><i data-l="4" title="11 Oct: 78 commits"></i><i data-l="3" title="12 Oct: 29 commits"></i><i data-l="1" title="13 Oct: 2 commits"></i><i data-l="3" title="14 Oct: 37 commits"></i><i data-l="3" title="15 Oct: 35 commits"></i><i data-l="4" title="16 Oct: 126 commits"></i><i data-l="4" title="17 Oct: 92 commits"></i><i data-l="2" title="18 Oct: 8 commits"></i><i data-l="0" title="19 Oct: 0 commits"></i><i data-l="0" title="20 Oct: 0 commits"></i><i data-l="0" title="21 Oct: 0 commits"></i><i data-l="3" title="22 Oct: 38 commits"></i><i data-l="1" title="23 Oct: 2 commits"></i><i data-l="0" title="24 Oct: 0 commits"></i><i data-l="0" title="25 Oct: 0 commits"></i><i data-l="0" title="26 Oct: 0 commits"></i><i data-l="1" title="27 Oct: 2 commits"></i><i data-l="1" title="28 Oct: 6 commits"></i><i data-l="1" title="29 Oct: 1 commit"></i><i data-l="0" title="30 Oct: 0 commits"></i><i data-l="1" title="31 Oct: 5 commits"></i><i data-l="1" title="1 Nov: 5 commits"></i><i data-l="1" title="2 Nov: 6 commits"></i><i data-l="0" title="3 Nov: 0 commits"></i><i data-l="4" title="4 Nov: 63 commits"></i><i data-l="1" title="5 Nov: 6 commits"></i><i class="pad"></i><i class="pad"></i><i class="pad"></i></div></div>
         </div>
-        <div class="legend" aria-hidden="true">fewer <i style="background:rgba(22,21,19,.06)"></i><i style="background:rgba(229,72,28,.22)"></i><i style="background:rgba(229,72,28,.45)"></i><i style="background:rgba(229,72,28,.72)"></i><i style="background:var(--accent-ink)"></i> more</div>
+        <div class="legend" aria-hidden="true">fewer <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> more</div>
         <p class="note">What this counts: unique commits (deduplicated across worktrees and branches) authored under my git identity in 36 of my local repositories, read with <code>git log</code> on 5 Nov 2026. Third-party clones and my notes vault are excluded. It includes commits made by the agents I direct under my identity.</p>
       </article>
-      <article class="panel" data-reveal>
-        <div class="panel-head"><h3>Public URLs, right now</h3><span class="mono" style="color:var(--mute)">checked 2026-11-05 10:19 UTC</span></div>
-        <ul class="uptime"><li><i class="dot live" aria-hidden="true"></i><a href="https://vvdexops.com/" rel="noopener">vvdexops.com</a><em>HTTP 200 · 196 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://conxto.com/" rel="noopener">conxto.com</a><em>HTTP 200 · 192 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://lab.vvdexops.com/" rel="noopener">lab.vvdexops.com</a><em>HTTP 200 · 228 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://unboundpdf.com/" rel="noopener">unboundpdf.com</a><em>HTTP 200 · 167 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://farmquick.in/" rel="noopener">farmquick.in</a><em>HTTP 200 · 213 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://conxfolio.com/" rel="noopener">conxfolio.com</a><em>HTTP 200 · 203 ms</em></li><li><i class="dot " aria-hidden="true"></i><a href="https://trading.vvdexops.com/" rel="noopener">trading.vvdexops.com</a><em>HTTP 200 · 222 ms · Research</em></li></ul>
+      <article class="panel" data-reveal data-inspect style="--d:80ms">
+        <div class="panel-head"><h3>Public URLs, right now</h3><span class="mono" style="color:var(--mute)">checked 2026-11-05 11:25 UTC</span></div>
+        <ul class="uptime"><li><i class="dot live" aria-hidden="true"></i><a href="https://vvdexops.com/" rel="noopener">vvdexops.com</a><em>HTTP 200 · 334 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://conxto.com/" rel="noopener">conxto.com</a><em>HTTP 200 · 195 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://lab.vvdexops.com/" rel="noopener">lab.vvdexops.com</a><em>HTTP 200 · 534 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://unboundpdf.com/" rel="noopener">unboundpdf.com</a><em>HTTP 200 · 335 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://farmquick.in/" rel="noopener">farmquick.in</a><em>HTTP 200 · 272 ms</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://conxfolio.com/" rel="noopener">conxfolio.com</a><em>HTTP 200 · 315 ms</em></li><li><i class="dot " aria-hidden="true"></i><a href="https://trading.vvdexops.com/" rel="noopener">trading.vvdexops.com</a><em>HTTP 200 · 297 ms · Research</em></li><li><i class="dot live" aria-hidden="true"></i><a href="https://lab.vvdexops.com/forecast/" rel="noopener">lab.vvdexops.com</a><em>HTTP 200 · 204 ms</em></li></ul>
         <p class="note">One HTTP check from one location at build time, not an uptime history. Green dot: a Live product answering 200.</p>
       </article>
     </div>
-    <div class="withdrawn"><article class="wd" data-reveal><div class="eyebrow"><b>Withdrawn</b>by me, on the record</div><h4>The 70% claim</h4><div class="nums"><div><strong>0.683</strong><span>measured</span></div><div><strong>0.7178</strong><span>gate set in advance</span></div></div><p>A directional-accuracy claim was only allowed to stand if it cleared a threshold written down before the measurement. It measured 0.683 against a declared gate of 0.7178, so I withdrew it. The dated record that measured it stays public.</p><p style="margin-top:14px"><a class="txtlink" href="https://trading.vvdexops.com/" rel="noopener">The record ↗</a></p></article><article class="wd" data-reveal><div class="eyebrow"><b>Withdrawn</b>by me, on the record</div><h4>An exam lane I could not certify</h4><div class="nums"><div><strong>6</strong><span>passes withdrawn</span></div><div><strong>0</strong><span>kept</span></div></div><p>A pass on the platform survives only on verified containment. I found that one lane's agent could read the gold answers, the hidden tests and its own transcripts, so I withdrew all six of its historical passes and marked the lane not certifiable.</p><p style="margin-top:14px"><a class="txtlink" href="https://vvdexops.com/evals" rel="noopener">How grading works ↗</a></p></article></div>
+    <article class="panel shipped" id="shipped" data-inspect>
+      <div class="panel-head"><h3>Recently shipped</h3><span class="mono" style="color:var(--mute)">from my build log · newest first</span></div>
+      <ol class="feed">
+          <li data-reveal style="--d:0ms"><time datetime="2026-11-04">4 Nov 2026</time><a href="work/conxto/" class="sh-prod">Conxto</a><p>Overhaul release live: auto-apply, job data, tailoring and UI fixes. Models rotate Claude first, then OpenAI, then DeepSeek.</p></li>
+          <li data-reveal style="--d:50ms"><time datetime="2026-11-01">1 Nov 2026</time><a href="work/conxfolio/" class="sh-prod">Conxfolio</a><p>Sitemap cleaned to 365 pages; site added and verified in Bing.</p></li>
+          <li data-reveal style="--d:100ms"><time datetime="2026-10-31">31 Oct 2026</time><a href="work/unboundpdf/" class="sh-prod">UnboundPDF</a><p>v212 live: search and phone-layout pass. 218 of 218 public pages answer 200.</p></li>
+          <li data-reveal style="--d:150ms"><time datetime="2026-10-16">16 Oct 2026</time><a href="work/conxfolio/" class="sh-prod">Conxfolio</a><p>Résumé, letter, ATS and portfolio editors upgraded. ATS text now keeps the résumé's section order; all 22 portfolio designs re-checked live.</p></li>
+          <li data-reveal style="--d:200ms"><time datetime="2026-10-15">15 Oct 2026</time><a href="work/conxto/" class="sh-prod">Conxto</a><p>Speed pass live: app cold start 10.6 s → 2.7 s, largest paint 7.9 s → 0.83 s.</p></li>
+          <li data-reveal style="--d:250ms"><time datetime="2026-10-06">6 Oct 2026</time><a href="work/unboundpdf/" class="sh-prod">UnboundPDF</a><p>Remove Background moved off the main thread: Firefox no longer freezes for 20 s; a run now blocks the tab for 211 ms.</p></li>
+          <li data-reveal style="--d:300ms"><time datetime="2026-10-05">5 Oct 2026</time><a href="work/vvdex-engine/" class="sh-prod">VVDex Engine</a><p>Signed webhook writes live: HMAC-signed, idempotent, retried on server errors.</p></li>
+          <li data-reveal style="--d:350ms"><time datetime="2026-10-05">5 Oct 2026</time><a href="work/unboundpdf/" class="sh-prod">UnboundPDF</a><p>German version live, derived from the English site.</p></li>
+      </ol>
+    </article>
+    <div class="withdrawn"><article class="wd" data-reveal><div class="eyebrow"><b>Withdrawn</b>by me, on the record</div><h4>The 70% claim</h4><div class="nums"><div><strong>0.703</strong><span>measured, n = 5,325</span></div><div><strong>0.7178</strong><span>gate set in advance</span></div></div><p>A directional-accuracy claim was only allowed to stand if it cleared a threshold written down before the measurement. On 5,325 committed calls it measures 0.703 against a declared gate of 0.7178, so the claim stays withdrawn. The full ledger stays public.</p><p style="margin-top:14px"><a class="txtlink" href="https://trading.vvdexops.com/ledger" rel="noopener">The ledger ↗</a></p></article><article class="wd" data-reveal><div class="eyebrow"><b>Withdrawn</b>by me, on the record</div><h4>An exam lane I could not certify</h4><div class="nums"><div><strong>6</strong><span>passes withdrawn</span></div><div><strong>0</strong><span>kept</span></div></div><p>A pass on the platform survives only on verified containment. I found that one lane's agent could read the gold answers, the hidden tests and its own transcripts, so I withdrew all six of its historical passes and marked the lane not certifiable.</p><p style="margin-top:14px"><a class="txtlink" href="https://vvdexops.com/evals" rel="noopener">How grading works ↗</a></p></article></div>
   </div>
 </section>
 
-<section class="sec" id="contact" aria-labelledby="contact-h">
+<section class="sec" id="build" aria-labelledby="build-h">
+  <div class="wrap">
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>07</b>Playground</div><h2 id="build-h" data-reveal><span class="sr">What should we build?</span><span class="split" aria-hidden="true"><span class="w"><span style="--i:0">What</span></span> <span class="w"><span style="--i:1">should</span></span> <span class="w"><span style="--i:2">we</span></span> <span class="w"><span style="--i:3">build?</span></span></span></h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
+    <div class="buildgrid">
+      <div class="palette" data-reveal>
+          <div class="pal-group"><h4>What is it?</h4><div class="pal-notes"><button type="button" class="pnote" data-g="idea" data-t="An AI agent for my business">An AI agent for my business</button><button type="button" class="pnote" data-g="idea" data-t="An evaluation of our models or agents">An evaluation of our models or agents</button><button type="button" class="pnote" data-g="idea" data-t="A web product, end to end">A web product, end to end</button><button type="button" class="pnote" data-g="idea" data-t="Automating a manual workflow">Automating a manual workflow</button><button type="button" class="pnote" data-g="idea" data-t="Hiring: an AI engineering role">Hiring: an AI engineering role</button></div></div>
+          <div class="pal-group"><h4>When?</h4><div class="pal-notes"><button type="button" class="pnote" data-g="when" data-t="This month">This month</button><button type="button" class="pnote" data-g="when" data-t="In 1–3 months">In 1–3 months</button><button type="button" class="pnote" data-g="when" data-t="Exploring, no date yet">Exploring, no date yet</button></div></div>
+          <div class="pal-group"><h4>Budget</h4><div class="pal-notes"><button type="button" class="pnote" data-g="budget" data-t="Under €2k">Under €2k</button><button type="button" class="pnote" data-g="budget" data-t="€2k–10k">€2k–10k</button><button type="button" class="pnote" data-g="budget" data-t="€10k+">€10k+</button><button type="button" class="pnote" data-g="budget" data-t="A salaried role">A salaried role</button></div></div>
+          <div class="pal-group"><h4>Anything else</h4><label class="sr" for="freenote">A free-text note</label><textarea id="freenote" rows="3" maxlength="400" placeholder="One line is enough: the problem, a link, your team…"></textarea><button type="button" class="pnote free" data-g="free">Pin this note →</button></div>
+      </div>
+      <div class="bboard-wrap" data-reveal style="--d:80ms">
+        <div class="bboard" id="bboard" data-board aria-label="Project board" tabindex="-1">
+          <div class="board-ov" aria-hidden="true"></div>
+          <p class="bb-empty">Drop notes here.<br><span>Idea · when · budget · anything else</span></p>
+          <div class="ghosts" aria-hidden="true">
+            <div class="ghost g0"><b>7</b><span>products, built and run</span></div><div class="ghost g1"><b>54</b><span>tools in UnboundPDF, all in the browser</span></div><div class="ghost g2"><b>417</b><span>graded AI attempts, published</span></div>
+            <div class="ghost gname"><span class="gtag">AI PRODUCT ENGINEER</span><b>Vamsi Venkatesh</b></div>
+          </div>
+        </div>
+        <div class="draft" aria-live="polite">
+          <div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">New message · draft</span><span class="st status other">Not sent</span></div>
+          <dl><div><dt>To</dt><dd>vamsi@vamsivenkatesh.com</dd></div><div><dt>Subject</dt><dd id="d-subj">Project idea</dd></div></dl>
+          <pre id="d-body"></pre>
+          <div class="draft-ctl"><a class="pill" id="d-send" href="mailto:vamsi@vamsivenkatesh.com">Open in my email app ↗</a><button type="button" class="pill ghost" id="d-copy">Copy text</button><button type="button" class="pill ghost" data-clear>Clear board</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="contact-h" style="padding-top:40px">
   <div class="wrap"><div class="contact">
     <div data-reveal>
-      <div class="eyebrow"><b>05</b>Contact</div>
+      <div class="eyebrow"><b>08</b>Contact</div>
       <h2 id="contact-h">Hiring for an AI role? <em>Let’s talk.</em></h2>
       <p>I am looking for an AI role: AI engineer, AI product engineer or AI evaluation engineer, remote or on-site in Germany, on a team that ships real products. I also build AI products for clients. No visa sponsorship needed.</p>
       <div class="ctas"><a class="pill" href="mailto:vamsi@vamsivenkatesh.com">vamsi@vamsivenkatesh.com</a><a class="pill ghost" href="https://www.linkedin.com/in/vamsivenkatesh" rel="noopener">LinkedIn ↗</a><a class="pill ghost" href="https://github.com/vamsi-venkatesh" rel="noopener">GitHub ↗</a></div>
     </div>
-    <div class="code" data-reveal><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#8a847a">JSON</span></div><pre data-type aria-label="Contact details as JSON"><span class="ln"><span class="p" data-t>{</span></span><span class="ln"><span class="k" data-t>  "name"</span><span class="p" data-t>: </span><span class="s" data-t>"Vamsi Venkatesh"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "role"</span><span class="p" data-t>: </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "based"</span><span class="p" data-t>: </span><span class="s" data-t>"Magdeburg, Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "open_to"</span><span class="p" data-t>: </span><span class="p" data-t>[</span><span class="s" data-t>"AI engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI evaluation engineer"</span><span class="p" data-t>]</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "work"</span><span class="p" data-t>: </span><span class="s" data-t>"Remote, or on-site in Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "visa"</span><span class="p" data-t>: </span><span class="s" data-t>"German residence permit, no sponsorship needed"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "email"</span><span class="p" data-t>: </span><a href="mailto:vamsi@vamsivenkatesh.com" data-t>"vamsi@vamsivenkatesh.com"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "linkedin"</span><span class="p" data-t>: </span><a href="https://www.linkedin.com/in/vamsivenkatesh" data-t rel="noopener">"linkedin.com/in/vamsivenkatesh"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "github"</span><span class="p" data-t>: </span><a href="https://github.com/vamsi-venkatesh" data-t rel="noopener">"github.com/vamsi-venkatesh"</a><span class="p" data-t></span></span><span class="ln"><span class="p" data-t>}</span></span></pre></div>
+    <div class="code" data-reveal data-inspect><div class="chrome"><span class="tl"><i></i><i></i><i></i></span><span class="host">contact.json</span><span class="st status other" style="color:#8a847a">JSON</span></div><pre data-type aria-label="Contact details as JSON"><span class="ln"><span class="p" data-t>{</span></span><span class="ln"><span class="k" data-t>  "name"</span><span class="p" data-t>: </span><span class="s" data-t>"Vamsi Venkatesh"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "role"</span><span class="p" data-t>: </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "based"</span><span class="p" data-t>: </span><span class="s" data-t>"Magdeburg, Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "open_to"</span><span class="p" data-t>: </span><span class="p" data-t>[</span><span class="s" data-t>"AI engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI product engineer"</span><span class="p" data-t>, </span><span class="s" data-t>"AI evaluation engineer"</span><span class="p" data-t>]</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "work"</span><span class="p" data-t>: </span><span class="s" data-t>"Remote, or on-site in Germany"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "visa"</span><span class="p" data-t>: </span><span class="s" data-t>"German residence permit, no sponsorship needed"</span><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "email"</span><span class="p" data-t>: </span><a href="mailto:vamsi@vamsivenkatesh.com" data-t>"vamsi@vamsivenkatesh.com"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "linkedin"</span><span class="p" data-t>: </span><a href="https://www.linkedin.com/in/vamsivenkatesh" data-t rel="noopener">"linkedin.com/in/vamsivenkatesh"</a><span class="p" data-t>,</span></span><span class="ln"><span class="k" data-t>  "github"</span><span class="p" data-t>: </span><a href="https://github.com/vamsi-venkatesh" data-t rel="noopener">"github.com/vamsi-venkatesh"</a><span class="p" data-t></span></span><span class="ln"><span class="p" data-t>}</span></span></pre></div>
   </div></div>
 </section>
 </main>
-<script type="application/json" id="routes">{"cases":["work/vvdex-platform/","work/conxto/","work/vvdex-engine/","work/unboundpdf/","work/farmquick/","work/conxfolio/","work/pitchradar/","work/vvdex-trading/"]}</script>
+<script type="application/json" id="routes">{"cases":["work/vvdex-platform/","work/conxto/","work/vvdex-engine/","work/unboundpdf/","work/conxfolio/","work/forecasting/","work/vvdex-trading/","work/pitchradar/","work/farmquick/"],"deck":7}</script>
+<script type="application/json" id="mail">{"to":"vamsi@vamsivenkatesh.com"}</script>
 <footer class="foot"><div class="wrap">
   <span>© 2026 Vamsi Venkatesh · Magdeburg, Germany</span>
   <span><a href="mailto:vamsi@vamsivenkatesh.com">vamsi@vamsivenkatesh.com</a> · <a href="https://www.linkedin.com/in/vamsivenkatesh" rel="noopener">LinkedIn</a> · <a href="https://github.com/vamsi-venkatesh" rel="noopener">GitHub</a></span>
 </div></footer>
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Command bar">
+  <div class="cmdk-box">
+    <div class="cmdk-in"><span class="mono" aria-hidden="true">›</span><input id="cmdk-q" type="text" placeholder="Jump to a product, a section, email…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list"><kbd>Esc</kbd></div>
+    <ul id="cmdk-list" role="listbox"></ul>
+    <div class="cmdk-foot mono"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</div>
+<script type="application/json" id="cmdk-data">{"base":"","items":[{"g":"Products","t":"VVDex Platform","s":"AI evaluation platform · Live","h":"work/vvdex-platform/","k":"1"},{"g":"Products","t":"Conxto","s":"AI job search · Live","h":"work/conxto/","k":"2"},{"g":"Products","t":"VVDex Engine","s":"AI service engine · Live","h":"work/vvdex-engine/","k":"3"},{"g":"Products","t":"UnboundPDF","s":"Browser PDF suite · Live","h":"work/unboundpdf/","k":"4"},{"g":"Products","t":"Conxfolio","s":"Career suite · Live","h":"work/conxfolio/","k":"5"},{"g":"Products","t":"Forecasting","s":"Forecasting engine · Live","h":"work/forecasting/","k":"6"},{"g":"Products","t":"VVDex Trading","s":"Market research · Research","h":"work/vvdex-trading/","k":"7"},{"g":"Client work","t":"PitchRadar","s":"Event intelligence · client · Private","h":"work/pitchradar/","k":"8"},{"g":"Client work","t":"FarmQuick · Buyer Radar","s":"B2B ordering site + lead agent · client · Live","h":"work/farmquick/","k":"9"},{"g":"Sections","t":"Products, one by one","s":"Home","h":"#work"},{"g":"Sections","t":"Client work","s":"Home","h":"#clients"},{"g":"Sections","t":"Everything at a glance","s":"Home","h":"#index"},{"g":"Sections","t":"How I build","s":"Home","h":"#how"},{"g":"Sections","t":"Proof of shipping","s":"Home","h":"#proof"},{"g":"Sections","t":"Recently shipped","s":"Home","h":"#shipped"},{"g":"Sections","t":"What should we build?","s":"Home","h":"#build"},{"g":"Sections","t":"Contact","s":"Home","h":"#contact"},{"g":"Contact","t":"Email Vamsi","s":"vamsi@vamsivenkatesh.com","h":"mailto:vamsi@vamsivenkatesh.com"},{"g":"Contact","t":"LinkedIn","s":"linkedin.com/in/vamsivenkatesh","h":"https://www.linkedin.com/in/vamsivenkatesh","ext":1},{"g":"Contact","t":"GitHub","s":"github.com/vamsi-venkatesh","h":"https://github.com/vamsi-venkatesh","ext":1},{"g":"Board","t":"Switch dark / light","s":"Theme","act":"theme"},{"g":"Board","t":"Reset the board","s":"Put every note back","act":"reset"},{"g":"Site","t":"Impressum","s":"Legal notice","h":"impressum/"}]}</script>
 <script src="assets/site.js" defer></script>
 </body></html>

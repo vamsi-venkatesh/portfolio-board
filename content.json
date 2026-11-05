@@ -61,11 +61,11 @@
  "withdrawn": [
   {
    "title": "The 70% claim",
-   "what": "A directional-accuracy claim was only allowed to stand if it cleared a threshold written down before the measurement. It measured 0.683 against a declared gate of 0.7178, so I withdrew it. The dated record that measured it stays public.",
+   "what": "A directional-accuracy claim was only allowed to stand if it cleared a threshold written down before the measurement. On 5,325 committed calls it measures 0.703 against a declared gate of 0.7178, so the claim stays withdrawn. The full ledger stays public.",
    "numbers": [
     [
-     "0.683",
-     "measured"
+     "0.703",
+     "measured, n = 5,325"
     ],
     [
      "0.7178",
@@ -73,8 +73,8 @@
     ]
    ],
    "link": [
-    "The record",
-    "https://trading.vvdexops.com/"
+    "The ledger",
+    "https://trading.vvdexops.com/ledger"
    ]
   },
   {
@@ -105,15 +105,15 @@
    "stage": [
     [
      "17",
-     "certified exams"
+     "certified exams offered: 5 open, 12 on request"
     ],
     [
      "417",
-     "graded attempts, published"
+     "graded attempts in 15 published campaigns"
     ],
     [
-     "550",
-     "automated tests"
+     "21",
+     "models and agents tested"
     ]
    ],
    "kind": "AI evaluation platform",
@@ -131,19 +131,19 @@
     "Pass rates with 95% ranges and an Ed25519-signed receipt per run; five exams free, no sign-in"
    ],
    "checks": [
-    "Exams attacked before use: 9–10 cheating probes, all must fail",
+    "Exams attacked before use: 9–10 cheating probes each, all must fail",
     "Hidden tests grade in a separate box",
     "Every pass rate with its 95% range",
     "Every run signed: anyone can check a receipt"
    ],
    "numbers": [
     [
-     "17",
-     "certified exams"
-    ],
-    [
      "417",
      "graded attempts, published"
+    ],
+    [
+     "21",
+     "models and agents tested"
     ]
    ],
    "links": [
@@ -182,8 +182,8 @@
      "agents and reviewers, one memory"
     ],
     [
-     "1,061,623",
-     "job postings collected"
+     "394,928",
+     "job postings in its own pool · 2 Nov 2026"
     ],
     [
      "10.6 → 2.7 s",
@@ -202,13 +202,13 @@
    "built": [
     "Its own job search engine: boards, feeds and career pages merged per job, from 22 sources",
     "A truthfulness pipeline: every rewritten line is checked against the original résumé, and anything that claims more is reverted",
-    "Five specialist agents and two reviewers over one persistent memory per account"
+    "Five specialist agents and two reviewers over one persistent memory per account; models rotate Claude first, then OpenAI, then DeepSeek"
    ],
    "checks": [
     "Every rewritten line checked against the résumé",
     "Anything that claims more is reverted",
     "Copilot: you send every application",
-    "Autopilot: applies inside rules you set"
+    "Autopilot works inside rules you set; forms it cannot finish come back to you"
    ],
    "numbers": [
     [
@@ -330,8 +330,8 @@
      "uploads"
     ],
     [
-     "124",
-     "benchmark runs, 3 browser engines"
+     "218",
+     "public pages, English and German"
     ]
    ],
    "kind": "Browser PDF suite",
@@ -344,15 +344,15 @@
    "problem": "Most online PDF tools upload your file to someone else's server before they do anything with it.",
    "plan": "Every PDF tool, running in the browser, so the file never has to be uploaded anywhere.",
    "built": [
-    "54 tools, all deriving their counts from one registry",
+    "54 tools in English and German, all deriving their counts from one registry",
     "A workspace that keeps your files encrypted in your own browser",
     "A release gate on every deploy: a tool audit in three browser engines and a checksum sweep of every served file"
    ],
    "checks": [
     "511 Workspace checks, none failing",
     "A checksum sweep of every served file",
-    "Deployed from a clean worktree",
-    "The live page re-checked after deploy"
+    "218 of 218 public pages answering 200 after the 31 Oct release",
+    "Merge demo on this page: 4 requests, all static files; no file left the tab"
    ],
    "numbers": [
     [
@@ -386,65 +386,6 @@
    ]
   },
   {
-   "slug": "farmquick",
-   "name": "FarmQuick",
-   "img": "farmquick",
-   "kind": "B2B commerce + lead agent",
-   "status": "Live",
-   "url": "https://farmquick.in/",
-   "host": "farmquick.in",
-   "color": "#86C977",
-   "one": "The ordering site a produce business runs on, and the agent that finds its next buyer.",
-   "line": "End to end for a B2B produce business: the ordering site buyers use, and Lead Desk, the agent that finds the next buyer every morning.",
-   "problem": "A B2B produce business needed a proper ordering channel for its buyers, and a steady way to find the next ones.",
-   "plan": "Turn a family produce business into recurring, trackable B2B orders: build the site buyers order from, then the automation that finds the next buyer.",
-   "built": [
-    "The ordering site on Cloudflare: catalogue, bulk enquiry and orders, mobile first; a person confirms before anything moves",
-    "The loop closes: an order reaches the owner, becomes a won lead in the register and a line in the weekly report",
-    "Lead Desk reads open sources across five cities, scores leads by written rules and uses a model only when rules cannot answer"
-   ],
-   "checks": [
-    "408 tests on the public engine",
-    "A person confirms before anything moves",
-    "Owner-gated WhatsApp and email",
-    "Leads scored by written rules"
-   ],
-   "numbers": [
-    [
-     "5",
-     "cities read every morning"
-    ],
-    [
-     "408",
-     "tests on the public engine"
-    ]
-   ],
-   "links": [
-    [
-     "farmquick.in",
-     "https://farmquick.in/"
-    ],
-    [
-     "Engine on GitHub",
-     "https://github.com/vamsi-venkatesh/buyer-radar"
-    ]
-   ],
-   "shots": [
-    [
-     "farmquick-a",
-     "The ordering site, for wholesale and restaurant buyers."
-    ],
-    [
-     "farmquick-b",
-     "Build a supply order."
-    ],
-    [
-     "farmquick-c",
-     "The range, product by product."
-    ]
-   ]
-  },
-  {
    "slug": "conxfolio",
    "name": "Conxfolio",
    "img": "conxfolio",
@@ -458,7 +399,7 @@
    "problem": "Good résumé tools hide the useful parts behind accounts, paywalls and watermarks.",
    "plan": "Four tools that share one résumé, free to start and free to publish.",
    "built": [
-    "37 résumé designs (PDF and Word), 12 cover-letter designs and 20 portfolio websites",
+    "37 résumé designs (PDF and Word; 24 built to read cleanly in ATS software), 12 cover-letter designs and 22 portfolio websites",
     "One résumé parser with nine deterministic specialists, gated on a corpus before every ship",
     "Publish a portfolio at conxfolio.com/yourname, free"
    ],
@@ -474,7 +415,7 @@
      "résumé designs"
     ],
     [
-     "20",
+     "22",
      "portfolio websites"
     ]
    ],
@@ -495,62 +436,90 @@
     ],
     [
      "conxfolio-c",
-     "20 websites. One of them is yours."
+     "22 websites. One of them is yours."
+    ]
+   ],
+   "stage": [
+    [
+     "37",
+     "résumé designs, 24 ATS-clean"
+    ],
+    [
+     "12",
+     "cover-letter designs"
+    ],
+    [
+     "22",
+     "portfolio websites, free to publish"
     ]
    ]
   },
   {
-   "slug": "pitchradar",
-   "name": "PitchRadar",
-   "img": "pitchradar",
-   "kind": "Event intelligence · client",
-   "status": "Private",
-   "url": "",
-   "host": "private · client",
-   "color": "#F49A4B",
-   "one": "Finds and ranks the events a mobile food vendor should trade at. Built for a client.",
-   "line": "Finds the events a mobile food vendor should trade at, ranks them on rules you can read, and hands the owner one brief with the evidence behind every line. Running for a client.",
-   "problem": "A mobile food vendor has to find the right events to trade at, among scattered listings, deadlines and organisers.",
-   "plan": "Make a vendor's week decidable: collect the public event sources, keep what each one actually said, rank by written rules, hand over one brief.",
+   "slug": "forecasting",
+   "name": "Forecasting",
+   "img": "forecast",
+   "kind": "Forecasting engine",
+   "status": "Live",
+   "url": "https://lab.vvdexops.com/forecast/",
+   "host": "lab.vvdexops.com/forecast",
+   "color": "#8FB3E6",
+   "one": "Turns a history into a tested forecast and a reviewed decision. Every step leaves a receipt.",
+   "line": "Models race on the past, a written rule picks the winner, ranges must pass a test or are withheld, outside signals must beat chance, and a person approves before anything is issued.",
+   "problem": "Forecasts usually arrive as one confident number, with no way to see how it was picked or whether its ranges hold.",
+   "plan": "Make every step checkable: rules written down before the results, a simple baseline the model has to beat, and a person who approves.",
    "built": [
-    "Seven agents, each with its own receipts: discovery, extraction, qualification, contacts, deadlines, weather, reporting",
-    "A deterministic core; a language model only where the rules cannot answer, and never in the score",
-    "Contacts resolved from what German sites are legally obliged to publish, never guessed"
+    "Fifteen steps, each with one job: load and check the data, race seven models, pick by a written rule, test the ranges, approve, issue, read outside signals, write the decision paper",
+    "An outside-signal screen over a 75,884-signal catalogue with placebo and false-discovery control: on German industry, 5,022 tests and one survivor",
+    "Public runs are closed by default: the page shows one saved run with its receipt, and the owner approves who can sign in"
    ],
    "checks": [
-    "620 tests in CI on every push",
-    "No model in the score",
-    "No guessed contacts",
-    "Evidence behind every line"
+    "A complex model must beat the best simple baseline by 5%",
+    "The untouched final periods are looked at once",
+    "Ranges that fail their test are withheld",
+    "Nothing is issued without a person's approval"
    ],
    "numbers": [
     [
-     "7",
-     "agents"
+     "8.9%",
+     "better than the simple baseline · saved run, 22 Oct 2026"
     ],
     [
-     "620",
-     "tests · 16 Sep 2026"
+     "5,022",
+     "outside-signal tests; 1 passed"
+    ]
+   ],
+   "stage": [
+    [
+     "7",
+     "models raced on every run"
+    ],
+    [
+     "75,884",
+     "outside signals in the catalogue"
+    ],
+    [
+     "8.9%",
+     "better than the baseline on the saved run"
     ]
    ],
    "links": [
     [
-     "Engine on GitHub",
-     "https://github.com/vamsi-venkatesh/pitchradar"
+     "lab.vvdexops.com/forecast",
+     "https://lab.vvdexops.com/forecast/"
     ]
    ],
    "shots": [
     [
-     "pitchradar-a",
-     "The command centre: the week's openings."
+     "forecast-a",
+     "See every step before you trust the number."
     ],
     [
-     "pitchradar-b",
-     "Every event ranked, with its evidence."
+     "forecast-b",
+     "75,884 signals in. One survived."
     ],
     [
-     "pitchradar-c",
-     "A 12-week booking plan."
+     "forecast-c",
+     "Rules written down before the results exist."
     ]
    ]
   },
@@ -580,8 +549,8 @@
    ],
    "numbers": [
     [
-     "2,028",
-     "dated calls"
+     "8,658",
+     "predictions recorded · 5 Nov 2026"
     ],
     [
      "0",
@@ -606,6 +575,20 @@
     [
      "trading-c",
      "Every call the engine made."
+    ]
+   ],
+   "stage": [
+    [
+     "8,658",
+     "predictions recorded since 2 Jul 2026"
+    ],
+    [
+     "0.703",
+     "accuracy on 5,325 committed calls"
+    ],
+    [
+     "0.7178",
+     "gate declared in advance: not cleared"
     ]
    ]
   }
@@ -1314,7 +1297,6 @@
    "https://lab.vvdexops.com/"
   ],
   "unboundpdf": [
-   "https://unboundpdf.com/",
    "https://unboundpdf.com/tools/merge-pdf/"
   ],
   "conxfolio": [
@@ -1328,6 +1310,196 @@
   ],
   "vvdex-trading": [
    "https://trading.vvdexops.com/"
+  ],
+  "forecasting": [
+   "https://lab.vvdexops.com/forecast"
   ]
- }
+ },
+ "shipped": [
+  [
+   "2026-11-04",
+   "Conxto",
+   "Overhaul release live: auto-apply, job data, tailoring and UI fixes. Models rotate Claude first, then OpenAI, then DeepSeek.",
+   "conxto"
+  ],
+  [
+   "2026-11-01",
+   "Conxfolio",
+   "Sitemap cleaned to 365 pages; site added and verified in Bing.",
+   "conxfolio"
+  ],
+  [
+   "2026-10-31",
+   "UnboundPDF",
+   "v212 live: search and phone-layout pass. 218 of 218 public pages answer 200.",
+   "unboundpdf"
+  ],
+  [
+   "2026-10-16",
+   "Conxfolio",
+   "Résumé, letter, ATS and portfolio editors upgraded. ATS text now keeps the résumé's section order; all 22 portfolio designs re-checked live.",
+   "conxfolio"
+  ],
+  [
+   "2026-10-15",
+   "Conxto",
+   "Speed pass live: app cold start 10.6 s → 2.7 s, largest paint 7.9 s → 0.83 s.",
+   "conxto"
+  ],
+  [
+   "2026-10-06",
+   "UnboundPDF",
+   "Remove Background moved off the main thread: Firefox no longer freezes for 20 s; a run now blocks the tab for 211 ms.",
+   "unboundpdf"
+  ],
+  [
+   "2026-10-05",
+   "VVDex Engine",
+   "Signed webhook writes live: HMAC-signed, idempotent, retried on server errors.",
+   "vvdex-engine"
+  ],
+  [
+   "2026-10-05",
+   "UnboundPDF",
+   "German version live, derived from the English site.",
+   "unboundpdf"
+  ]
+ ],
+ "demos": {
+  "unboundpdf": "Real task on the public Merge PDF tool: two sample PDFs generated on this Mac are picked, reordered and merged in the browser. 4 requests during the task, all static files; nothing uploaded.",
+  "vvdex-platform": "The public homepage of vvdexops.com replaying a real sealed agent run (Codex CLI fixing xmltodict issue 257), recorded as it plays."
+ },
+ "content_updated": "2026-11-05",
+ "clients": [
+  {
+   "slug": "pitchradar",
+   "name": "PitchRadar",
+   "img": "pitchradar",
+   "kind": "Event intelligence · client",
+   "status": "Private",
+   "url": "",
+   "host": "private · client",
+   "color": "#F49A4B",
+   "one": "Finds and ranks the events a mobile food vendor should trade at. Built for a client.",
+   "line": "Finds the events a mobile food vendor should trade at, ranks them on rules you can read, and hands the owner one brief with the evidence behind every line. Running for a client.",
+   "problem": "A mobile food vendor has to find the right events to trade at, among scattered listings, deadlines and organisers.",
+   "plan": "Make a vendor's week decidable: collect the public event sources, keep what each one actually said, rank by written rules, hand over one brief.",
+   "built": [
+    "Seven agents, each with its own receipts: discovery, extraction, qualification, contacts, deadlines, weather, reporting",
+    "A deterministic core; a language model only where the rules cannot answer, and never in the score",
+    "Contacts resolved from what German sites are legally obliged to publish, never guessed"
+   ],
+   "checks": [
+    "620 tests in CI on every push",
+    "No model in the score",
+    "No guessed contacts",
+    "Evidence behind every line"
+   ],
+   "numbers": [
+    [
+     "7",
+     "agents"
+    ],
+    [
+     "620",
+     "tests · 16 Sep 2026"
+    ]
+   ],
+   "links": [
+    [
+     "Engine on GitHub",
+     "https://github.com/vamsi-venkatesh/pitchradar"
+    ]
+   ],
+   "shots": [
+    [
+     "pitchradar-a",
+     "The command centre: the week's openings."
+    ],
+    [
+     "pitchradar-b",
+     "Every event ranked, with its evidence."
+    ],
+    [
+     "pitchradar-c",
+     "A 12-week booking plan."
+    ]
+   ],
+   "client": true
+  },
+  {
+   "slug": "farmquick",
+   "name": "FarmQuick · Buyer Radar",
+   "img": "farmquick",
+   "kind": "B2B ordering site + lead agent · client",
+   "status": "Live",
+   "url": "https://farmquick.in/",
+   "host": "farmquick.in",
+   "color": "#86C977",
+   "one": "The ordering site a produce business runs on, and the agent that finds its next buyer.",
+   "line": "End to end for a B2B produce business: the ordering site buyers use, and Lead Desk, the agent that finds the next buyer every morning.",
+   "problem": "A B2B produce business needed a proper ordering channel for its buyers, and a steady way to find the next ones.",
+   "plan": "Turn a family produce business into recurring, trackable B2B orders: build the site buyers order from, then the automation that finds the next buyer.",
+   "built": [
+    "The ordering site on Cloudflare: catalogue, bulk enquiry and orders, mobile first; a person confirms before anything moves",
+    "The loop closes: an order reaches the owner, becomes a won lead in the register and a line in the weekly report",
+    "Lead Desk reads open sources across five cities, scores leads by written rules and uses a model only when rules cannot answer"
+   ],
+   "checks": [
+    "408 tests on the public engine",
+    "A person confirms before anything moves",
+    "Owner-gated WhatsApp and email",
+    "Leads scored by written rules"
+   ],
+   "numbers": [
+    [
+     "5",
+     "cities read every morning"
+    ],
+    [
+     "408",
+     "tests on the public engine"
+    ]
+   ],
+   "links": [
+    [
+     "farmquick.in",
+     "https://farmquick.in/"
+    ],
+    [
+     "Engine on GitHub",
+     "https://github.com/vamsi-venkatesh/buyer-radar"
+    ]
+   ],
+   "shots": [
+    [
+     "farmquick-a",
+     "The ordering site, for wholesale and restaurant buyers."
+    ],
+    [
+     "farmquick-b",
+     "Build a supply order."
+    ],
+    [
+     "farmquick-c",
+     "The range, product by product."
+    ]
+   ],
+   "stage": [
+    [
+     "42",
+     "products in the live catalogue"
+    ],
+    [
+     "5",
+     "cities read every morning"
+    ],
+    [
+     "408",
+     "tests on the public engine"
+    ]
+   ],
+   "client": true
+  }
+ ]
 }

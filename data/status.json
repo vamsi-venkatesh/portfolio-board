@@ -1,41 +1,46 @@
 {
- "checked_utc": "2026-11-05 10:19 UTC",
+ "checked_utc": "2026-11-05 11:25 UTC",
  "from": "local Mac (one vantage point)",
  "results": [
   {
    "url": "https://vvdexops.com/",
    "code": 200,
-   "ms": 196
+   "ms": 334
   },
   {
    "url": "https://conxto.com/",
    "code": 200,
-   "ms": 192
+   "ms": 195
   },
   {
    "url": "https://lab.vvdexops.com/",
    "code": 200,
-   "ms": 228
+   "ms": 534
   },
   {
    "url": "https://unboundpdf.com/",
    "code": 200,
-   "ms": 167
+   "ms": 335
   },
   {
    "url": "https://farmquick.in/",
    "code": 200,
-   "ms": 213
+   "ms": 272
   },
   {
    "url": "https://conxfolio.com/",
    "code": 200,
-   "ms": 203
+   "ms": 315
   },
   {
    "url": "https://trading.vvdexops.com/",
    "code": 200,
-   "ms": 222
+   "ms": 297
+  },
+  {
+   "url": "https://lab.vvdexops.com/forecast/",
+   "code": 200,
+   "ms": 204
   }
  ]
 }

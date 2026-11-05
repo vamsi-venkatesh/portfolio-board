@@ -1,0 +1,11 @@
+import { chromium, devices } from '.';
+const [url, out, scrollTo='0', mobile] = process.argv.slice(2);
+const b=await chromium.launch({args:['--use-angle=metal','--enable-gpu','--ignore-gpu-blocklist','--autoplay-policy=no-user-gesture-required']});
+const ctx=await b.newContext(mobile?{...devices['iPhone 13']}:{viewport:{width:1440,height:900}}); const p=await ctx.newPage(); const errs=[];
+p.on('console',m=>{if(m.type()==='error'||m.type()==='warning')errs.push(m.type()+': '+m.text())}); p.on('pageerror',e=>errs.push(String(e)));
+await p.goto(url,{waitUntil:'load'}); await p.waitForTimeout(1500);
+const y = scrollTo.startsWith('#') ? await p.evaluate(s=>document.querySelector(s).getBoundingClientRect().top+scrollY-70,scrollTo) : +scrollTo;
+await p.evaluate(y=>scrollTo(0,y),y); await p.waitForTimeout(1600);
+await p.screenshot({path:out,type:'jpeg',quality:75});
+console.log('overflow',await p.evaluate(()=>document.documentElement.scrollWidth-innerWidth),'H',await p.evaluate(()=>document.documentElement.scrollHeight),'errs',errs);
+await b.close();
