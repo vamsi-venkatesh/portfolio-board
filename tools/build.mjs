@@ -47,11 +47,12 @@ const icon = {
   grip: '<svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><g fill="currentColor"><circle cx="2.5" cy="2.5" r="1.2"/><circle cx="7.5" cy="2.5" r="1.2"/><circle cx="2.5" cy="7" r="1.2"/><circle cx="7.5" cy="7" r="1.2"/><circle cx="2.5" cy="11.5" r="1.2"/><circle cx="7.5" cy="11.5" r="1.2"/></g></svg>',
 };
 
-const header = (base, keysHint) => `<a class="skip" href="#main">Skip to content</a>
+const header = (base, keysHint, active = '') => `<a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
   <a class="brand" href="${base || './'}" aria-label="Vamsi Venkatesh, home"><span class="mark" aria-hidden="true">VV</span><span>Vamsi Venkatesh</span><small>/ AI product engineer</small></a>
   <div class="keys" aria-hidden="true">${keysHint}</div>
   <nav aria-label="Site">
+    <a class="txt nav-work${active === 'work' ? ' on' : ''}" href="${base}work/"${active === 'work' ? ' aria-current="page"' : ''}>Work</a>
     <a class="txt hide-m" href="mailto:${P.email}">Email</a>
     <a class="txt hide-m" href="${P.linkedin}" rel="noopener">LinkedIn</a>
     <a class="txt hide-s" href="${P.github}" rel="noopener">GitHub</a>
@@ -76,7 +77,8 @@ const footer = base => `<footer class="foot"><div class="wrap">
   base,
   items: [
     ...ALL.map((p, i) => ({ g: p.client ? 'Client work' : 'Products', t: p.name, s: p.kind + (isLive(p) ? ' · Live' : ' · ' + p.status), h: `${base}work/${p.slug}/`, k: String(i + 1) })),
-    ...[['Products, one by one', '#work'], ['Client work', '#clients'], ['Everything at a glance', '#index'], ['How I build', '#how'], ['Proof of shipping', '#proof'], ['Recently shipped', '#shipped'], ['What should we build?', '#build'], ['Contact', '#contact']].map(([t, h]) => ({ g: 'Sections', t, s: 'Home', h: `${base}${h}` })),
+    { g: 'Sections', t: 'Work index', s: `All ${ALL.length}: ${products.length} products + ${clients.length} client works`, h: `${base}work/` },
+    ...[['Products, one by one', '#work'], ['Client work', '#clients'], ['End to end board', '#main'], ['How I build', '#how'], ['Proof of shipping', '#proof'], ['Recently shipped', '#shipped'], ['What should we build?', '#build'], ['Contact', '#contact']].map(([t, h]) => ({ g: 'Sections', t, s: 'Home', h: `${base}${h}` })),
     { g: 'Contact', t: 'Email Vamsi', s: P.email, h: `mailto:${P.email}` },
     { g: 'Contact', t: 'LinkedIn', s: 'linkedin.com/in/vamsivenkatesh', h: P.linkedin, ext: 1 },
     { g: 'Contact', t: 'GitHub', s: 'github.com/vamsi-venkatesh', h: P.github, ext: 1 },
@@ -124,16 +126,38 @@ const H = heatmapHTML();
 
 // ---------- home ----------
 const liveCount = products.filter(isLive).length;
-const routesHome = { cases: ALL.map(p => `work/${p.slug}/`), deck: products.length };
+const routesHome = { cases: ALL.map(p => `work/${p.slug}/`) };
 const fmtN = n => n.toLocaleString('en-US');
 const fmtDate = iso => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1]} ${y}`; };
 
-const slides = products.map((p, i) => `
-      <article class="slide" data-pos="${i === 0 ? 0 : i === 1 ? 1 : i === 2 ? 2 : 'hide'}" data-url="${esc(p.url)}" data-live="${isLive(p) ? 1 : 0}" data-case="work/${p.slug}/" aria-roledescription="slide" aria-label="${i + 1} of ${products.length}: ${esc(p.name)}">
-        ${chrome(p)}
-        <div class="media">${video(p, '')}</div>
-        <div class="slide-body"><div><div class="eyebrow"><b>${pad2(i + 1)}</b>${esc(p.kind)}</div><h3>${esc(p.name)}</h3><p>${esc(p.one)}</p></div><a class="txtlink" href="work/${p.slug}/" data-vt="${p.slug}">Case study →</a></div>
-      </article>`).join('');
+// end-to-end board: the lede as a system. ONE verified fact per card, read from content.json / data/status.json.
+// No fact → no number (the Agents count in content.json was carried over from site.mjs and not re-checked).
+const ubp = products.find(p => p.slug === 'unboundpdf');
+const relCheck = (ubp.checks.find(c => /\d+ of \d+ public pages/.test(c)) || '').match(/(\d+) of (\d+) public pages answering 200 after the (.+) release/);
+const okUrls = status.results.filter(r => r.code === 200).length;
+// the human gate is stated in these products' checks: Conxto Copilot "you send every application", FarmQuick "A person confirms
+// before anything moves", Forecasting "Nothing is issued without a person's approval". Conxto Autopilot is excluded on purpose.
+const FLOW = [
+  { id: 'product', k: 'Product', n: liveCount, of: products.length, label: 'products live on the public web', foot: `+ ${clients.length} run for clients`, href: '#work', go: 'See them ↓' },
+  { id: 'agents', k: 'Agents', word: 'Human sign\u2011off', label: 'Agents draft and check; a person approves what goes out.', foot: 'Conxto Copilot · FarmQuick · Forecasting', href: '#how', go: 'How I build ↓' },
+  { id: 'servers', k: 'Servers', n: okUrls, of: status.results.length, label: 'public URLs answered HTTP 200', foot: `one check · ${status.checked_utc.replace(/^2026-11-05/, '5 Nov 2026,')}`, href: '#proof', go: 'See the check ↓' },
+  { id: 'tests', k: 'Tests', n: relCheck ? +relCheck[1] : null, of: relCheck ? +relCheck[2] : null, label: relCheck ? `UnboundPDF pages answered 200 after the ${relCheck[3]} release` : 'Release gates run before every deploy', foot: 'every public page, re-requested', href: 'work/unboundpdf/', go: 'UnboundPDF case →' },
+];
+const flowCard = (c, i) => `
+        <article class="fcard drag" data-drag="flow-${c.id}" data-flow="${i}" aria-label="${pad2(i + 1)} ${c.k}">
+          <button class="grip" type="button" aria-label="Move the ${c.k} card (arrow keys)">${icon.grip}</button>
+          <div class="fc-k"><b>${pad2(i + 1)}</b>${c.k}</div>
+          ${c.n != null ? `<strong class="fc-n"><span data-count="${c.n}">${c.n}</span><small>/${c.of}</small></strong>` : `<strong class="fc-n fc-w">${esc(c.word)}</strong>`}
+          <p class="fc-l">${esc(c.label)}</p>
+          <div class="fc-f"><span>${esc(c.foot)}</span><a href="${c.href}">${esc(c.go)}</a></div>
+        </article>`;
+const flowHTML = `
+    <div class="flow develop" data-guide aria-label="End to end: the product, the agents, the servers and the tests">
+      <div class="flow-head mono"><span><b>frame / end to end</b></span><span class="hide-s">the sentence on the left, as a system</span></div>
+      <div class="flow-grid">${FLOW.map(flowCard).join('')}
+      </div>
+      <p class="flow-cap mono">Drag a card: the wiring follows. Each number is from a dated check; no check, no number.</p>
+    </div>`;
 
 // pinned showcase: one item per product (desktop: stacked in a sticky stage; phones: a plain list)
 const showcase = products.map((p, i) => {
@@ -155,16 +179,6 @@ const showcase = products.map((p, i) => {
 }).join('');
 
 const rail = products.map((p, i) => `<button type="button" data-go="${i}"><span>${pad2(i + 1)}</span><em>${esc(p.name)}</em></button>`).join('');
-
-const cards = ALL.map((p, i) => `
-    <article class="card" data-reveal style="--tint:${tint(p)};--d:${(i % 4) * 60}ms">
-      <a class="frame-link" href="work/${p.slug}/" data-vt="${p.slug}" data-pill="Case study →" aria-label="${esc(p.name)} case study">
-        <div class="frame"><div class="screen">${chrome(p)}<div class="media"><img src="media/${p.slug}.jpg" alt="" loading="lazy" decoding="async" width="1200" height="750" data-depth></div></div></div>
-        <span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>${pad2(i + 1)} ${esc(p.slug)}</b></span>
-      </a>
-      <div class="card-meta"><div><h3><a href="work/${p.slug}/" data-vt="${p.slug}">${esc(p.name)}</a></h3><p class="one">${esc(p.one)}</p></div><kbd title="Press ${i + 1}">${i + 1}</kbd></div>
-      <div class="row">${p.client ? '<span class="cw">Client work</span>' : ''}<span>${esc(p.kind.replace(' · client', ''))}</span>${statusTag(p)}</div>
-    </article>`).join('');
 
 // client work: two wide cards with the same frame + loop language
 const clientCards = clients.map((p, j) => { const i = products.length + j; const st = (p.stage || p.numbers || []).slice(0, 3);
@@ -222,16 +236,17 @@ const palette = Object.entries(NOTES).map(([g, [title, list]]) => `
 
 const home = `${head('Vamsi Venkatesh — AI product engineer', P.lede, '')}
 <body data-page="home">
-${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.length}</kbd><span>to pop a product</span>`)}
+${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${ALL.length}</kbd><span>to open a case study</span>`)}
 <main id="main">
 <section class="hero" aria-label="Introduction">
   <div class="guides" aria-hidden="true"></div>
   <div class="wrap"><div class="board" id="board" data-board>
     <div class="board-bar" aria-label="Board controls">
-      <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes · resize my name · keys 1–${products.length}</span><span class="show-s"> · drag ${icon.grip}</span></span>
+      <span class="mono"><b>board / home</b><span class="hide-s"> · drag the notes and the cards · resize my name</span><span class="show-s"> · drag ${icon.grip}</span></span>
       <button class="reset" type="button" data-reset disabled>↺ Reset board</button>
     </div>
     <div class="board-ov" aria-hidden="true"></div>
+    <svg class="wires" aria-hidden="true" focusable="false"><defs><marker id="wire-end" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wire-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" style="color:var(--faint)"><path d="M1 1 9 5 1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g class="w-base"></g><g class="w-flow"></g><g class="w-dots"></g><g class="w-tags"></g></svg>
     <div class="hero-grid">
     <div class="develop">
       <div class="select namebox" data-guide>
@@ -245,16 +260,7 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.leng
       <div class="stats" data-guide>${STATS.map(statNote).join('')}</div>
       <div class="ctas"><a class="pill" href="#work">See the products ↓</a><a class="pill ghost" href="#build">What should we build?</a></div>
     </div>
-    <div class="deck develop drag" data-drag="deck" data-guide aria-roledescription="carousel" aria-label="Product recordings">
-      <button class="grip deck-grip" type="button" aria-label="Move the product deck (arrow keys)">${icon.grip}<span>frame / product deck</span></button>
-      <div class="deck-stage">${slides}
-      </div>
-      <div class="deck-ctl">
-        <div class="deck-nav"><button class="rbtn" data-prev aria-label="Previous product">‹</button><span class="count" aria-live="polite"><b>01</b> / ${pad2(products.length)}</span><button class="rbtn" data-next aria-label="Next product">›</button></div>
-        <a class="livelink" href="${esc(products[0].url)}" rel="noopener"><i class="dot live"></i><span class="lbl">Live</span> ↗</a>
-      </div>
-      <div class="progress" aria-hidden="true"><i></i></div>
-    </div>
+${flowHTML}
     </div>
   </div></div>
 </section>
@@ -277,20 +283,13 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.leng
     <div class="sec-head" data-inspect><div><div class="eyebrow"><b>03</b>Client work</div><h2 id="clients-h" data-reveal>${split(`Built and run for ${word(clients.length)} clients.`)}</h2></div><p data-reveal>Systems I designed and run for businesses: the work is mine, the business is theirs. Details stay at what each client has made public.</p></div>
     <div class="clients">${clientCards}
     </div>
-  </div>
-</section>
-
-<section class="sec" id="index" aria-labelledby="index-h" style="padding-top:40px">
-  <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>Everything</div><h2 id="index-h" data-reveal>${split(`All ${word(ALL.length)}, at a glance.`)}</h2></div><p data-reveal>${Word(products.length)} products and ${word(clients.length)} client systems. Keys <kbd>1</kbd>–<kbd>${products.length}</kbd> pop a product on the board at the top; the cards open the case studies.</p></div>
-    <div class="grid4 grid3">${cards}
-    </div>
+    <a class="allwork" href="work/"><span class="mono">Index</span><b>All ${word(ALL.length)} in one list</b><em>${Word(products.length)} products and ${word(clients.length)} client works: kind, status and a line each</em><i aria-hidden="true">→</i></a>
   </div>
 </section>
 
 <section class="sec" id="how" aria-labelledby="how-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>How I build</div><h2 id="how-h" data-reveal>${split('From a one-line problem to a product that keeps its receipts.')}</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>04</b>How I build</div><h2 id="how-h" data-reveal>${split('From a one-line problem to a product that keeps its receipts.')}</h2></div></div>
     <div class="cols">
       <article class="col" data-reveal data-inspect><div class="step"><span><b>01</b> · Idea</span><span>problem → plan</span></div><h3>Rules first, a model second.</h3><p>Each product starts as one problem and one plan. What can be written as a rule stays a rule; a model is used only where rules cannot answer.</p><ul><li>PitchRadar: no model in the score</li><li>FarmQuick: leads scored by written rules</li><li>Conxfolio: nine deterministic résumé specialists</li></ul><span class="arrow" aria-hidden="true"></span></article>
       <article class="col" data-reveal data-inspect style="--d:80ms"><div class="step"><span><b>02</b> · Ship</span><span>gate → deploy</span></div><h3>Nothing ships past a failing gate.</h3><p>Large automated suites and release gates run before a deploy. On UnboundPDF the live page is checked again after it.</p><ul><li>1,429 tests on VVDex Engine</li><li>620 on PitchRadar · 550 on VVDex Platform</li><li>UnboundPDF: audit in 3 browser engines + checksum sweep</li></ul><span class="arrow" aria-hidden="true"></span></article>
@@ -301,7 +300,7 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.leng
 
 <section class="sec" id="proof" aria-labelledby="proof-h" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>06</b>Proof of shipping</div><h2 id="proof-h" data-reveal>${split('Shipped, running, and checked.')}</h2></div></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>05</b>Proof of shipping</div><h2 id="proof-h" data-reveal>${split('Shipped, running, and checked.')}</h2></div></div>
     <div class="proof">
       <article class="panel" data-reveal data-inspect>
         <div class="panel-head"><h3>Commit activity, last 26 weeks</h3><span class="mono" style="color:var(--mute)">${H.from} – ${H.to}</span></div>
@@ -330,7 +329,7 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.leng
 
 <section class="sec" id="build" aria-labelledby="build-h">
   <div class="wrap">
-    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>07</b>Playground</div><h2 id="build-h" data-reveal>${split('What should we build?')}</h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
+    <div class="sec-head" data-inspect><div><div class="eyebrow"><b>06</b>Playground</div><h2 id="build-h" data-reveal>${split('What should we build?')}</h2></div><p data-reveal>Drag notes onto the board, or tap them. It writes a plain email you can read before you send it. Nothing is stored or sent by this page; your email app does the sending.</p></div>
     <div class="buildgrid">
       <div class="palette" data-reveal>${palette}
           <div class="pal-group"><h4>Anything else</h4><label class="sr" for="freenote">A free-text note</label><textarea id="freenote" rows="3" maxlength="400" placeholder="One line is enough: the problem, a link, your team…"></textarea><button type="button" class="pnote free" data-g="free">Pin this note →</button></div>
@@ -358,7 +357,7 @@ ${header('', `<span>Press</span><kbd>1</kbd><span>–</span><kbd>${products.leng
 <section class="sec" id="contact" aria-labelledby="contact-h" style="padding-top:40px">
   <div class="wrap"><div class="contact">
     <div data-reveal>
-      <div class="eyebrow"><b>08</b>Contact</div>
+      <div class="eyebrow"><b>07</b>Contact</div>
       <h2 id="contact-h">Hiring for an AI role? <em>Let’s talk.</em></h2>
       <p>${esc(P.wants)}</p>
       <div class="ctas"><a class="pill" href="mailto:${P.email}">${P.email}</a><a class="pill ghost" href="${P.linkedin}" rel="noopener">LinkedIn ↗</a><a class="pill ghost" href="${P.github}" rel="noopener">GitHub ↗</a></div>
@@ -397,6 +396,41 @@ ${footer('../')}`;
 fs.mkdirSync(`${ROOT}/impressum`, { recursive: true });
 fs.writeFileSync(`${ROOT}/impressum/index.html`, imp);
 
+
+// ---------- work index (v3): every product and client work in one list ----------
+{
+  const base = '../';
+  const row = (p, i) => `
+        <li data-reveal style="--d:${(i % 7) * 40}ms"><a class="wi-row" href="${p.slug}/" style="--tint:${tint(p)}">
+          <span class="wi-n">${pad2(i + 1)}</span>
+          <span class="wi-name"><b>${esc(p.name)}</b><em>${esc(p.one)}</em></span>
+          <span class="wi-kind"><span>${esc(p.kind.replace(' · client', ''))}</span><small>${esc(p.url ? p.host : 'private client system')}</small></span>
+          <span class="wi-st">${statusTag(p)}</span>
+          <span class="wi-go">Case study <i aria-hidden="true">→</i></span>
+        </a></li>`;
+  const group = (id, n, title, sub, list, off) => `
+    <section class="wi-group" aria-labelledby="${id}">
+      <div class="wi-head"><div class="eyebrow"><b>${n}</b><span id="${id}">${title}</span></div><span class="mono">${sub}</span></div>
+      <div class="wi-cols mono" aria-hidden="true"><span>#</span><span>Name</span><span>Kind · where</span><span>Status</span><span></span></div>
+      <ol class="wi-list">${list.map((p, k) => row(p, off + k)).join('')}
+      </ol>
+    </section>`;
+  const html = `${head('Work — Vamsi Venkatesh', `${Word(products.length)} products and ${word(clients.length)} client works by Vamsi Venkatesh, AI product engineer.`, base)}
+<body data-page="index">
+${header(base, `<kbd>1</kbd><span>–</span><kbd>${ALL.length}</kbd><span>open a case study</span>`, 'work')}
+<main id="main"><div class="wrap work-index">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="${base}">← Home</a><span>Work · ${ALL.length}</span></nav>
+  <header class="case-top">
+    <div class="select"><span class="h"></span><span class="h"></span><span class="h"></span><span class="h"></span><span class="tag">INDEX · ${products.length} + ${clients.length}</span><h1 class="title">Work</h1><span class="dim" aria-hidden="true"></span></div>
+    <p class="outcome">${Word(products.length)} products I designed, built and run end to end, ${word(liveCount)} of them live, and ${word(clients.length)} systems I built and run for clients. Each row opens its case study.</p>
+  </header>${group('wi-p', '01', 'Products', `${products.length} · ${liveCount} live`, products, 0)}${group('wi-c', '02', 'Client work', `${clients.length} · the business is theirs, the build is mine`, clients, products.length)}
+  <div class="cta-strip"><h3>Hiring for an AI role?</h3><div class="ctas"><a class="pill" href="mailto:${P.email}">Email me</a><a class="pill ghost" href="${base}#build">What should we build?</a></div></div>
+</div></main>
+<script type="application/json" id="routes">${JSON.stringify({ cases: ALL.map(q => `${q.slug}/`), home: base })}</script>
+${footer(base)}`;
+  fs.mkdirSync(`${ROOT}/work`, { recursive: true });
+  fs.writeFileSync(`${ROOT}/work/index.html`, html);
+}
 // ---------- case pages ----------
 const cats = [...new Set(tools.map(t => t.category))];
 const toolsHTML = `<div class="toolfilter"><label class="sr" for="toolq">Filter tools</label><input id="toolq" type="search" placeholder="Filter ${tools.length} tools, e.g. “sign” or “word”" autocomplete="off"><span id="toolcount" class="mono" style="color:var(--mute)">${tools.length} of ${tools.length} tools</span></div>
@@ -422,7 +456,7 @@ ALL.forEach((p, i) => {
 ${header(base, '<kbd>←</kbd><kbd>→</kbd><span>products</span><kbd>H</kbd><span>home</span>')}
 <main id="main">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="${base}${p.client ? '#clients' : '#index'}">← ${p.client ? 'Client work' : 'All products'}</a><span>${pad2(i + 1)} / ${pad2(ALL.length)} · ${p.client ? 'Client work · ' : ''}${esc(p.kind.replace(' · client', ''))}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="${base}work/">← All work</a><span>${pad2(i + 1)} / ${pad2(ALL.length)} · ${p.client ? 'Client work · ' : ''}${esc(p.kind.replace(' · client', ''))}</span></nav>
     <header class="case-top">
       <div class="select"><span class="h"></span><span class="h"></span><span class="h"></span><span class="h"></span><span class="tag">${p.client ? 'CLIENT WORK · ' : ''}${esc(p.kind.replace(' · client', '').toUpperCase())}</span><h1 class="title" data-vt-title>${esc(p.name)}</h1><span class="dim" aria-hidden="true"></span></div>
       <p class="outcome">${esc(p.one)}</p>
@@ -452,7 +486,7 @@ ${header(base, '<kbd>←</kbd><kbd>→</kbd><span>products</span><kbd>H</kbd><sp
       <a href="${base}work/${prev.slug}/"><img src="${base}media/${prev.slug}.jpg" alt="" loading="lazy" width="1200" height="750"><div><small>← Previous${prev.client ? ' · client work' : ''}</small><b>${esc(prev.name)}</b><span>${esc(prev.kind)}</span></div></a>
       <a class="next" href="${base}work/${next.slug}/"><img src="${base}media/${next.slug}.jpg" alt="" loading="lazy" width="1200" height="750"><div><small>${next.client ? 'Client work · ' : ''}Next →</small><b>${esc(next.name)}</b><span>${esc(next.kind)}</span></div></a>
     </nav>
-    <div class="cta-strip"><h3>Hiring for an AI role?</h3><div class="ctas"><a class="pill" href="mailto:${P.email}">Email me</a><a class="pill ghost" href="${base}">Back to all products</a></div></div>
+    <div class="cta-strip"><h3>Hiring for an AI role?</h3><div class="ctas"><a class="pill" href="mailto:${P.email}">Email me</a><a class="pill ghost" href="${base}work/">All work</a></div></div>
   </div>
 </main>
 <script type="application/json" id="routes">${JSON.stringify(routes)}</script>
@@ -460,4 +494,4 @@ ${footer(base)}`;
   fs.mkdirSync(`${ROOT}/work/${p.slug}`, { recursive: true });
   fs.writeFileSync(`${ROOT}/work/${p.slug}/index.html`, html);
 });
-console.log('built impressum +', ALL.length, 'case pages; heat', H.total, 'commits', H.active, 'days');
+console.log('built home, work index, impressum +', ALL.length, 'case pages; heat', H.total, 'commits', H.active, 'days');

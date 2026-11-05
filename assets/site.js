@@ -1,4 +1,4 @@
-// Live build board — interactions (v2, 5 Nov 2026). Vanilla JS, no dependencies.
+// Live build board — interactions (v3, 5 Nov 2026: end-to-end board replaces the product deck). Vanilla JS, no dependencies.
 // Nothing here hijacks scrolling: touch drags start only on grips/handles, everything else scrolls normally.
 (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -93,59 +93,13 @@
   // ---------- videos: play only while in view ----------
   const loadPlay = v => { if (!v) return; if (!v.src && v.dataset.src) v.src = v.dataset.src; if (!v.dataset.paused && (!RM || v.dataset.force)) v.play().catch(() => {}); };
   const vio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) loadPlay(e.target); else e.target.pause(); }), { threshold: 0.25 });
-  $$('video[data-src]').forEach(v => { if (!v.closest('.slide') && !v.closest('.sc-item')) vio.observe(v); });
+  $$('video[data-src]').forEach(v => { if (!v.closest('.sc-item')) vio.observe(v); });
   $$('[data-playtoggle]').forEach(btn => {
     const v = $(btn.dataset.playtoggle);
     const sync = () => { btn.textContent = v.paused ? '▶ Play' : '❚❚ Pause'; btn.setAttribute('aria-pressed', String(!v.paused)); };
     btn.addEventListener('click', () => { if (v.paused) { delete v.dataset.paused; v.dataset.force = '1'; loadPlay(v); } else { v.dataset.paused = '1'; v.pause(); } sync(); });
     v.addEventListener('play', sync); v.addEventListener('pause', sync); sync();
   });
-
-  // ---------- hero deck ----------
-  let deckApi = null;
-  function deck() {
-    const rootEl = $('.deck'); if (!rootEl) return;
-    const slides = $$('.slide', rootEl), n = slides.length;
-    const cur = $('.count b', rootEl), live = $('.livelink', rootEl), bar = $('.progress i', rootEl);
-    let i = 0, timer = null, hover = false, visible = true;
-    const DUR = 6500;
-    const show = (k, dir = 1, pop = false) => {
-      const prev = i; i = (k + n) % n;
-      slides.forEach((s, j) => {
-        const rel = (j - i + n) % n;
-        let pos = rel === 0 ? '0' : rel === 1 ? '1' : rel === 2 ? '2' : 'hide';
-        if (j === prev && j !== i && dir > 0) pos = 'out';
-        s.dataset.pos = pos; s.setAttribute('aria-hidden', String(rel !== 0));
-        const v = $('video', s);
-        if (rel === 0) { if (!v.src) v.src = v.dataset.src; v.currentTime = 0; if (visible && !RM) v.play().catch(() => {}); }
-        else v.pause();
-        if (pos === 'out') setTimeout(() => { if (s.dataset.pos === 'out') s.dataset.pos = 'hide'; }, 600);
-      });
-      const s = slides[i];
-      if (pop && !RM) { s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop'); setTimeout(() => s.classList.remove('pop'), 520); }
-      cur.textContent = String(i + 1).padStart(2, '0');
-      if (s.dataset.url) { live.href = s.dataset.url; $('span.lbl', live).textContent = s.dataset.live === '1' ? 'Live' : 'Open'; $('.dot', live).className = 'dot' + (s.dataset.live === '1' ? ' live' : ''); }
-      else { live.href = s.dataset.case; $('span.lbl', live).textContent = 'Case study'; $('.dot', live).className = 'dot'; }
-      restart();
-    };
-    const restart = () => {
-      clearTimeout(timer);
-      if (bar) { bar.style.transition = 'none'; bar.style.transform = 'scaleX(0)'; }
-      if (RM || hover || !visible) return;
-      requestAnimationFrame(() => { if (bar) { bar.style.transition = `transform ${DUR}ms linear`; bar.style.transform = 'scaleX(1)'; } });
-      timer = setTimeout(() => show(i + 1), DUR);
-    };
-    $('[data-prev]', rootEl).addEventListener('click', () => show(i - 1, -1));
-    $('[data-next]', rootEl).addEventListener('click', () => show(i + 1));
-    rootEl.addEventListener('pointerenter', () => { hover = true; restart(); });
-    rootEl.addEventListener('pointerleave', () => { hover = false; restart(); });
-    rootEl.addEventListener('focusin', () => { hover = true; restart(); });
-    rootEl.addEventListener('focusout', () => { hover = false; restart(); });
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; const v = $('video', slides[i]); if (visible && !RM) v.play().catch(() => {}); else v.pause(); restart(); }, { threshold: 0.2 }).observe(rootEl);
-    document.addEventListener('visibilitychange', () => { visible = !document.hidden; restart(); });
-    show(0);
-    deckApi = { pop: k => show(k, k > i ? 1 : -1, true) };
-  }
 
   // ---------- cursor pill ----------
   function pill() {
@@ -250,7 +204,7 @@
           if (ovX > 0) { const below = o.top >= f.b, g = below ? o.top - f.b : f.t >= o.bottom ? f.t - o.bottom : -1; if (g > 0 && (!gy || g < gy.len)) gy = { t: 'y', len: g, a: below ? f.b : o.bottom, x: Math.max(f.l, o.left) + ovX / 2 }; }
         });
         if (gx) gaps.push(gx); if (gy) gaps.push(gy);
-        setOff(el, nx, ny); draw(lines, gaps);
+        setOff(el, nx, ny); draw(lines, gaps); if (opts.onMove) opts.onMove(el);
         board.dataset.snapped = String(lines.length);
       };
       const up = () => {
@@ -272,10 +226,62 @@
       const g = $('.grip', el);
       if (g) g.addEventListener('keydown', e => {
         const k = { ArrowLeft: [-8, 0], ArrowRight: [8, 0], ArrowUp: [0, -8], ArrowDown: [0, 8] }[e.key]; if (!k) return;
-        e.preventDefault(); const [dx, dy] = off(el); setOff(el, dx + k[0], dy + k[1]); if (opts.onDrop) opts.onDrop(el);
+        e.preventDefault(); const [dx, dy] = off(el); setOff(el, dx + k[0], dy + k[1]); if (opts.onMove) opts.onMove(el); if (opts.onDrop) opts.onDrop(el);
       });
     }
     return { attach, setOff, off };
+  }
+
+  // ---------- end-to-end board: SVG connectors between the four cards, redrawn live while dragging ----------
+  function wires(board) {
+    const svg = $('.wires', board), cards = $$('.fcard', board);
+    const empty = { draw() {}, follow() {} };
+    if (!svg || cards.length < 2) return empty;
+    const NS = 'http://www.w3.org/2000/svg', gBase = $('.w-base', svg), gFlow = $('.w-flow', svg), gDots = $('.w-dots', svg);
+    const make = (g, tag, cls) => { const e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); g.appendChild(e); return e; };
+    // Product → Agents → Servers → Tests, plus a dashed loop: the tests prove the product works
+    const pairs = cards.slice(1).map((_, k) => [k, k + 1]).concat([[cards.length - 1, 0]]);
+    const segs = pairs.map(([i, j], k) => {
+      const loop = k === pairs.length - 1, c = loop ? ' loop' : '';
+      const s = { i, j, loop, base: make(gBase, 'path', 'w-b' + c), flow: make(gFlow, 'path', 'w-f' + c), a: make(gDots, 'circle', 'w-a' + c), z: make(gDots, 'circle', 'w-z' + c) };
+      s.base.setAttribute('marker-end', `url(#${loop ? 'wire-loop' : 'wire-end'})`); s.a.setAttribute('r', '3.5'); s.z.setAttribute('r', '2.5');
+      if (loop) { s.tag = make($('.w-tags', svg), 'text'); s.tag.textContent = 'proves it works'; s.tag.setAttribute('text-anchor', 'middle'); s.tag.setAttribute('dominant-baseline', 'middle'); }
+      return s;
+    });
+    // anchor on the side facing the other card; the axis with the larger gap wins
+    const side = (r, o) => {
+      const dx = (o.left + o.width / 2) - (r.left + r.width / 2), dy = (o.top + o.height / 2) - (r.top + r.height / 2);
+      const gx = Math.max(o.left - r.right, r.left - o.right), gy = Math.max(o.top - r.bottom, r.top - o.bottom);
+      if (gx >= gy) return dx >= 0 ? [r.right, r.top + r.height / 2, 1, 0] : [r.left, r.top + r.height / 2, -1, 0];
+      return dy >= 0 ? [r.left + r.width / 2, r.bottom, 0, 1] : [r.left + r.width / 2, r.top, 0, -1];
+    };
+    const draw = () => {
+      const br = board.getBoundingClientRect();
+      const rs = cards.map(c => { const r = c.getBoundingClientRect(); return { left: r.left - br.left, top: r.top - br.top, right: r.right - br.left, bottom: r.bottom - br.top, width: r.width, height: r.height }; });
+      segs.forEach(s => {
+        const A = rs[s.i], Z = rs[s.j];
+        const [x1, y1, ax, ay] = side(A, Z), [x2, y2, zx, zy] = side(Z, A);
+        const d = Math.hypot(x2 - x1, y2 - y1), h = clamp(d * 0.45, 24, 140);
+        const ex = x2 + zx * 7, ey = y2 + zy * 7; // stop short so the arrowhead sits on the card edge
+        const p = `M${x1.toFixed(1)} ${y1.toFixed(1)} C${(x1 + ax * h).toFixed(1)} ${(y1 + ay * h).toFixed(1)} ${(ex + zx * h).toFixed(1)} ${(ey + zy * h).toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`;
+        s.base.setAttribute('d', p); s.flow.setAttribute('d', p);
+        s.a.setAttribute('cx', x1.toFixed(1)); s.a.setAttribute('cy', y1.toFixed(1));
+        s.z.setAttribute('cx', x2.toFixed(1)); s.z.setAttribute('cy', y2.toFixed(1));
+        if (s.tag) { // label at the curve's midpoint (cubic at t = .5)
+          const c1x = x1 + ax * h, c1y = y1 + ay * h, c2x = ex + zx * h, c2y = ey + zy * h;
+          s.tag.setAttribute('x', ((x1 + 3 * c1x + 3 * c2x + ex) / 8).toFixed(1)); s.tag.setAttribute('y', ((y1 + 3 * c1y + 3 * c2y + ey) / 8).toFixed(1));
+        }
+      });
+      board.dataset.wired = String(segs.length);
+    };
+    let raf = 0;
+    const queue = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; draw(); }); };
+    // follow a CSS transition (reset glides the cards home) by redrawing every frame for `ms`
+    const follow = ms => { const t0 = performance.now(); const f = now => { draw(); if (now - t0 < ms) requestAnimationFrame(f); }; requestAnimationFrame(f); };
+    if ('ResizeObserver' in window) new ResizeObserver(queue).observe(board);
+    addEventListener('resize', queue);
+    if (!RM) follow(700); // the intro un-blurs and settles the layout
+    return { draw, follow };
   }
 
   // ---------- hero board ----------
@@ -283,12 +289,14 @@
     const board = $('.hero [data-board]'); if (!board) return null;
     const items = $$('.drag', board), reset = $('[data-reset]', board), nb = $('.namebox', board);
     const dirty = () => { reset.disabled = false; };
+    const W = wires(board);
     const B = makeBoard(board, {
       targets: () => [...items, nb],
       limit: (base, br) => ({ x0: br.left - base.l - 8, x1: br.right - base.l - base.w + 8, y0: br.top - base.t, y1: br.bottom - base.t - base.h + 40 }),
+      onMove: el => { if (el.matches('.fcard')) W.draw(); },
       onDrop: dirty,
     });
-    items.forEach(el => B.attach(el, { whole: !el.classList.contains('deck') }));
+    items.forEach(el => B.attach(el));
     // resizable name box: E/W handles change the width (the name reflows), N/S handles scale the type
     const dim = $('.dim', nb);
     const measure = () => { const r = nb.getBoundingClientRect(); dim.textContent = Math.round(r.width) + ' × ' + Math.round(r.height); };
@@ -310,11 +318,11 @@
     const doReset = () => {
       items.forEach(el => B.setOff(el, 0, 0));
       nb.style.width = ''; nb.style.removeProperty('--ns'); setTimeout(measure, 460);
-      reset.disabled = true;
+      reset.disabled = true; W.follow(520);
     };
     reset.addEventListener('click', doReset);
-    measure(); addEventListener('resize', measure);
-    return { reset: doReset };
+    measure(); addEventListener('resize', measure); W.draw();
+    return { reset: doReset, wires: W };
   }
 
   // =====================================================================================
@@ -538,9 +546,7 @@
     const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
     const dlg = $('#cmdk'); if (dlg && !dlg.hidden) return;
     if (/^[1-9]$/.test(e.key) && routes.cases && routes.cases[+e.key - 1]) {
-      const k = +e.key - 1;
-      if (page === 'home' && deckApi && k < (routes.deck || 0) && hero.getBoundingClientRect().bottom > 140) deckApi.pop(k);
-      else location.href = routes.cases[k];
+      location.href = routes.cases[+e.key - 1];
     }
     else if (page === 'case' && e.key === 'ArrowLeft' && routes.prev) location.href = routes.prev;
     else if (page === 'case' && e.key === 'ArrowRight' && routes.next) location.href = routes.next;
@@ -553,7 +559,7 @@
   if (page === 'home') document.addEventListener('click', e => {
     const a = e.target.closest('a[data-vt]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || RM) return;
     clearVT();
-    const host = a.closest('.sc-item, .card, .slide');
+    const host = a.closest('.sc-item, .client');
     const media = host && ($('.frame', host) || $('.media', host)); const title = host && $('.sc-name, h3', host);
     if (media) { media.style.viewTransitionName = 'vt-media'; media.classList.add('vt-on'); }
     if (title) { title.style.viewTransitionName = 'vt-title'; title.classList.add('vt-on'); }
@@ -570,7 +576,7 @@
     intro();
     setTimeout(() => $$('[data-scramble]').forEach(scramble), RM ? 0 : 300);
     setTimeout(() => $$('.hero [data-count]').forEach(countUp), RM ? 0 : 450);
-    deck(); pill(); heroApi = heroBoard(); sc = showcase(); inspector(); buildBoard(); commandBar();
+    pill(); heroApi = heroBoard(); sc = showcase(); inspector(); buildBoard(); commandBar();
     $$('.select .dim').forEach(d => { const r = d.parentElement.getBoundingClientRect(); if (!d.textContent) d.textContent = Math.round(r.width) + ' × ' + Math.round(r.height); });
     frame();
   };
