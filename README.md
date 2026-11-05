@@ -1,6 +1,6 @@
-# The Board: portfolio design
+# The Board: vamsivenkatesh.com
 
-My next portfolio design. The homepage is a board of live product frames: seven products I run, each playing its real screen, plus an empty frame **08 · Yours** that leads to a playground where a visitor drafts their own project. Scrolling is one camera that flies into each product in turn.
+The source of my live portfolio site (live since 5 November 2026). The homepage is a board of live product frames: seven products I run, each playing its real screen, plus an empty frame **08 · Yours** that leads to a playground where a visitor drafts their own project. Scrolling is one camera that flies into each product in turn.
 
 ![The board, desktop](docs/board-overview.jpg)
 
@@ -47,4 +47,4 @@ The commits are the four versions as they were saved on 5 November 2026:
 
 ## Status
 
-A design in review, run locally. The live site is still [vamsivenkatesh.com](https://vamsivenkatesh.com).
+Live at [vamsivenkatesh.com](https://vamsivenkatesh.com) since 5 November 2026, replacing the Red Dot design. You can also [open this copy live](https://vamsi-venkatesh.github.io/portfolio-designs/board/).
